@@ -150,9 +150,9 @@ class BanHandler:
             for _ in self.cause.split()
             if _.lower() not in ["delete_history", "report_spam"]
         )
-        await self.message.edit(
+        await self.message.reply(
             f"<b>{self.name}</b> <code>banned!</code>"
-            + f"\n{'<b>Cause:</b> <i>' + text_c.split(maxsplit=1)[1] + '</i>' if len(text_c.split()) > 1 else ''}"
+            + f"\n{'<b>Karena:</b> <i>' + text_c.split(maxsplit=1)[1] + '</i>' if len(text_c.split()) > 1 else ''}"
         )
 
 
