@@ -16,7 +16,7 @@ if [[ -d "Er-Userbot-Tester" ]]; then
 elif [[ -f ".env.dist" ]] && [[ -f "erbanget.py" ]] && [[ -d "plugins" ]]; then
   :
 else
-  git clone https://github.com/The-MoonTg-project/Moon-Userbot || exit 2
+  git clone https://github.com/ErRickow/Er-Userbot-Tester || exit 2
   cd Moon-Userbot || exit 2
 fi
 
