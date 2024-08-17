@@ -1,4 +1,4 @@
-from enum import auto
+from er import auto
 
 from .auto_name import AutoName
 
