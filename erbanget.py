@@ -114,5 +114,5 @@ async def erbanget():
     await app.stop()
 
 
-if __name__ == "__erbanget__":
+if __name__ == "__main__":
     app.run(main())
