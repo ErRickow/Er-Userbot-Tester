@@ -114,7 +114,7 @@ if [[ $db_type = 1 ]]; then
   echo "Silahkan Masukkan db_url"
   echo "Lu bisa dapetin disini -> https://telegra.ph/How-to-get-Mongodb-URL-and-login-in-telegram-08-01"
   read -r -p "> " db_url
-  db_name=Moon_Userbot
+  db_name=Er_Database
   db_type=mongodb
 else
   db_name=db.sqlite3
