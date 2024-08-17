@@ -38,7 +38,7 @@ if config.STRINGSESSION:
 app = Client("akun_ku", **common_params)
 
 
-async def main():
+async def erbanget():
     logging.basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[logging.FileHandler("moonlogs.txt"), logging.StreamHandler()],
@@ -114,5 +114,5 @@ async def main():
     await app.stop()
 
 
-if __name__ == "__main__":
+if __name__ == "__erbanget__":
     app.run(erbanget())
