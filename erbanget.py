@@ -115,4 +115,4 @@ async def erbanget():
 
 
 if __name__ == "__erbanget__":
-    app.run(erbanget())
+    app.run(main())
