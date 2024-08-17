@@ -87,7 +87,7 @@ async def erbanget():
             "update": "<blockquote>Proses Update Sukses Sayangku!</blockquote>",
         }[info["type"]]
         try:
-            await app.reply_to_message_id(
+            await app.message.reply(
                 info["chat_id"], info["message_id"], text
             )
         except errors.RPCError:
