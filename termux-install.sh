@@ -97,7 +97,7 @@ if [[ $vt_key = "" ]]; then
 fi
 
 echo
-echo "Masukkan VCA_API_KEY for aiutils"
+echo "Masukkan VCA_API_KEY untuk aiutils"
 echo "Learn How to Get One --> https://github.com/VisionCraft-org/VisionCraft?tab=readme-ov-file#obtaining-an-api-key"
 read -r -p "VCA_API_KEY > " vca_api_key
 
@@ -105,7 +105,7 @@ if [[ $vca_api_key = "" ]]; then
   echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan aiutils module/pligins"
 fi
 
-echo "Choose database type:"
+echo "Pilih Database nya:"
 echo "[1] MongoDB (your url)"
 echo "[2] Sqlite"
 read -r -p "> " db_type
