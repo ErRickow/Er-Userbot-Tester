@@ -20,7 +20,7 @@ else
   cd Er-Userbot-Tester || exit 2
 fi
 
-if [[ -f ".env" ]] && [[ -f "my_account.session" ]]; then
+if [[ -f ".env" ]] && [[ -f "akun_ku.session" ]]; then
   echo "It seems that Moon-Userbot is already installed. Exiting..."
   exit
 fi
