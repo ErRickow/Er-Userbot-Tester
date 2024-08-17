@@ -21,16 +21,16 @@ else
 fi
 
 if [[ -f ".env" ]] && [[ -f "akun_ku.session" ]]; then
-  echo "It seems that Moon-Userbot is already installed. Exiting..."
+  echo "Er Userbot Tester telah terinstall..."
   exit
 fi
 
 python3 -m pip install -U -r requirements.txt || exit 2
 
 echo
-echo "Enter API_ID and API_HASH"
-echo "You can get it here -> https://my.telegram.org/apps"
-echo "Leave empty to use defaults  (please note that default keys significantly increases your ban chances)"
+echo "Pencet API_ID dan API_HASH"
+echo "Lu bisa ambil disini -> https://my.telegram.org/apps"
+echo "Kosongkan kalo gamau ribet  (tetapi kemungkinan terbannednya tinggi)"
 read -r -p "API_ID > " api_id
 
 if [[ $api_id = "" ]]; then
