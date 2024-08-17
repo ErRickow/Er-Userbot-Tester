@@ -69,7 +69,7 @@ async def main():
     for path in Path("plugins").rglob("*.py"):
         try:
             await load_module(
-                path.stem, app, core="custom_modules" not in path.parent.parts
+                path.stem, app, core="custom_plugins" not in path.parent.parts
             )
         except Exception:
             logging.warning("Can't import module %s", path.stem, exc_info=True)
