@@ -107,7 +107,7 @@ async def main():
             ],
         )
 
-    logging.info("Nganu Userbot started!")
+    logging.info("Er Userbot Beta started!")
 
     await idle()
 
