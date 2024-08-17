@@ -41,7 +41,7 @@ else
 fi
 
 echo
-echo "SET PM PERMIT warn limit"
+echo "SET PM PERMIT limit warn nya"
 read -r -p "PM_LIMIT warn limit > " pm_limit
 
 if [[ $pm_limit = "" ]]; then
