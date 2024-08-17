@@ -20,7 +20,7 @@ from pyrogram.types import Message
 
 from utils.db import db
 
-from .misc import modules_help, prefix, requirements_list
+from .misc import plugins_help, prefix, requirements_list
 
 META_COMMENTS = re.compile(r"^ *# *meta +(\S+) *: *(.*?)\s*$", re.MULTILINE)
 interact_with_to_delete = []
@@ -266,7 +266,7 @@ async def interact_with(message: Message) -> Message:
 
 
 def format_module_help(module_name: str, full=True):
-    commands = modules_help[module_name]
+    commands = plugins_help[module_name]
 
     help_text = (
         f"<b>Help for |{module_name}|\n\nUsage:</b>\n" if full else "<b>Usage:</b>\n"
@@ -281,7 +281,7 @@ def format_module_help(module_name: str, full=True):
 
 
 def format_small_module_help(module_name: str, full=True):
-    commands = modules_help[module_name]
+    commands = plugins_help[module_name]
 
     help_text = (
         f"<b>Help for |{module_name}|\n\nCommands list:\n"
@@ -393,7 +393,7 @@ async def load_module(
     message: Message = None,
     core=False,
 ) -> ModuleType:
-    if module_name in modules_help and not core:
+    if module_name in plugins_help and not core:
         await unload_module(module_name, client)
 
     path = f"modules.{'custom_modules.' if not core else ''}{module_name}"
@@ -467,7 +467,7 @@ async def unload_module(module_name: str, client: Client) -> bool:
         for handler, group in getattr(obj, "handlers", []):
             client.remove_handler(handler, group)
 
-    del modules_help[module_name]
+    del plugins_help[module_name]
     del sys.modules[path]
 
     return True
