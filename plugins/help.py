@@ -50,7 +50,7 @@ async def help_cmd(_, message: Message):
                         f" — <i>{cmd_desc}</i>",
                     )
         if not module_found:
-            await message.edit(f"<b>Module or command {command_name} not found</b>")
+            await message.edit(f"<blockquote>Module or command {command_name} not found</blockquote>")
 
 @Client.on_message(filters.command(["pn", "pp", "pq"], prefix) & filters.me)
 @with_reply
