@@ -20,7 +20,7 @@ async def get_readable_time(_, message: Message):
     start = time.time()
     nganu = time.time() - start
     uptime = datetime.now(datetime.datetime())
-    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime {uptime}</blockquote>")
+    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime {uptime}</blockquote>Owner {Client.UserMention")
 
 
 plugins_help["ping"] = {
