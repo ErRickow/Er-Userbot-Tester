@@ -73,7 +73,7 @@ async def handle_navigation(_, message: Message):
                 return await message.edit("This is the first page.")
         elif message.command[0].lower() == "pq":
             await message.reply_to_message.delete()
-            return await message.edit("Help closed.")
+            return await message.reply("Help closed.")
 
 
 plugins_help["help"] = {
