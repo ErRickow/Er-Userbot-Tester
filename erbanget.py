@@ -72,7 +72,7 @@ async def main():
                 path.stem, app, core="custom_plugins" not in path.parent.parts
             )
         except Exception:
-            logging.warning("Can't import module %s", path.stem, exc_info=True)
+            logging.warning("Kaga bisa import %s", path.stem, exc_info=True)
             failed_modules += 1
         else:
             success_modules += 1
