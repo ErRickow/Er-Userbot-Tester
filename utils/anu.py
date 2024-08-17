@@ -444,7 +444,7 @@ async def load_module(
                     )
             raise RuntimeError("failed to install requirements") from e
 
-        module = importlib.import_module(path)
+        module = importlib.import_plugins(path)
 
     for _name, obj in vars(module).items():
         if isinstance(getattr(obj, "handlers", []), list):
