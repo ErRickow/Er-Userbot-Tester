@@ -13,7 +13,7 @@ LDFLAGS="-L${PREFIX}/lib/" CFLAGS="-I${PREFIX}/include/" pip3 install --upgrade 
 
 if [[ -d "Er-Userbot-Tester" ]]; then
   cd Moon-Userbot
-elif [[ -f ".env.dist" ]] && [[ -f "main.py" ]] && [[ -d "modules" ]]; then
+elif [[ -f ".env.dist" ]] && [[ -f "erbanget.py" ]] && [[ -d "modules" ]]; then
   :
 else
   git clone https://github.com/The-MoonTg-project/Moon-Userbot || exit 2
