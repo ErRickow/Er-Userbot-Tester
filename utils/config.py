@@ -25,7 +25,7 @@ gemini_key = os.getenv("GEMINI_KEY", env.str("GEMINI_KEY", ""))
 vca_api_key = os.getenv("VCA_API_KEY", env.str("VCA_API_KEY", ""))
 cohere_key = os.getenv("COHERE_KEY", env.str("COHERE_KEY", ""))
 
-pm_limit = int(os.getenv("PM_LIMIT", env.int("PM_LIMIT", 4)))
+pm_limit = int(os.getenv("PM_LIMIT", env.int("PM_LIMIT", 5)))
 
 test_server = bool(os.getenv("TEST_SERVER", env.bool("TEST_SERVER", False)))
 modules_repo_branch = os.getenv("MODULES_REPO_BRANCH", env.str("MODULES_REPO_BRANCH", "master"))
