@@ -65,9 +65,9 @@ async def update(_, message: Message):
         await message.reply(format_exc(e))
         db.remove("core.updater", "restart_info")
     else:
-        await message.reply("<blockquote>Update: selesai sayang!</blockquote>\n\n<blockquote>Merestart...</blockquote>")
+      len =  await message.reply("<blockquote>Update: selesai sayang!</blockquote>\n\n<blockquote>Merestart...</blockquote>")
         restart()
-        await message.reply("<b>_Sudah Selesai Restartnya sayang_...</b>")
+        await len.message.edit("<b>_Sudah Selesai Restartnya sayang_...</b>")
 
 #nganu
 
