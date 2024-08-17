@@ -7,9 +7,10 @@ import subprocess
 
 from io import StringIO
 
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from main import app, gen
+from utils.misc import plugins_help, prefix
 from utils.er import UserType
 
 
