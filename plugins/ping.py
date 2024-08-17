@@ -19,7 +19,7 @@ print(sekarang)
 async def get_readable_time(_, message: Message):
     start = time.time()
     nganu = time.time() - start
-    uptime = time_formatter(datetime.datetime())
+    uptime = datetime.now(datetime.datetime())
     await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime {uptime}</blockquote>")
 
 
