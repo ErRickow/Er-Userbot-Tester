@@ -457,7 +457,7 @@ async def load_module(
 
 
 async def unload_module(module_name: str, client: Client) -> bool:
-    path = "modules.custom_modules." + module_name
+    path = "modules.custom_plugins." + module_name
     if path not in sys.modules:
         return False
 
