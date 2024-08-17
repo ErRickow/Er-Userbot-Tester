@@ -84,7 +84,7 @@ async def main():
     if info := db.get("core.updater", "restart_info"):
         text = {
             "restart": "<blockquote>Restart Selesai Sayangkuh!</blockquote>",
-            "update": "<blockquote>Update process completed!</blockquote>",
+            "update": "<blockquote>Proses Update Sukses Sayangku!</blockquote>",
         }[info["type"]]
         try:
             await app.edit_message_text(
