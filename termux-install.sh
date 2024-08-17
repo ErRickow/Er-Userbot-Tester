@@ -17,7 +17,7 @@ elif [[ -f ".env.dist" ]] && [[ -f "erbanget.py" ]] && [[ -d "plugins" ]]; then
   :
 else
   git clone https://github.com/ErRickow/Er-Userbot-Tester || exit 2
-  cd Moon-Userbot || exit 2
+  cd Er-Userbot-Tester || exit 2
 fi
 
 if [[ -f ".env" ]] && [[ -f "my_account.session" ]]; then
