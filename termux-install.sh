@@ -12,7 +12,7 @@ pkg install python3 git clang ffmpeg wget libjpeg-turbo libcrypt ndk-sysroot zli
 LDFLAGS="-L${PREFIX}/lib/" CFLAGS="-I${PREFIX}/include/" pip3 install --upgrade wheel pillow
 
 if [[ -d "Er-Userbot-Tester" ]]; then
-  cd Moon-Userbot
+  cd Er-Userbot-Tester
 elif [[ -f ".env.dist" ]] && [[ -f "erbanget.py" ]] && [[ -d "plugins" ]]; then
   :
 else
@@ -148,6 +148,6 @@ python3 install.py 3 || exit 3
 
 echo
 echo "============================"
-echo "Great! Moon-Userbot installed successfully!"
-echo "Start with: \"cd Moon-Userbot && python3 main.py\""
+echo "Mantap! Er-Userbot-Tester installed successfully!"
+echo "Start with: \"cd Er-Userbot-Tester && python3 main.py\""
 echo "============================"
