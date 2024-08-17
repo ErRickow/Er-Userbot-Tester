@@ -84,7 +84,7 @@ class BanHandler:
         elif not self.message.reply_to_message:
             await self.handle_non_reply_ban()
         else:
-            await self.message.edit("<b>Unsupported</b>")
+            await self.message.reply("<b>Tidak Support</b>")
 
     async def handle_reply_ban(self):
         if self.message.chat.type not in ["private", "channel"]:
@@ -111,7 +111,7 @@ class BanHandler:
             return await self.client.get_chat(self.cause.split(" ")[1])
         if user_type == "user":
             return await self.client.get_users(self.cause.split(" ")[1])
-        await self.message.edit("<b>Invalid user type</b>")
+        await self.message.reply("<b>Kesalahan type pengguna</b>")
         return None
 
     async def ban_user(self, user_id):
