@@ -18,8 +18,8 @@ async def send_page(message, module_list, page, total_pages):
     text += f"Page {page}/{total_pages}\n\n"
     for module_name in page_modules:
         commands = plugins_help[module_name]
-        text += f"<b>• {module_name.title()}:</b> {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}\n"
-    text += f"\n<b>The number of modules in the userbot: {len(plugins_help)}</b>"
+        text += f"<blockquote>• {module_name.title()}:</blockquote> {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}\n"
+    text += f"\n<blockquote>The number of modules in the userbot: {len(plugins_help)}</blockquote>"
     await message.edit(text, disable_web_page_preview=True)
 
 
@@ -32,7 +32,7 @@ async def help_cmd(_, message: Message):
         current_page = 1
         await send_page(message, module_list, current_page, total_pages)
     elif message.command[1].lower() in plugins_help:
-        await message.edit(format_module_help(message.command[1].lower(), prefix))
+        await message.reply(format_module_help(message.command[1].lower(), prefix))
     else:
         command_name = message.command[1].lower()
         module_found = False
