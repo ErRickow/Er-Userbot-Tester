@@ -32,7 +32,7 @@ async def help_cmd(_, message: Message):
         current_page = 1
         await send_page(message, module_list, current_page, total_pages)
     elif message.command[1].lower() in plugins_help:
-        await message.edit(format_module_help(message.command[1].lower(), prefix))
+        await message.reply(format_module_help(message.command[1].lower(), prefix))
     else:
         command_name = message.command[1].lower()
         module_found = False
