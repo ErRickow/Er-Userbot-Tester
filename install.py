@@ -42,7 +42,7 @@ if __name__ == "__erbanget__":
     try:
         app.send_message(
             "me",
-            f"<b>[{datetime.datetime.now()}] Er Userbot On!!! \n"
+            f"<b>[{datetime.datetime.now()}] Er Beta Userbot On!!! \n"
             "Channel: https://t.me/moonuserbot\n"
             "Custom modules: @moonub_modules\n"
             "Chat [EN]: @moonub_chat\n"
