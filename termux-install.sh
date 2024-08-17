@@ -148,6 +148,6 @@ python3 install.py 3 || exit 3
 
 echo
 echo "============================"
-echo "Mantap! Er-Userbot-Tester installed successfully!"
-echo "Start with: \"cd Er-Userbot-Tester && python3 main.py\""
+echo "Mantap! Er-Userbot-Tester Sukses terinstall!"
+echo "Start dengan: \"cd Er-Userbot-Tester && python3 main.py\""
 echo "============================"
