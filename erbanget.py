@@ -66,7 +66,7 @@ async def main():
     success_modules = 0
     failed_modules = 0
 
-    for path in Path("modules").rglob("*.py"):
+    for path in Path("plugins").rglob("*.py"):
         try:
             await load_module(
                 path.stem, app, core="custom_modules" not in path.parent.parts
