@@ -1,135 +1,69 @@
-""" dev plugin """
-
-import re
-import sys
-import traceback
-import subprocess
-
+from contextlib import redirect_stdout
 from io import StringIO
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+# noinspection PyUnresolvedReferences
 from utils.misc import plugins_help, prefix
-from utils.er import UserType
 from utils.anu import format_exc
+# noinspection PyUnresolvedReferences
 
 
-
+# noinspection PyUnusedLocal
 @Client.on_message(
     filters.command(["ex", "exec", "py", "exnoedit"], prefix) & filters.me
 )
-async def evaluate_handler(_, m: Message):
-    """ This function is made to execute python codes """
+async def user_exec(client: Client, message: Message):
+    if len(message.command) == 1:
+        await message.reply("<blockquote>KODENYA MANA SAYANG</blockquote>")
+        return
+
+    code = message.text.split(maxsplit=1)[1]
+    stdout = StringIO()
+
+    await message.reply("<blockquote>Wet...</blockquote>")
 
     try:
-
-        if app.long() == 1:
-            return await app.send_edit(
-                "Give me some text (code) to execute . . .",
-                text_type=["mono"],
-                delme=4
-            )
-        text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
-        cmd = text.split(None, 1)[1]
-
-        msg = await app.send_edit("Executing . . .", text_type=["mono"])
-
-        old_stderr = sys.stderr
-        old_stdout = sys.stdout
-        redirected_output = sys.stdout = StringIO()
-        redirected_error = sys.stderr = StringIO()
-        stdout, stderr, exc = None, None, None
-
-        try:
-            await app.aexec(cmd)
-        except Exception:
-            exc = traceback.format_exc()
-
-        stdout = redirected_output.getvalue()
-        stderr = redirected_error.getvalue()
-        sys.stdout = old_stdout
-        sys.stderr = old_stderr
-        evaluation = exc or stderr or stdout or "Success"
-        final_output = f"**• PROGRAM:**\n\n`{cmd}`\n\n**• OUTPUT:**\n\n`{evaluation.strip()}`"
-
-        if len(final_output) > 4096:
-            await app.create_file(
-                filename="eval_output.txt",
-                content=str(final_output),
-                caption=f"`{cmd}`"
-            )
-            await msg.delete()
+        with redirect_stdout(stdout):
+            exec(code)
+        text = (
+            "<blockquote>Codenya:</blockquote>\n"
+            f"<code>{code}</code>\n\n"
+            "<blockquote>Hasilnya</blockquote>:\n"
+            f"<code>{stdout.getvalue()}</code>"
+        )
+        if message.command[0] == "exnoedit":
+            await message.reply(text)
         else:
-            await app.send_edit(final_output)
+            await message.edit(text)
     except Exception as e:
-        await app.error(e)
+        await message.reply(format_exc(e))
 
 
+# noinspection PyUnusedLocal
+@Client.on_message(filters.command(["ev", "eval"], prefix) & filters.me)
+async def user_eval(client: Client, message: Message):
+    if len(message.command) == 1:
+        await message.edit("<b>Code to eval isn't provided</b>")
+        return
 
-
-@app.on_cmd(
-    commands=["term", "shell"],
-    usage="Execute shell scripts.",
-    disable_for=UserType.SUDO
-)
-async def terminal_handler(_, m: Message):
-    """ This function is made to run shell commands """
+    code = message.text.split(maxsplit=1)[1]
 
     try:
-        if app.long() == 1:
-            return await app.send_edit("Use: `.term pip3 install colorama`", delme=5)
-
-        await app.send_edit("Running in shell . . .", text_type=["mono"])
-        text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
-        pattern = """ (?=(?:[^'"]|'[^']*'|"[^"]*")*$)"""
-        cmd = m.text.split(None, 1)[1]
-
-        if "\n" in cmd:
-            code = cmd.split("\n")
-            output = ""
-            for command in code:
-                shell = re.split(pattern, command)
-                try:
-                    process = subprocess.Popen(
-                        shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-                    )
-                except Exception as e:
-                    await app.error(e)
-
-                output += "**{code}**\n"
-                output += process.stdout.read()[:-1].decode("utf-8")
-                output += "\n"
-        else:
-            shell = re.split(pattern, cmd)
-            for y in range(len(shell)):
-                shell[y] = shell[y].replace('"', "")
-
-            try:
-                process = subprocess.Popen(
-                    shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-                )
-            except Exception:
-                exc_type, exc_obj, exc_tb = sys.exc_info()
-                errors = traceback.format_exception(
-                    etype=exc_type, value=exc_obj, tb=exc_tb
-                )
-                return await app.send_edit(f"**Error:**\n\n`{''.join(errors)}`")
-
-            output = process.stdout.read()[:-1].decode("utf-8")
-        if str(output) == "\n":
-            output = None
-
-        if output:
-            if len(output) > 4096:
-                await app.create_file(
-                    filename="term_output.txt",
-                    content=output,
-                    caption=f"`{cmd}`"
-                )
-            else:
-                await app.send_edit(f"**COMMAND:**\n\n`{cmd}`\n\n\n**OUTPUT:**\n\n`{output}`")
-        else:
-            await app.send_edit(f"**COMMAND:**\n\n`{cmd}`\n\n\n**OUTPUT:**\n\n`No Output`")
+        result = eval(code)
+        await message.edit(
+            "<b>Expression:</b>\n"
+            f"<code>{code}</code>\n\n"
+            "<b>Result</b>:\n"
+            f"<code>{result}</code>"
+        )
     except Exception as e:
-        await app.error(e)
+        await message.edit(format_exc(e))
+
+
+plugins_help["python"] = {
+    "ex [python code]": "Execute Python code",
+    "exnoedit [python code]": "Execute Python code and return result with reply",
+    "eval [python code]": "Eval Python code",
+}
