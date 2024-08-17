@@ -35,7 +35,7 @@ common_params = {
 if config.STRINGSESSION:
     common_params["session_string"] = config.STRINGSESSION
 
-app = Client("my_account", **common_params)
+app = Client("akun_ku", **common_params)
 
 
 async def main():
@@ -53,14 +53,14 @@ async def main():
             logging.warning(
                 "Session file is locked. Trying to kill blocking process..."
             )
-            subprocess.run(["fuser", "-k", "my_account.session"], check=True)
+            subprocess.run(["fuser", "-k", "akun_ku.session"], check=True)
             restart()
         raise
     except (errors.NotAcceptable, errors.Unauthorized) as e:
         logging.error(
-            f"{e.__class__.__name__}: {e}\nMoving session file to my_account.session-old..."
+            f"{e.__class__.__name__}: {e}\nMoving session file to akun_ku.session-old..."
             )
-        os.rename("./my_account.session", "./my_account.session-old")
+        os.rename("./akun_ku.session", "./akun_ku.session-old")
         restart()
 
     success_modules = 0
