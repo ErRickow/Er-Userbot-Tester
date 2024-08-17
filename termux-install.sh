@@ -111,7 +111,7 @@ echo "[2] Sqlite"
 read -r -p "> " db_type
 
 if [[ $db_type = 1 ]]; then
-  echo "Please Masukkan db_url"
+  echo "Silahkan Masukkan db_url"
   echo "Lu bisa dapetin disini -> https://telegra.ph/How-to-get-Mongodb-URL-and-login-in-telegram-08-01"
   read -r -p "> " db_url
   db_name=Moon_Userbot
