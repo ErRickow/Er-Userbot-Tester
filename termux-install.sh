@@ -51,16 +51,16 @@ fi
 
 echo
 echo "Masukkan APIFLASH_KEY untuk webshot plugins"
-echo "You can get it here -> https://apiflash.com/dashboard/access_keys"
+echo "Lu bisa dapetin disini -> https://apiflash.com/dashboard/access_keys"
 read -r -p "APIFLASH_KEY > " apiflash_key
 
 if [[ $apiflash_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use .webshot plugin"
+  echo "NOTE: API tidak di set, jadi lunya gabisa menggunakan .webshot plugin"
 fi
 
 echo
-echo "Enter RMBG_KEY for remove background module"
-echo "You can get it here -> https://www.remove.bg/dashboard#api-key"
+echo "Masukkan RMBG_KEY untuk remove background module"
+echo "Lu bisa dapetin disini -> https://www.remove.bg/dashboard#api-key"
 read -r -p "RMBG_KEY > " rmbg_key
 
 if [[ $rmbg_key = "" ]]; then
@@ -71,7 +71,7 @@ echo
 echo "Enter GEMINI_KEY if you want to use AI"
 echo "NOTE: Don't Use unless you've enough storage in your device"
 echo "MIN. REQ. STORAGE: 128GB"
-echo "You can get it here -> https://makersuite.google.com/app/apikey"
+echo "Lu bisa dapetin disini -> https://makersuite.google.com/app/apikey"
 read -r -p "GEMINI_KEY > " gemini_key
 
 if [[ $gemini_key = "" ]]; then
@@ -80,7 +80,7 @@ fi
 
 echo
 echo "Enter COHERE_KEY if you want to use AI"
-echo "You can get it here -> https://dashboard.cohere.com/api-keys"
+echo "Lu bisa dapetin disini -> https://dashboard.cohere.com/api-keys"
 read -r -p "COHERE_KEY > " cohere_key
 
 if [[ $cohere_key = "" ]]; then
@@ -89,7 +89,7 @@ fi
 
 echo
 echo "Enter VT_KEY for VirusTotal"
-echo "You can get it here -> https://www.virustotal.com/"
+echo "Lu bisa dapetin disini -> https://www.virustotal.com/"
 read -r -p "VT_KEY > " vt_key
 
 if [[ $vt_key = "" ]]; then
@@ -112,7 +112,7 @@ read -r -p "> " db_type
 
 if [[ $db_type = 1 ]]; then
   echo "Please enter db_url"
-  echo "You can get it here -> https://telegra.ph/How-to-get-Mongodb-URL-and-login-in-telegram-08-01"
+  echo "Lu bisa dapetin disini -> https://telegra.ph/How-to-get-Mongodb-URL-and-login-in-telegram-08-01"
   read -r -p "> " db_url
   db_name=Moon_Userbot
   db_type=mongodb
