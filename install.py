@@ -32,11 +32,11 @@ if __name__ == "__erbanget__":
 
     install_type = sys.argv[1] if len(sys.argv) > 1 else "3"
     if install_type == "1":
-        restart = "pm2 restart Moon"
+        restart = "pm2 restart Userbot Beta"
     elif install_type == "2":
         restart = "sudo systemctl restart Moon"
     else:
-        restart = "cd Moon-Userbot/ && python main.py"
+        restart = "cd Er-Userbot-Tester/ && python erbanget.py"
 
     app.start()
     try:
