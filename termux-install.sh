@@ -50,7 +50,7 @@ if [[ $pm_limit = "" ]]; then
 fi
 
 echo
-echo "Enter APIFLASH_KEY for webshot plugin"
+echo "Masukkan APIFLASH_KEY untuk webshot plugins"
 echo "You can get it here -> https://apiflash.com/dashboard/access_keys"
 read -r -p "APIFLASH_KEY > " apiflash_key
 
