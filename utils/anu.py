@@ -186,10 +186,10 @@ def mediainfo(media):
 async def edit_or_reply(message, txt):
     """Edit Message If Its From Self, Else Reply To Message"""
     if not message:
-        return await message.edit(txt)
+        return await message.reply(txt)
     if not message.from_user:
-        return await message.edit(txt)
-    return await message.edit(txt)
+        return await message.reply(txt)
+    return await message.reply(txt)
 
 
 def text(message: Message) -> str:
@@ -205,7 +205,7 @@ def restart() -> None:
             music_bot_process.terminate()
         except psutil.NoSuchProcess:
             print("Music bot is not running.")
-    os.execvp(sys.executable, [sys.executable, "main.py"])
+    os.execvp(sys.executable, [sys.executable, "erbanget.py"])
 
 
 def format_exc(e: Exception, suffix="") -> str:
