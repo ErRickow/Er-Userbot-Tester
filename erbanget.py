@@ -77,9 +77,9 @@ async def main():
         else:
             success_modules += 1
 
-    logging.info("Imported %s modules", success_modules)
+    logging.info("Imported %s plugins", success_modules)
     if failed_modules:
-        logging.warning("Failed to import %s modules", failed_modules)
+        logging.warning("Gagal untuk import %s plugins", failed_modules)
 
     if info := db.get("core.updater", "restart_info"):
         text = {
