@@ -6,6 +6,13 @@ from pyrogram.types import Message
 from utils.anu import time_formatter
 from utils.misc import plugins_help, prefix
 
+from pytz import timezone
+from datetime import datetime
+
+a = timezone("Asia/Jakarta")
+sekarang = datetime.now(a)
+print(sekarang)
+
 @Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
 async def get_readable_time(_, message: Message):
     start = time.time()
