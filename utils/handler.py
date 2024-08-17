@@ -122,7 +122,7 @@ class BanHandler:
             await self.handle_additional_actions()
             await self.edit_message()
         except UserAdminInvalid:
-            await self.message.edit("<b>No rights</b>")
+            await self.message.reply("<b>Lo bukan admin bego!!</b>")
         except ChatAdminRequired:
             await self.message.edit("<b>No rights</b>")
         except Exception as e:
