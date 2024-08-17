@@ -64,45 +64,45 @@ echo "Lu bisa dapetin disini -> https://www.remove.bg/dashboard#api-key"
 read -r -p "RMBG_KEY > " rmbg_key
 
 if [[ $rmbg_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use remove background modules"
+  echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan remove background modules"
 fi
 
 echo
-echo "Enter GEMINI_KEY if you want to use AI"
-echo "NOTE: Don't Use unless you've enough storage in your device"
+echo "Masukkan GEMINI_KEY jika lu ingin menggunakan AI"
+echo "NOTE: Jangan gunakan, Kecuali lu punya cukup penyimpanannya"
 echo "MIN. REQ. STORAGE: 128GB"
 echo "Lu bisa dapetin disini -> https://makersuite.google.com/app/apikey"
 read -r -p "GEMINI_KEY > " gemini_key
 
 if [[ $gemini_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use Gemini AI modules"
+  echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan Gemini AI modules"
 fi
 
 echo
-echo "Enter COHERE_KEY if you want to use AI"
+echo "Masukkan COHERE_KEY jika lu pengen menggunakan AI"
 echo "Lu bisa dapetin disini -> https://dashboard.cohere.com/api-keys"
 read -r -p "COHERE_KEY > " cohere_key
 
 if [[ $cohere_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use Coral AI modules"
+  echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan Coral AI modules"
 fi
 
 echo
-echo "Enter VT_KEY for VirusTotal"
+echo "Masukkan VT_KEY untuk VirusTotal"
 echo "Lu bisa dapetin disini -> https://www.virustotal.com/"
 read -r -p "VT_KEY > " vt_key
 
 if [[ $vt_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use VirusTotal module"
+  echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan VirusTotal module"
 fi
 
 echo
-echo "Enter VCA_API_KEY for aiutils"
+echo "Masukkan VCA_API_KEY for aiutils"
 echo "Learn How to Get One --> https://github.com/VisionCraft-org/VisionCraft?tab=readme-ov-file#obtaining-an-api-key"
 read -r -p "VCA_API_KEY > " vca_api_key
 
 if [[ $vca_api_key = "" ]]; then
-  echo "NOTE: API Not set you'll not be able to use aiutils module/pligins"
+  echo "NOTE: API Tidak di set, Lu tidak akan bisa menggunakan aiutils module/pligins"
 fi
 
 echo "Choose database type:"
@@ -111,7 +111,7 @@ echo "[2] Sqlite"
 read -r -p "> " db_type
 
 if [[ $db_type = 1 ]]; then
-  echo "Please enter db_url"
+  echo "Please Masukkan db_url"
   echo "Lu bisa dapetin disini -> https://telegra.ph/How-to-get-Mongodb-URL-and-login-in-telegram-08-01"
   read -r -p "> " db_url
   db_name=Moon_Userbot
