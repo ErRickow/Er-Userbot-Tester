@@ -396,7 +396,7 @@ async def load_module(
     if module_name in plugins_help and not core:
         await unload_module(module_name, client)
 
-    path = f"modules.{'custom_plugins.' if not core else ''}{plugins_name}"
+    path = f"plugins.{'custom_plugins.' if not core else ''}{plugins_name}"
 
     with open(f"{path.replace('.', '/')}.py", encoding="utf-8") as f:
         code = f.read()
