@@ -20,7 +20,7 @@ async def send_page(message, module_list, page, total_pages):
         commands = plugins_help[module_name]
         text += f"<blockquote>• {module_name.title()}:</blockquote> {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}\n"
     text += f"\n<blockquote>The number of modules in the userbot: {len(plugins_help)}</blockquote>"
-    await message.edit(text, disable_web_page_preview=True)
+    await message.reply(text, disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command(["help", "h"], prefix) & filters.me)
