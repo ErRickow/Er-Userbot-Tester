@@ -34,7 +34,7 @@ if __name__ == "__erbanget__":
     if install_type == "1":
         restart = "pm2 restart Userbot Beta"
     elif install_type == "2":
-        restart = "sudo systemctl restart Moon"
+        restart = "sudo systemctl restart Er"
     else:
         restart = "cd Er-Userbot-Tester/ && python erbanget.py"
 
