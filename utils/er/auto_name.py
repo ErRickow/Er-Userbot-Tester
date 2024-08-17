@@ -1,4 +1,4 @@
-from er import Enum
+from enum import Enum
 
 
 class AutoName(Enum):
@@ -6,4 +6,4 @@ class AutoName(Enum):
         return self.lower()
 
     def __repr__(self):
-        return f"main.core.enums.{self}"
+        return f"utils.er.{self}"
