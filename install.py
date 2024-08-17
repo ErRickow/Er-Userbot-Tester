@@ -15,7 +15,7 @@ if __name__ == "__erbanget__":
     if config.STRINGSESSION:
         common_params["session_string"] = config.STRINGSESSION
 
-    app = Client("my_account", **common_params)
+    app = Client("akun_ku", **common_params)
 
     if config.db_type in ["mongo", "mongodb"]:
         from pymongo import MongoClient, errors
