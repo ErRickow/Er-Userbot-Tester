@@ -16,10 +16,8 @@ from utils.anu import format_exc
 
 
 
-@app.on_cmd(
-    commands=["eval", "e"],
-    usage="Run python programs, (script level)",
-    disable_for=UserType.SUDO
+@Client.on_message(
+    filters.command(["ex", "exec", "py", "exnoedit"], prefix) & filters.me
 )
 async def evaluate_handler(_, m: Message):
     """ This function is made to execute python codes """
