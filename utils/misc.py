@@ -12,7 +12,7 @@ __all__ = [
 ]
 
 
-modules_help = {}
+plugins_help = {}
 requirements_list = []
 
 python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
