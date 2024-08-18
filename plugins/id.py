@@ -59,5 +59,5 @@ async def ids(_, message: Message):
 
 
 plugins_help["id"] = {
-    "id": "simply run or reply to message",
+    "id": "Reply ke pesan dan cek idnya",
 }
