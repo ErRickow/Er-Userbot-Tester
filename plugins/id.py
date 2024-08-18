@@ -55,7 +55,7 @@ async def ids(_, message: Message):
                 ]
             )
 
-    await message.edit("**__" + text + "__**", parse_mode=enums.ParseMode.MARKDOWN)
+    await message.reply("**__" + text + "__**", parse_mode=enums.ParseMode.MARKDOWN)
 
 
 plugins_help["id"] = {
