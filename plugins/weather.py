@@ -22,8 +22,8 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
 from utils.db import db
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 
 @Client.on_message(filters.command(["weather", "w"], prefix) & filters.me)
@@ -62,7 +62,7 @@ async def set_weather_city(_, message: Message):
     await message.edit(f"<b>City {message.command[1]} set!</b>", parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["weather"] = {
+plugins_help["weather"] = {
     "weather [city]*": "Get weather for selected city or chosen in set_weather_city",
     "set_weather_city [city]*": f"Set city for {prefix}weather command, Moscow by default",
 }
