@@ -33,11 +33,11 @@ async def gpt3(client: Client, message: Message):
     if len(message.command) > 1:
         prompt = message.text.split(maxsplit=1)[1]
     else:
-        await message.edit_text("Mo ngomong apaan!")
+        await message.reply_text("Mo ngomong apaan!")
         return
 
     try:
-        await message.edit_text("<code>GPT Lagi mikir...</code>")
+        await message.reply_text("<code>GPT Lagi mikir...</code>")
         # Define the data to be sent
         data = {
             "prompt": prompt,
