@@ -16,15 +16,14 @@ from utils.anu import format_exc
 )  # Ganti OWNER_ID dengan ID Anda
 async def evaluate_handler(_, message: Message):
     """ This function is made to execute python codes """
+    try:
 
         if len(message.command) == 1:
             await message.edit(
-                "<i>Give me some text (code) to execute . . .<i>",
-                parse_mode="html"
+                "<i>Give me some text (code) to execute . . .<i>"
             )
             return
         cmd = text.split(None, 1)[1]
-        try:
         #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
              
        #cmd = message.text.split(maxsplit=1)[1]
