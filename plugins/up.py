@@ -46,7 +46,7 @@ async def ngapdate(client, message):
           )
   await anuk.delete()
   os.remove("output.txt")
-    format_line = [f"┣ {line}" for line in out.splitlines()]
+  format_line = [f"┣ {line}" for line in out.splitlines()]
   if format_line:
     format_line[-1] = f"┖ {format_line[-1][2:]}"
     format_output = "\n".join(format_line)
