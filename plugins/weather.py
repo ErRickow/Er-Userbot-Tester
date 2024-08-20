@@ -33,7 +33,7 @@ async def weather(client: Client, message: Message):
     else:
         city = message.command[1]
 
-    await message.reply(f"<b>Processing city {city}...</b>", parse_mode=enums.ParseMode.HTML)
+    await message.reply(f"<blockquote>Sedang memproses kota {city}...</blockquote>", parse_mode=enums.ParseMode.HTML)
 
     try:
         text_resp = requests.get(f"https://wttr.in/{city}?m?M?0?q?T&lang=en")
