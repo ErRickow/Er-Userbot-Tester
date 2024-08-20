@@ -27,7 +27,7 @@ async def ngapdate(client, message):
         f"<blockquote> <b>Memeriksa pembaruan resources ..</b></blockquote>"
     )
   out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
-  teks = f"<b>❒ Status resources {user.mention}:</b>\n"
+  teks = f"<b>❒ Status resources :</b>\n"
   memeg = f"<b>Change logs </b>"
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
