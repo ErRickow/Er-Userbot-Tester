@@ -17,14 +17,13 @@ from utils.anu import format_exc
 async def evaluate_handler(_, message: Message):
     """ This function is made to execute python codes """
 
-    try:
-
         if len(message.command) == 1:
             await message.edit(
                 "<i>Give me some text (code) to execute . . .<i>",
                 parse_mode="html"
             )
             return
+          try:
         cmd = text.split(None, 1)[1]
         #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
              
