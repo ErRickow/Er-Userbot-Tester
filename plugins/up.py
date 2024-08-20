@@ -37,14 +37,14 @@ async def ngapdate(client, message):
   with open("output.txt", "w+") as file:
             file.write(out)
 
-            X = f"<blockquote> <b>Change logs </b></blockquote>"
+            X = f"<blockquote> <b>Perubahan logs </b></blockquote>"
   await client.send_document(
           message.chat.id,
           "output.txt",
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-  anuk.delete()
+  client.delete()
   os.remove("output.txt")
   format_line = [f"┣ {line}" for line in out.splitlines()]
   if format_line:
