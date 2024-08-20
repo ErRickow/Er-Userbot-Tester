@@ -40,7 +40,7 @@ async def anu(client, message):
     start = time.time()
     uptime = get_readable_time((time.time() - StartTime))
     nganu = time.time() - start
-    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime <code>{uptime}</code></blockquote>Owner")
+    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime <code>{uptime}</code></blockquote>")
 
 
 plugins_help["ping"] = {
