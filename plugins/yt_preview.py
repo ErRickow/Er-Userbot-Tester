@@ -16,7 +16,7 @@ def get_video_id(url):
         return url.replace("&feature=share", "").split("/")[-1]
 
 
-@Client.on_message(filters.command("preview", prefix) & filters.me)
+@Client.on_message(filters.command("ytpriv", prefix) & filters.me)
 async def preview(client: Client, message: Message):
     try:
         if message.reply_to_message:
