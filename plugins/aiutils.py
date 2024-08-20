@@ -176,6 +176,6 @@ async def vgif(c: Client, message: Message):
 
 
 plugins_help["aiutils"] = {
-    "vdxl [model]* [prompt/reply to prompt]*": "Text to Image with SDXL model",
-    "vgif [prompt/reply to prompt]*": "Text to GIF",
+  "vdxl [model]* [prompt/reply to prompt]*": "Text to Image with SDXL model",
+  "vgif [prompt/reply to prompt]*": "Text to GIF",
 }
