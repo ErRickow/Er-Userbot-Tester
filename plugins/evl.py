@@ -37,7 +37,7 @@ async def evaluate_handler(_, message: Message):
         stdout, stderr, exc = None, None, None
 
         try:
-            await message.aexec(cmd)
+            await message.send_message(cmd)
         except Exception:
             exc = traceback.format_exc()
 
