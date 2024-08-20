@@ -4,7 +4,7 @@ import re
 import sys
 import subprocess
 
-from pyrogram import Client, filters
+from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 from io import StringIO
 
