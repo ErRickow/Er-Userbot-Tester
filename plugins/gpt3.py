@@ -71,14 +71,14 @@ async def gpt3(client: Client, message: Message):
 
             # message.edit_text the last "text" value
             if last_text:
-                await message.edit_text(
-                    f"**Prompt:**` {prompt}`\n**Answer:** {last_text}",
+                await message.reply_text(
+                    f"> **Prompt:**` {prompt}`\n> **Answer:** {last_text}",
                     parse_mode=enums.ParseMode.MARKDOWN,
                 )
             else:
-                await message.edit_text("No valid 'text' value found in the response.")
+                await message.reply_text("No valid 'text' value found in the response.")
         else:
-            await message.edit_text(
+            await message.reply_text(
                 f"Request failed with status code {response.status_code}"
             )
     except Exception as e:
