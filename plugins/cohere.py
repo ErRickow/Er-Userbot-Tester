@@ -15,7 +15,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
 
-@Client.on_message(filters.command("cohere", prefix) & filters.me)
+@Client.on_message(filters.command("coh", prefix) & filters.me)
 async def cohere(c: Client, message: Message):
     try:
         user_id = message.from_user.id
