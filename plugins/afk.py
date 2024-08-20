@@ -22,8 +22,8 @@ import humanize
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import ReplyCheck
+from utils.misc import plugins_help, prefix
+from utils.anu import ReplyCheck
 
 # Variables
 AFK = False
@@ -164,7 +164,7 @@ async def auto_afk_unset(_, message: Message):
         await reply.delete()
 
 
-modules_help["afk"] = {
+plugins_help["afk"] = {
     "afk [reason]": "Go to AFK mode with reason as anything after .afk\nUsage: <code>.afk <reason></code>",
     "unafk": "Get out of AFK",
 }
