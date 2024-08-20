@@ -9,6 +9,9 @@ from anu import edit_or_reply
 from utils.misc import plugins_help, prefix
 from utils.anu import extract_user
 
+@Client.on_message(
+    filters.command(["sg"], prefix) & filters.me
+) 
 async def sg(client: Client, message: Message):
     args = await extract_user(message)
     lol = await edit_or_reply(message, "`Processing...`")
