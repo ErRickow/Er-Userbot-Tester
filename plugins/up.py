@@ -22,7 +22,7 @@ def check_command(command):
 
 @Client.on_message(filters.command("up", prefix) & filters.me)
 async def ngapdate(client, message):
-  user_id = message.from_user.id
+  user = message.from_user.id
     pros = await message.reply(
         f"<blockquote> <b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
     )
