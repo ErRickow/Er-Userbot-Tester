@@ -33,7 +33,7 @@ async def ngapdate(client, message):
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
-  anu = None
+  anuk = None
   with open("output.txt", "w+") as file:
             file.write(out)
 
@@ -49,6 +49,5 @@ async def ngapdate(client, message):
   if format_line:
     format_line[-1] = f"┖ {format_line[-1][2:]}"
     format_output = "\n".join(format_line)
-  await client.delete()
   await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}</blockquote>")
   os.execl(sys.executable, sys.executable, "erbanget.py")
