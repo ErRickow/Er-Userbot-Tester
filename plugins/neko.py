@@ -31,15 +31,15 @@ def get_neko_media(query):
 @Client.on_message(filters.command("neko", prefix) & filters.me)
 async def neko(_, message: Message):
     if len(message.command) == 1:
-        await message.edit(
+        await message.reply(
             "<b>Neko type isn't provided\n"
-            f"You can get available neko types with <code>{prefix}neko_types</code></b>"
+            f"lu bisa dapatkan neko yang tersedia, contoh; <code>{prefix}neko_types</code></b>"
         )
 
     query = message.command[1]
-    await message.edit("<b>Loading...</b>")
+    await message.reply("<b>Loading...</b>")
     try:
-        await message.edit(f"{get_neko_media(query)}", disable_web_page_preview=False)
+        await message.reply(f"{get_neko_media(query)}", disable_web_page_preview=False)
     except Exception as e:
         await message.edit(format_exc(e))
 
