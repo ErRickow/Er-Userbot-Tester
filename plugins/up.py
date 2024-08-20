@@ -19,7 +19,6 @@ from utils.anu import format_exc, restart
 def check_command(command):
     return shutil.which(command) is not None
 
-
 @Client.on_message(filters.command("up", prefix) & filters.me)
 async def ngapdate(client, message):
   user = message.from_user.id
@@ -35,7 +34,6 @@ async def ngapdate(client, message):
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
-  await anuk.delete()
   with open("output.txt", "w+") as file:
             file.write(out)
 
@@ -46,7 +44,8 @@ async def ngapdate(client, message):
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-  
+          anuk = none
+  await anuk.delete()
   os.remove("output.txt")
   format_line = [f"┣ {line}" for line in out.splitlines()]
   if format_line:
