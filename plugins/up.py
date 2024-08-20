@@ -30,7 +30,7 @@ async def ngapdate(client, message):
   memeg = f"<b>Change logs </b>"
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
-  elif len(out) > 4096:
+  if len(out) > 4096:
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
@@ -44,7 +44,7 @@ async def ngapdate(client, message):
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-  anuk = none
+  else
   await anuk.delete()
   os.remove("output.txt")
   format_line = [f"┣ {line}" for line in out.splitlines()]
