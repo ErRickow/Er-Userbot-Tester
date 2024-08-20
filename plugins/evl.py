@@ -26,7 +26,7 @@ async def evaluate_handler(_, m: Message):
                 delme=4
             )
         #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
-        cmd = text.split(None, 1)[1]
+       # cmd = text.split(None, 1)[1]
 
         msg = await message.send_edit("Executing . . .", text_type=["mono"])
 
