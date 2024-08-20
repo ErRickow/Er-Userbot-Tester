@@ -11,7 +11,7 @@ from utils.anu import format_exc
 url = "https://abot3.gchk2.skybyte.me/api/chat-process"
 headers = {
     "accept": "application/json, text/plain, */*",
-    "accept-language": "en-US,en;q=0.9",
+    "accept-language": "id-ID,id;q=0.9",
     "content-type": "application/json",
     "dnt": "1",
     "origin": "https://abot3.gchk2.skybyte.me",
