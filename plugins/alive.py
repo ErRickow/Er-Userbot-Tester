@@ -1,6 +1,6 @@
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
-from utils.misc import modules_help, requirements_list, prefix
+from utils.misc import plugins_help, requirements_list, prefix
 import asyncio
 import time
 from datetime import datetime
@@ -55,6 +55,6 @@ async def alive(client, message):
     await client.send_message(message.chat.id, reply_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["alive"] = {
+plugins_help["alive"] = {
     "alive": " check bot alive status",
 }
