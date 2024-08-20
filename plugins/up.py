@@ -46,12 +46,12 @@ async def ngapdate(client, message):
           reply_to_message_id=message.id,
           )
   await anuk.delete()
-        os.remove("output.txt")
+  os.remove("output.txt")
   else
-        format_line = [f"┣ {line}" for line in out.splitlines()]
-        if format_line:
-            format_line[-1] = f"┖ {format_line[-1][2:]}"
-        format_output = "\n".join(format_line)
+  format_line = [f"┣ {line}" for line in out.splitlines()]
+  if format_line:
+    format_line[-1] = f"┖ {format_line[-1][2:]}"
+    format_output = "\n".join(format_line)
 
-        await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}</blockquote>")
-    os.execl(sys.executable, sys.executable, "erbanget")
+  await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}</blockquote>")
+  os.execl(sys.executable, sys.executable, "erbanget")
