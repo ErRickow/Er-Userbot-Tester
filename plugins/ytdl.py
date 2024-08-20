@@ -5,12 +5,12 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.scripts import import_library
+from utils.anu import import_library
 yt_dlp = import_library('yt_dlp', 'yt-dlp')
 from yt_dlp import YoutubeDL
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc, progress, resize_image
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc, progress, resize_image
 
 ydv_opts = {
     'format': 'best',
@@ -104,7 +104,7 @@ async def upload_video(client: Client, message: Message):
     else:
         return await message.edit_text("Oh Damn Lol")
         
-modules_help["ytdl"] = {
+plugins_help["ytdl"] = {
     "ytv [link]*": "Download Video From YouTube",
     "ytm [link]*": "Download Music From YouTube",
 }
