@@ -26,7 +26,7 @@ async def ngapdate(client, message):
     )
   out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
   teks = f"<b>❒ Status resources :</b>\n"
-  memeg = f"<b>Change logs </b>"
+  memeg = f"<b>Perubahan logs </b>"
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
   elif len(out) > 4096:
