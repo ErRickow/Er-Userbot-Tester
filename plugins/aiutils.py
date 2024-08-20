@@ -6,8 +6,8 @@ from pyrogram.errors import MessageTooLong
 from pyrogram.types import Message
 
 from utils.config import vca_api_key
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 api_url = "https://visioncraft.top"
 
@@ -175,7 +175,7 @@ async def vgif(c: Client, message: Message):
         await message.edit_text(f"An error occurred: {format_exc(e)}")
 
 
-modules_help["aiutils"] = {
+plugins_help["aiutils"] = {
     "vdxl [model]* [prompt/reply to prompt]*": "Text to Image with SDXL model",
     "vgif [prompt/reply to prompt]*": "Text to GIF",
 }
