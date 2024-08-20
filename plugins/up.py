@@ -33,6 +33,7 @@ async def ngapdate(client, message):
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
+  anu = None
   else:
   await anuk.delete()
   with open("output.txt", "w+") as file:
