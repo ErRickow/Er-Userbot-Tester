@@ -213,10 +213,10 @@ def format_exc(e: Exception, suffix="") -> str:
     err = traceback.format_exc()
     if isinstance(e, errors.RPCError):
         return (
-            f"<b>Telegram API error!</b>\n"
-            f"<code>[{e.CODE} {e.ID or e.NAME}] — {e.MESSAGE.format(value=e.value)}</code>\n\n<b>{suffix}</b>"
+            f"<blockquote><b>Telegram API error!</b>\n"
+            f"<code>[{e.CODE} {e.ID or e.NAME}] — {e.MESSAGE.format(value=e.value)}</code>\n\n<b>{suffix}</b></blockquote>"
             )
-    return f"<b>Error!</b>\n" f"<code>{err}</code>"
+    return f"<blockquote><b>Error!</b>\n" f"<code>{err}</code></blockquote>"
 
 
 def with_reply(func):
