@@ -51,7 +51,7 @@ async def alive(client, message):
     reply_msg += f"<b>Pyrogram Version:</b> <code>{__pyro_version__}</code>\n"
     end_time = time.time()
     reply_msg += f"\nUptime: <code>{uptime}</code>"
-    await client.reply(message.chat.id, reply_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
+    await client.reply_text(message.chat.id, reply_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
 
 plugins_help["alive"] = {
