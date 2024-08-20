@@ -46,13 +46,12 @@ def get_readable_time(seconds: int) -> str:
 async def alive(client, message):
     start_time = time.time()
     uptime = get_readable_time((time.time() - StartTime))
-    reply_msg = f"!<a href = https://github.com/ErRickow/Er-Userbot-Tester>Er-Userbot-Tester</a>\n"
+    reply_msg = f"Im Idup\n"
     reply_msg += f"<b>Python Version:</b> <code>{__python_version__}</code>\n"
     reply_msg += f"<b>Pyrogram Version:</b> <code>{__pyro_version__}</code>\n"
     end_time = time.time()
     reply_msg += f"\nUptime: <code>{uptime}</code>"
-    await message.delete()
-    await client.send_message(message.chat.id, reply_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
+    await client.reply(message.chat.id, reply_msg, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML)
 
 
 plugins_help["alive"] = {
