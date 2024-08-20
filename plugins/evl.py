@@ -19,7 +19,7 @@ async def evaluate_handler(_, message: Message):
 
     try:
 
-        if message.long() == 1:
+        if len(message.command) == 1:
             await message.send_edit(
                 "Give me some text (code) to execute . . .",
                 text_type=["mono"],
