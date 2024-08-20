@@ -3,7 +3,7 @@ import urllib
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 MAX_URL = "https://img.youtube.com/vi/{id}/maxresdefault.jpg"
 HQ_URL = "https://img.youtube.com/vi/{id}/hqdefault.jpg"
@@ -81,7 +81,7 @@ async def preview(client: Client, message: Message):
         await message.edit(f"This <a href='{video_id}'>link</a> does not exist", parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["yt_preview"] = {
+plugins_help["yt_preview"] = {
     "preview [link]* 1/2/3/4/5": "Download the preview from the link\n"
     "1 - Preview, link\n"
     "2 - Download link\n"
