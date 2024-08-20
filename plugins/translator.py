@@ -6,7 +6,7 @@
 # IT NEEDS TO BE REWRITEN
 
 from utils.scripts import format_small_module_help, import_library
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 from pyrogram import Client, filters
 
 googletrans = import_library("googletrans", "googletrans-py")
@@ -35,7 +35,7 @@ async def translatedl(_client, message):
         return
 
 
-modules_help["translator"] = {
+plugins_help["translator"] = {
     "tr": "[lang]* [text/reply]* translate message",
     "trans": "[lang]* [text/reply]* translate message \n If lang not given it'll use default(en)",
 }
