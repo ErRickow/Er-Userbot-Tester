@@ -53,7 +53,7 @@ async def update(_, message: Message):
     )
 
     if "LAVHOST" in os.environ:
-        await message.edit("<b>Your lavHost is updating...</b>")
+        await message.reply("<b>Your lavHost is updating...</b>")
         os.system("lavhost update")
         return
       
@@ -62,7 +62,7 @@ async def update(_, message: Message):
         subprocess.run([sys.executable, "-m", "pip", "install", "-U", "pip"])
         subprocess.run(["git", "pull"])
     except Exception as e:
-        await xx.reply(format_exc(e))
+        await message.reply(format_exc(e))
         db.remove("core.updater", "restart_info")
     else:
          await message.reply("<blockquote>Update: selesai sayang!<blockquote>\n<blockquote>\n<blockquote>Merestart...</blockquote>")
