@@ -21,7 +21,7 @@ from time import perf_counter
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 
 @Client.on_message(filters.command(["shell", "sh"], prefix) & filters.me)
@@ -57,4 +57,4 @@ async def shell(_, message: Message):
     cmd_obj.kill()
 
 
-modules_help["shell"] = {"sh [command]*": "Execute command in shell"}
+plugins_help["shell"] = {"sh [command]*": "Execute command in shell"}
