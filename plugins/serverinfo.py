@@ -127,7 +127,7 @@ async def serverinfo_cmd(_: Client, message: Message):
     except Exception:
         inf.append("n/a")
 
-    await message.edit(text.format(*inf), parse_mode=enums.ParseMode.HTML)
+    await message.reply(text.format(*inf), parse_mode=enums.ParseMode.HTML)
 
 
 plugins_help["serverinfo"] = {
