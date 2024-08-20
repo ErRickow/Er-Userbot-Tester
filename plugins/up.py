@@ -31,9 +31,11 @@ async def ngapdate(client, message):
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
   if len(out) > 4096:
+          anuk = None
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
+  await anuk.delete()
   with open("output.txt", "w+") as file:
             file.write(out)
 
@@ -44,8 +46,6 @@ async def ngapdate(client, message):
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-  anuk = None
-  await anuk.delete()
   os.remove("output.txt")
   format_line = [f"┣ {line}" for line in out.splitlines()]
   if format_line:
