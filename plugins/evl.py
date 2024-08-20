@@ -14,51 +14,58 @@ from utils.anu import format_exc
 @Client.on_message(
     filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
-async def evaluate_handler(client, message):
-    """ This function is made to execute python codes """
+async def eval(client, message):
+    status_message = await message.reply_text("Processing ...")
+    cmd = message.text.split(" ", maxsplit=1)[1]
+
+    reply_to_ = message
+    if message.reply_to_message:
+        reply_to_ = message.reply_to_message
+
+    old_stderr = sys.stderr
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = io.StringIO()
+    redirected_error = sys.stderr = io.StringIO()
+    stdout, stderr, exc = None, None, None
+
     try:
+        await aexec(cmd, client, message)
+    except Exception:
+        exc = traceback.format_exc()
 
-        if len(message.command) == 1:
-            await message.edit(
-                "<i>Give me some text (code) to execute . . .<i>"
+    stdout = redirected_output.getvalue()
+    stderr = redirected_error.getvalue()
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
+
+    evaluation = ""
+    if exc:
+        evaluation = exc
+    elif stderr:
+        evaluation = stderr
+    elif stdout:
+        evaluation = stdout
+    else:
+        evaluation = "Success"
+
+    final_output = "<b>EVAL</b>: "
+    final_output += f"<code>{cmd}</code>\n\n"
+    final_output += "<b>OUTPUT</b>:\n"
+    final_output += f"<code>{evaluation.strip()}</code> \n"
+
+    if len(final_output) > MAX_MESSAGE_LENGTH:
+        with io.BytesIO(str.encode(final_output)) as out_file:
+            out_file.name = "eval.text"
+            await reply_to_.reply_document(
+                document=out_file,
+                caption=cmd[: MAX_MESSAGE_LENGTH // 4 - 1],
+                disable_notification=True,
+                quote=True,
             )
-            return
-        cmd = message.text.split(None, 1)[1]
-        #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
-             
-       #cmd = message.text.split(maxsplit=1)[1]
+    else:
+        await reply_to_.reply_text(final_output, quote=True)
+    await status_message.delete()
 
-        #msg = await message.send_edit("Executing . . .", text_type=["mono"])
-
-        old_stderr = sys.stderr
-        old_stdout = sys.stdout
-        redirected_output = sys.stdout = StringIO()
-        redirected_error = sys.stderr = StringIO()
-        stdout, stderr, exc = None, None, None
-
-        try:
-            await aexec(cmd, client, message)
-        except Exception:
-            exc = traceback.format_exc()
-
-        stdout = redirected_output.getvalue()
-        stderr = redirected_error.getvalue()
-        sys.stdout = old_stdout
-        sys.stderr = old_stderr
-        evaluation = exc or stderr or stdout or "Success"
-        final_output = f"**• PROGRAM:**\n\n`{cmd}`\n\n**• OUTPUT:**\n\n`{evaluation.strip()}`"
-
-        if len(final_output) > 4096:
-            await message.create_file(
-                filename="eval_output.txt",
-                content=str(final_output),
-                caption=f"`{cmd}`"
-            )
-            await msg.delete()
-        else:
-            await message.reply(final_output)
-    except Exception as e:
-        await message.reply(format_exc(e))
 
 async def aexec(code, client, message):
     exec(
