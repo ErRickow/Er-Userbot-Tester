@@ -34,7 +34,7 @@ def escape_html(txt: str) -> str:
 
 
 text = (
-    "<b><u>👾 Server Info:</u>\n\n"
+    "<blockquote><b><u>👾 Server Info:</u>\n\n"
     "<u>🗄 Used resources:</u>\n"
     "    CPU: {} Cores {}%\n"
     "    RAM: {} / {}MB ({}%)\n\n"
@@ -46,7 +46,7 @@ text = (
     "    Aiohttp: {}\n"
     "    GitPython: {}\n"
     "    Python: {}\n"
-    "    Pip: {}</b>"
+    "    Pip: {}</b></blockquote>"
 )
 
 
