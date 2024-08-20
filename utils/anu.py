@@ -269,7 +269,7 @@ def format_module_help(module_name: str, full=True):
     commands = plugins_help[module_name]
 
     help_text = (
-        f"<b>Help for |{module_name}|\n\nUsage:</b>\n" if full else "<b>Usage:</b>\n"
+        f"<b>Bantuan untuk |{module_name}|\n\nPenggunaan:</b>\n" if full else "<b>Penggunaan:</b>\n"
         )
 
     for command, desc in commands.items():
