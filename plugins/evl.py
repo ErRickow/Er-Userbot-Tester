@@ -23,7 +23,7 @@ async def evaluate_handler(_, message: Message):
                 "<i>Give me some text (code) to execute . . .<i>"
             )
             return
-        cmd = text.split(None, 1)[1]
+        cmd = message.text.split(None, 1)[1]
         #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
              
        #cmd = message.text.split(maxsplit=1)[1]
