@@ -26,14 +26,14 @@ from utils.misc import plugins_help, prefix
 from utils.anu import format_exc
 
 
-@Client.on_message(filters.command(["weather", "w"], prefix) & filters.me)
+@Client.on_message(filters.command(["cuaca", "w"], prefix) & filters.me)
 async def weather(client: Client, message: Message):
     if len(message.command) == 1:
         city = db.get("custom.weather", "city", "Moscow")
     else:
         city = message.command[1]
 
-    await message.edit(f"<b>Processing city {city}...</b>", parse_mode=enums.ParseMode.HTML)
+    await message.reply(f"<b>Processing city {city}...</b>", parse_mode=enums.ParseMode.HTML)
 
     try:
         text_resp = requests.get(f"https://wttr.in/{city}?m?M?0?q?T&lang=en")
