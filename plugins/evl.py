@@ -62,4 +62,5 @@ async def evaluate_handler(_, m: Message):
         else:
             await message.send_edit(final_output)
     except Exception as e:
-        await message.error(e)
+        await message.edit(format_exc(e))
+
