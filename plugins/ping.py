@@ -1,7 +1,7 @@
 import time
 import pytz
-import datetime
 
+from datetime import datetime
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
