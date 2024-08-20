@@ -14,7 +14,7 @@ from utils.anu import format_exc
 @Client.on_message(
     filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
-async def evaluate_handler(_, message: Message):
+async def evaluate_handler(client, message):
     """ This function is made to execute python codes """
     try:
 
