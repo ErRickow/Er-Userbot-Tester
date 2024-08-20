@@ -56,5 +56,5 @@ async def alive(client, message):
 
 
 plugins_help["alive"] = {
-    "alive": " check bot alive status",
+    "alive": " cek status bot",
 }
