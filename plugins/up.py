@@ -22,12 +22,13 @@ def check_command(command):
 
 @Client.on_message(filters.command("up", prefix) & filters.me)
 async def ngapdate(client, message):
+  user_id = message.from_user.id
     pros = await message.reply(
         f"<blockquote> <b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
     )
     out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
-    teks = f"<b>❒ Status resources {bot.me.mention}:</b>\n"
-    memeg = f"<b>Change logs {bot.me.mention}</b>"
+    teks = f"<b>❒ Status resources {user.mention}:</b>\n"
+    memeg = f"<b>Change logs {user.mention}</b>"
     if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
     elif len(out) > 4096:
@@ -37,7 +38,7 @@ async def ngapdate(client, message):
         with open("output.txt", "w+") as file:
             file.write(out)
 
-        X = f"<blockquote>{emo.alive} <b>Change logs {bot.me.mention}</b></blockquote>"
+        X = f"<blockquote> <b>Change logs {user.mention}</b></blockquote>"
         await client.send_document(
             message.chat.id,
             "output.txt",
