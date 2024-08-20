@@ -23,7 +23,7 @@ def check_command(command):
 @Client.on_message(filters.command("up", prefix) & filters.me)
 async def ngapdate(client, message):
   user = message.from_user.id
-    pros = await message.reply(
+  pros = await message.reply(
         f"<blockquote> <b>Memeriksa pembaruan resources {bot.me.mention} ..</b></blockquote>"
     )
     out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
