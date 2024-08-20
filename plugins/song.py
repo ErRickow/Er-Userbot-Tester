@@ -13,7 +13,7 @@ from utils.anu import progress
 @Client.on_message(filters.command(["svn", "saavn"], prefix) & filters.me)
 async def saavn(client: Client, message: Message):
     thumb = "downloads/thumb/thumb.jpg"
-        if not os.path.exists(thumb):
+    if not os.path.exists(thumb):
             thumb = "thumb.jpg"
     if not os.path.isfile(thumb):
         thumb = None
