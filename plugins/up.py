@@ -34,7 +34,6 @@ async def ngapdate(client, message):
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
   anu = None
-  else:
   await anuk.delete()
   with open("output.txt", "w+") as file:
             file.write(out)
