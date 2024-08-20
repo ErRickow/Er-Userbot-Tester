@@ -5,7 +5,7 @@
 # SINCE IT USE OUTDATED PACKAGE WITH BROKEN DEPENDENCIES
 # IT NEEDS TO BE REWRITEN
 
-from utils.scripts import format_small_module_help, import_library
+from utils.anu import format_small_module_help, import_library
 from utils.misc import plugins_help, prefix
 from pyrogram import Client, filters
 
