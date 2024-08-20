@@ -43,11 +43,11 @@ async def help_cmd(_, message: Message):
                     cmd_desc = commands[command]
                     module_found = True
                     return await message.reply(
-                        f"<blockquote>Help for command <code>{prefix}{command_name}</code></blockquote>\n"
-                        f"Module: {module_name} (<code>{prefix}help {module_name}</code>)\n\n"
-                        f"<code>{prefix}{cmd[0]}</code>"
-                        f"{' <code>' + cmd[1] + '</code>' if len(cmd) > 1 else ''}"
-                        f" — <i>{cmd_desc}</i>",
+                        f"<blockquote>Help for command <code>{prefix}{command_name}</code><blockquote>\n"
+                        f"<blockquote>Module: {module_name} (<code>{prefix}help {module_name}</code>)<blockquote>\n\n"
+                        f"<blockquote><code>{prefix}{cmd[0]}</code><blockquote>"
+                        f"<blockquote>{' <code>' + cmd[1] + '</code>' if len(cmd) > 1 else ''}"
+                        f" — <i>{cmd_desc}</i></blockquote>",
                     )
         if not module_found:
             await message.reply(f"<blockquote>Module or command {command_name} not found</blockquote>")
