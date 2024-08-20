@@ -12,7 +12,7 @@ from utils.misc import plugins_help, prefix
 from utils.anu import format_exc
 
 @Client.on_message(
-    filters.command(["ev"], prefix) & filters.me
+    filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
 async def evaluate_handler(_, m: Message):
     """ This function is made to execute python codes """
