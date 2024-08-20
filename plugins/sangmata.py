@@ -7,7 +7,7 @@ from pyrogram.types import *
 
 from anu import edit_or_reply
 from utils.misc import plugins_help, prefix
-from utils.anu import format_exc
+from utils.anu import extract_user
 
 async def sg(client: Client, message: Message):
     args = await extract_user(message)
