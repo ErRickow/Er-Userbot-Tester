@@ -36,9 +36,9 @@ def get_readable_time(seconds: int) -> str:
 @Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
 async def get_readable_time(_, message: Message):
     start = time.time()
+    uptime = get_readable_time((time.time() - StartTime))
     nganu = time.time() - start
-    uptime = time_formatter(time.time())
-    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime {uptime}</blockquote>Owner")
+    await message.reply(f"<blockquote>❏ POMG!!🏓 {nganu * 1000:.3f}ms\n├• Uptime <code>{uptime}</code></blockquote>Owner")
 
 
 plugins_help["ping"] = {
