@@ -20,7 +20,7 @@ async def evaluate_handler(_, message: Message):
     try:
 
         if len(message.command) == 1:
-            await message.reply(
+            await message.reply_text(
                 "Give me some text (code) to execute . . .",
                 text_type=["mono"],
                 delme=4
@@ -59,7 +59,7 @@ async def evaluate_handler(_, message: Message):
             )
             await msg.delete()
         else:
-            await message.reply(final_output)
+            await message.reply_text(final_output)
     except Exception as e:
         await message.edit(format_exc(e))
 
