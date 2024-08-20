@@ -16,8 +16,8 @@ from utils.anu import format_exc
 )  # Ganti OWNER_ID dengan ID Anda
 async def evaluate_handler(_, m: Message):
     """ This function is made to execute python codes """
-
     try:
+    if len(message.command) == 1:
 
         #if message.long() == 1:
             await message.send_edit(
