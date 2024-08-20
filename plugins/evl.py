@@ -11,8 +11,6 @@ from io import StringIO
 from utils.misc import plugins_help, prefix
 from utils.anu import format_exc
 
-app = Client.me
-
 @Client.on_message(
     filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
