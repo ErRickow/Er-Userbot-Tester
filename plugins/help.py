@@ -13,13 +13,13 @@ async def send_page(message, module_list, page, total_pages):
     start_index = (page - 1) * 10
     end_index = start_index + 10
     page_modules = module_list[start_index:end_index]
-    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a></blockquote>\n"
+    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a>\n"
     text += f"Untuk bantuan menggunakan Userbotnya, ketik <code>{prefix}help [nyari apa]</code>\n\n"
     text += f"Page {page}/{total_pages}\n\n"
     for module_name in page_modules:
         commands = plugins_help[module_name]
-        text += f"<blockquote>• {module_name.title()}:<blockquote> {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}<blockquote>\n"
-    text += f"\n<blockquote>The number of modules in the userbot: {len(plugins_help)}</blockquote>"
+        text += f"• {module_name.title()}: {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}\n"
+    text += f"\nThe number of modules in the userbot: {len(plugins_help)}</blockquote>"
     await message.reply(text, disable_web_page_preview=True)
 
 
