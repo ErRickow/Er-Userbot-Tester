@@ -27,7 +27,7 @@ headers = {
 }
 
 
-@Client.on_message(filters.command("gpt3", prefix) & filters.me)
+@Client.on_message(filters.command("er", prefix) & filters.me)
 async def gpt3(client: Client, message: Message):
 
     if len(message.command) > 1:
