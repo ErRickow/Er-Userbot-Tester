@@ -46,7 +46,7 @@ async def weather(client: Client, message: Message):
         pic.name = f"{city}.png"
 
         await client.send_document(
-            chat_id=message.chat.id, caption=caption
+            chat_id=message.chat.id, document=pic, caption=caption
         )
         await message.delete()
     except Exception as e:
