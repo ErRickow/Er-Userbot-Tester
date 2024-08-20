@@ -52,6 +52,6 @@ async def ngapdate(client, message):
   await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}</blockquote>")
   os.execl(sys.executable, sys.executable, "erbanget.py")
   
-  plugins_help["Updater 2"] = {
-    "up [prefix]": "Update Ubot lu",
+plugins_help["Updater2"] = {
+  "up [prefix]": "Update Ubot lu",
 }
