@@ -35,7 +35,7 @@ async def ngapdate(client, message):
           anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
-        with open("output.txt", "w+") as file:
+  with open("output.txt", "w+") as file:
             file.write(out)
 
         X = f"<blockquote> <b>Change logs {user.mention}</b></blockquote>"
