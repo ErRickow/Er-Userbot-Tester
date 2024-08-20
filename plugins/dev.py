@@ -59,7 +59,7 @@ async def user_eval(client: Client, message: Message):
             f"<code>{result}</code>"
         )
     except Exception as e:
-        await message.edit(format_exc(e))
+        await message.reply(format_exc(e))
 
 
 plugins_help["python"] = {
