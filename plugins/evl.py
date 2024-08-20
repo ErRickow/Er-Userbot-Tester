@@ -27,7 +27,6 @@ async def evaluate_handler(_, m: Message):
             )
             return
         cmd = text.split(None, 1)[1]
-        stdout = StringIO
         #text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
              
        #cmd = message.text.split(maxsplit=1)[1]
