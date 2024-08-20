@@ -20,7 +20,7 @@ async def evaluate_handler(_, message: Message):
     try:
 
         if len(message.command) == 1:
-            await client.send_message(
+            await message.edit(
                 "<i>Give me some text (code) to execute . . .<i>",
                 parse_mode="html",
                 delme=4
