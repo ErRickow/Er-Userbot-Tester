@@ -20,18 +20,18 @@ async def translatedl(_client, message):
         if len(message.command) > 1:
             dtarget = message.text.split(None, 2)[1]
         else:
-            dtarget = 'en'
+            dtarget = 'id'
         if len(message.command) > 2:
             dtext = message.text.split(None, 2)[2]
         elif message.reply_to_message:
             dtext = message.reply_to_message.text
         else:
-            message.edit_text(format_small_module_help("translator"))
-        await message.edit_text("<b>Translating</b>")
+         ed = message.reply(format_small_module_help("translator"))
+        await ed.edit("<b>Translating</b>")
         dtekstr = trl.translate(dtext, dest=dtarget)
-        await message.edit_text(f"<b>Translated</b> to <code>{dtarget}</code> :\n\n" + "{}".format(dtekstr.text))
+        await ed.edit_text(f"<b>Translated</b> to <code>{dtarget}</code> :\n\n" + "{}".format(dtekstr.text))
     except ValueError as err:
-        await message.edit("Error: <code>{}</code>".format(str(err)))
+        await message.reply("Error: <code>{}</code>".format(str(err)))
         return
 
 
