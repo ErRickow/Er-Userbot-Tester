@@ -40,10 +40,10 @@ async def ngapdate(client, message):
 
         X = f"<blockquote> <b>Change logs {user.mention}</b></blockquote>"
         await client.send_document(
-            message.chat.id,
-            "output.txt",
-            caption=f"{X}",
-            reply_to_message_id=message.id,
+          message.chat.id,
+          "output.txt",
+          caption=f"{X}",
+          reply_to_message_id=message.id,
         )
         await anuk.delete()
         os.remove("output.txt")
