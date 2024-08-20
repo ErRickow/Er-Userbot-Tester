@@ -47,7 +47,7 @@ async def alive(client, message):
     start_time = time.time()
     uptime = get_readable_time((time.time() - StartTime))
     reply_msg = f"!<a href = https://pornhub.com Nganu</a>\n\n"
-    reply_msg += f"<b>Python Version:</b> <code>{__python_version__}</code>\n"
+    reply_msg += f"<blockquote>Python Version: <code>{__python_version__}</code><blockquote>\n"
     reply_msg += f"<b>Pyrogram Version:</b> <code>{__pyro_version__}</code>\n"
     end_time = time.time()
     reply_msg += f"\nUptime: <code>{uptime}</code>"
