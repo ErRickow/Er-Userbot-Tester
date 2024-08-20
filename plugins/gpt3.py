@@ -37,7 +37,7 @@ async def gpt3(client: Client, message: Message):
         return
 
     try:
-        await message.reply_text("<code>GPT Lagi mikir...</code>")
+        #await message.reply_text("<code>GPT Lagi mikir...</code>")
         # Define the data to be sent
         data = {
             "prompt": prompt,
@@ -72,7 +72,7 @@ async def gpt3(client: Client, message: Message):
             # message.edit_text the last "text" value
             if last_text:
                 await message.reply_text(
-                    f"> **Prompt:**` {prompt}`\n> **Answer:** {last_text}",
+                    f"> {last_text}",
                     parse_mode=enums.ParseMode.MARKDOWN,
                 )
             else:
