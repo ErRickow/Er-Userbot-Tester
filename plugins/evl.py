@@ -29,7 +29,12 @@ async def eval_command(client, message):
     try:
         exec_code = f"async def func():\n{textwrap.indent(code, '    ')}"
         exec(exec_code, safe_dict)
+        
         result = await safe_dict['func']()
+        
+        if result is None:
+            result = "Tidak ada output."
+        
         await message.reply(f"Output:\n{result}")
     except Exception as e:
         await message.reply(f"Error:\n{traceback.format_exc()}")
