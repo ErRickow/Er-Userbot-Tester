@@ -66,10 +66,10 @@ def download_music(url):
 @Client.on_message(filters.command(['ytv', 'ytm'], prefix) & filters.me)
 async def upload_video(client: Client, message: Message):
     if len(message.command) < 2:
-        return await message.reply_text('Please provide a YouTube URL to download.')
+        return await message.reply_text('Tambahkan Link Yt.')
 
     if message.command[0] == 'ytv':
-        await message.edit_text("Starting Download...")
+        #await message.edit_text("Starting Download...")
         try:
             url = message.text.split(None, 1)[1]
             # await message.edit_text("Starting Download...")
@@ -85,7 +85,7 @@ async def upload_video(client: Client, message: Message):
         except Exception as e:
             await message.edit_text(f"An error occurred: {format_exc(e)}")
     elif message.command[0] == 'ytm':
-        await message.edit_text("Starting Download...")
+       # await message.edit_text("Starting Download...")
         try:
             url = message.text.split(None, 1)[1]
             file_path, title, img = download_music(url)
