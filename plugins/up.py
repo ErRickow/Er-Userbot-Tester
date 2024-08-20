@@ -53,5 +53,5 @@ async def ngapdate(client, message):
   os.execl(sys.executable, sys.executable, "erbanget.py")
   
 plugins_help["Updater2"] = {
-  "up [prefix]": "Update Ubot lu",
+  "up": "Update Ubot lu",
 }
