@@ -56,7 +56,6 @@ async def update(_, message: Message):
         await message.edit("<b>Your lavHost is updating...</b>")
         os.system("lavhost update")
         return
-else;
      xx = await message.reply("<blockquote>Wet...<blockquote>\n<blockquote>Sedang Update!</blockquote>")
     try:
         subprocess.run([sys.executable, "-m", "pip", "install", "-U", "pip"])
