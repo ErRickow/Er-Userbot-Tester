@@ -51,7 +51,7 @@ async def shell(_, message: Message):
         if stdout:
             text += f"<blockquote><b>Output:</b>\n<code>{stdout}</code>\n\n"
         if stderr:
-            text += f"<b>Error:</b>\n<code>{stderr}</code>\n\n"
+            text += f"<blockquote><b>Error:</b>\n<code>{stderr}</code>\n\n"
         text += f"<b>Completed in {round(stop_time - start_time, 5)} seconds with code {cmd_obj.returncode}</b></blockquote>"
     await message.reply(text)
     cmd_obj.kill()
