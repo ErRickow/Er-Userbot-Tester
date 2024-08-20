@@ -38,8 +38,8 @@ async def ngapdate(client, message):
   with open("output.txt", "w+") as file:
             file.write(out)
 
-        X = f"<blockquote> <b>Change logs {user.mention}</b></blockquote>"
-        await client.send_document(
+            X = f"<blockquote> <b>Change logs {user.mention}</b></blockquote>"
+  await client.send_document(
           message.chat.id,
           "output.txt",
           caption=f"{X}",
