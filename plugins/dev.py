@@ -51,7 +51,7 @@ async def user_eval(client: Client, message: Message):
     code = message.text.split(maxsplit=1)[1]
 
     try:
-        result = eval(code)
+        await aexec(code)
         await message.edit(
             "<b>Expression:</b>\n"
             f"<code>{code}</code>\n\n"
