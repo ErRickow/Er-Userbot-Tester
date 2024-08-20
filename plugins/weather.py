@@ -40,7 +40,7 @@ async def weather(client: Client, message: Message):
         text_resp.raise_for_status()
         caption = f"```City: {text_resp.text}```"
 
-        pic_resp = requests.get(f"http://wttr.in/{city}_2&lang=en.png")
+        pic_resp = requests.get(f"http://wttr.in/{city}_2&lang=id.png")
         pic_resp.raise_for_status()
         pic = BytesIO(pic_resp.content)
         pic.name = f"{city}.png"
