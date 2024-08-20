@@ -37,8 +37,8 @@ async def shell(_, message: Message):
         text=True,
     )
 
-    char = "#" if os.getuid() == 0 else "$"
-    text = f"<blockquote><b>{char}</b> <code>{cmd_text}</code></blockquote>\n\n"
+    #char = "#" if os.getuid() == 0 else "$"
+   # text = f"<blockquote><b>{char}</b> <code>{cmd_text}</code></blockquote>\n\n"
 
     #await message.edit(text + "<b>Running...</b>")
     try:
