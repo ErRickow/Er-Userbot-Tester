@@ -56,5 +56,5 @@ async def shell(_, message: Message):
     await message.reply(text)
     cmd_obj.kill()
 
-
-plugins_help["shell"] = {"sh [command]*": "Execute command in shell"}
+plugins_help["shell"] = 
+{"sh [command]*": "Execute command in shell"}
