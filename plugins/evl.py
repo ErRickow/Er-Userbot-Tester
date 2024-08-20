@@ -29,7 +29,7 @@ async def evaluate_handler(_, m: Message):
        # cmd = text.split(None, 1)[1]
        cmd = message.text.split(maxsplit=1)[1]
 
-        msg = await message.send_edit("Executing . . .", text_type=["mono"])
+        #msg = await message.send_edit("Executing . . .", text_type=["mono"])
 
         old_stderr = sys.stderr
         old_stdout = sys.stdout
