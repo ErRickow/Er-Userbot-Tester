@@ -40,7 +40,7 @@ async def restart_cmd(_, message: Message):
     await message.reply("<blockquote>Sedang Merestart...</blockquote>")
     restart()
 
-@Client.on_message(filters.command("update", prefix) & filters.me)
+@Client.on_message(filters.command("updat", prefix) & filters.me)
 async def update(_, message: Message):
     db.set(
         "core.updater",
