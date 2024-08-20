@@ -52,7 +52,7 @@ text = (
 
 @Client.on_message(filters.command(["serverinfo", "sinfo"], prefix) & filters.me)
 async def serverinfo_cmd(_: Client, message: Message):
-    await message.edit("<b>🔄 Getting server info...</b>", parse_mode=enums.ParseMode.HTML)
+    await message.reply("<b>🔄 Getting server info...</b>", parse_mode=enums.ParseMode.HTML)
 
     inf = []
     try:
