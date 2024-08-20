@@ -57,17 +57,17 @@ async def update(_, message: Message):
         os.system("lavhost update")
         return
       
-    await message.edit("<blockquote>Wet...<blockquote>")
+   i = await message.reply("<blockquote>Wet...<blockquote>")
     try:
         subprocess.run([sys.executable, "-m", "pip", "install", "-U", "pip"])
         subprocess.run(["git", "pull"])
     except Exception as e:
-        await xx.reply(format_exc(e))
+        await i.edit(format_exc(e))
         db.remove("core.updater", "restart_info")
     else:
          await message.reply("<blockquote>Update: selesai sayang!<blockquote>\n\n<blockquote>Merestart...</blockquote>")
-        restart()
         await message.reply("<b>_Sudah Selesai Restartnya sayang_...</b>")
+        restart()
 
 #nganu
 
