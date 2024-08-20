@@ -67,7 +67,7 @@ async def update(_, message: Message):
     else:
          await message.reply("<blockquote>Update: selesai sayang!<blockquote>\n\n<blockquote>Merestart...</blockquote>")
         restart()
-        await message.edit("<b>_Sudah Selesai Restartnya sayang_...</b>")
+        await message.reply("<b>_Sudah Selesai Restartnya sayang_...</b>")
 
 #nganu
 
