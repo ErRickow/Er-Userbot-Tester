@@ -4,8 +4,8 @@ import requests
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 # Define the URL and headers
 url = "https://abot3.gchk2.skybyte.me/api/chat-process"
@@ -85,4 +85,4 @@ async def gpt3(client: Client, message: Message):
         await message.edit_text(format_exc(e))
 
 
-modules_help["gpt3"] = {"gpt3 [prompt*]": "Chat with OpenAI ChatGPT 3 Model"}
+plugins_help["gpt3"] = {"gpt3 [prompt*]": "Chat with OpenAI ChatGPT 3 Model"}
