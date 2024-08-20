@@ -19,8 +19,8 @@ async def evaluate_handler(_, m: Message):
 
     try:
 
-        if app.long() == 1:
-            return await app.send_edit(
+        #if message.long() == 1:
+            await message.send_edit(
                 "Give me some text (code) to execute . . .",
                 text_type=["mono"],
                 delme=4
@@ -28,7 +28,7 @@ async def evaluate_handler(_, m: Message):
         text = m.sudo_message.text if getattr(m, "sudo_message", None) else m.text
         cmd = text.split(None, 1)[1]
 
-        msg = await app.send_edit("Executing . . .", text_type=["mono"])
+        msg = await message.send_edit("Executing . . .", text_type=["mono"])
 
         old_stderr = sys.stderr
         old_stdout = sys.stdout
@@ -37,7 +37,7 @@ async def evaluate_handler(_, m: Message):
         stdout, stderr, exc = None, None, None
 
         try:
-            await app.aexec(cmd)
+            await message.aexec(cmd)
         except Exception:
             exc = traceback.format_exc()
 
@@ -49,13 +49,13 @@ async def evaluate_handler(_, m: Message):
         final_output = f"**• PROGRAM:**\n\n`{cmd}`\n\n**• OUTPUT:**\n\n`{evaluation.strip()}`"
 
         if len(final_output) > 4096:
-            await app.create_file(
+            await message.create_file(
                 filename="eval_output.txt",
                 content=str(final_output),
                 caption=f"`{cmd}`"
             )
             await msg.delete()
         else:
-            await app.send_edit(final_output)
+            await message.send_edit(final_output)
     except Exception as e:
-        await app.error(e)
+        await message.error(e)
