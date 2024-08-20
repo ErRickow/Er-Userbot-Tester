@@ -6,8 +6,8 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import progress
+from utils.misc import plugins_help, prefix
+from utils.anu import progress
 
 
 @Client.on_message(filters.command(["svn", "saavn"], prefix) & filters.me)
@@ -87,7 +87,7 @@ async def wynk(client: Client, message: Message):
     os.remove(f"{song_name}.mp3")
 
 
-modules_help["song"] = {
+plugins_help["song"] = {
     "svn": "search, download and upload songs from Saavn",
     "wynk": "search, download and upload songs from wynk",
 }
