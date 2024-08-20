@@ -31,8 +31,8 @@ async def ngapdate(client, message):
   memeg = f"<b>Change logs {user.mention}</b>"
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
-    elif len(out) > 4096:
-      anuk = await pros.edit(
+        elif len(out) > 4096:
+          anuk = await pros.edit(
             f"<blockquote> <b>Hasil akan dikirimkan dalam bentuk file ..</b></blockquote>"
         )
         with open("output.txt", "w+") as file:
