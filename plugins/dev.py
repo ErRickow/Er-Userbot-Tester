@@ -52,7 +52,7 @@ async def user_eval(client: Client, message: Message):
 
     try:
         await aexec(code)
-        await message.edit(
+        await message.reply(
             "<b>Expression:</b>\n"
             f"<code>{code}</code>\n\n"
             "<b>Result</b>:\n"
