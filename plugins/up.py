@@ -44,7 +44,6 @@ async def ngapdate(client, message):
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-  
   await anuk.delete()
   os.remove("output.txt")
   else:
