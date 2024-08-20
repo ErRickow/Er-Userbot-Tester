@@ -11,16 +11,18 @@ from io import StringIO
 from utils.misc import plugins_help, prefix
 from utils.anu import format_exc
 
+app = Client.me
+
 @Client.on_message(
     filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
-async def evaluate_handler(_, message: Message):
+async def evaluate_handler(client: client, message: Message):
     """ This function is made to execute python codes """
 
     try:
 
         if len(message.command) == 1:
-            await message.edit(
+            await message.send_message(
                 "Give me some text (code) to execute . . .",
                 text_type=["mono"],
                 delme=4
