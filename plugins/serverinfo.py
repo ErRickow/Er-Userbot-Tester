@@ -6,10 +6,10 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 # noinspection PyUnresolvedReferences
-from utils.scripts import format_exc, import_library
+from utils.anu import format_exc, import_library
 
 
 psutil = import_library('psutil')
@@ -130,6 +130,6 @@ async def serverinfo_cmd(_: Client, message: Message):
     await message.edit(text.format(*inf), parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["serverinfo"] = {
+plugins_help["serverinfo"] = {
     "sinfo": "Get server info ℹ️",
 }
