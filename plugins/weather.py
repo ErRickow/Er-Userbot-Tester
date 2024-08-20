@@ -53,7 +53,7 @@ async def weather(client: Client, message: Message):
         await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
-@Client.on_message(filters.command(["set_weather_city", "swcity"], prefix) & filters.me)
+@Client.on_message(filters.command(["set_weather_city", "ckota"], prefix) & filters.me)
 async def set_weather_city(_, message: Message):
     if len(message.command) == 1:
         return await message.edit("<b>City name isn't provided</b>", parse_mode=enums.ParseMode.HTML)
