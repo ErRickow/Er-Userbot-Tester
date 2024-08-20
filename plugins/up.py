@@ -45,9 +45,9 @@ async def ngapdate(client, message):
           caption=f"{X}",
           reply_to_message_id=message.id,
           )
-        await anuk.delete()
+  await anuk.delete()
         os.remove("output.txt")
-        else
+  else
         format_line = [f"┣ {line}" for line in out.splitlines()]
         if format_line:
             format_line[-1] = f"┖ {format_line[-1][2:]}"
