@@ -131,5 +131,5 @@ async def serverinfo_cmd(_: Client, message: Message):
 
 
 plugins_help["serverinfo"] = {
-    "sinfo": "Get server info ℹ️",
+    "sinfo": "Dapatkan Info Server ℹ️",
 }
