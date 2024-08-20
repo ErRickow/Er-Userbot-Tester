@@ -40,19 +40,19 @@ async def shell(_, message: Message):
     char = "#" if os.getuid() == 0 else "$"
     text = f"<blockquote><b>{char}</b> <code>{cmd_text}</code></blockquote>\n\n"
 
-    await message.edit(text + "<b>Running...</b>")
+    #await message.edit(text + "<b>Running...</b>")
     try:
         start_time = perf_counter()
         stdout, stderr = cmd_obj.communicate(timeout=60)
     except TimeoutExpired:
-        text += "<b>Timeout expired (60 seconds)</b>"
+        text += "<blockquote><b>Timeout expired (60 seconds)</b></blockquote>"
     else:
         stop_time = perf_counter()
         if stdout:
-            text += f"<b>Output:</b>\n<code>{stdout}</code>\n\n"
+            text += f"<blockquote><b>Output:</b>\n<code>{stdout}</code>\n\n"
         if stderr:
             text += f"<b>Error:</b>\n<code>{stderr}</code>\n\n"
-        text += f"<b>Completed in {round(stop_time - start_time, 5)} seconds with code {cmd_obj.returncode}</b>"
+        text += f"<b>Completed in {round(stop_time - start_time, 5)} seconds with code {cmd_obj.returncode}</b></blockquote>"
     await message.edit(text)
     cmd_obj.kill()
 
