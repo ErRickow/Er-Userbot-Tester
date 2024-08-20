@@ -21,8 +21,8 @@ async def evaluate_handler(_, message: Message):
 
         if len(message.command) == 1:
             await client.send_message(
-                "Give me some text (code) to execute . . .",
-                text_type=["mono"],
+                "<i>Give me some text (code) to execute . . .<i>",
+                parse_mode="html",
                 delme=4
             )
             return
