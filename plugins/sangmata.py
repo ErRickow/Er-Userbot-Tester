@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.errors import YouBlockedUser
 from pyrogram.types import *
 
-from anu import edit_or_reply
+from anu.fungsi import edit_or_reply
 from utils.misc import plugins_help, prefix
 from utils.anu import extract_user
 
