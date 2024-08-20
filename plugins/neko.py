@@ -20,8 +20,8 @@ import requests
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 
 def get_neko_media(query):
@@ -65,7 +65,7 @@ async def neko_spam(client: Client, message: Message):
         await asyncio.sleep(0.1)
 
 
-modules_help["neko"] = {
+plugins_help["neko"] = {
     "neko [type]*": "Get neko media",
     "neko_types": "Available neko types",
     "neko_spam [type]* [amount]*": "Start spam with neko media",
