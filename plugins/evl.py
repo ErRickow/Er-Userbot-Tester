@@ -22,7 +22,7 @@ async def evaluate_handler(client: client, message: Message):
     try:
 
         if len(message.command) == 1:
-            await message.send_message(
+            await client.send_message(
                 "Give me some text (code) to execute . . .",
                 text_type=["mono"],
                 delme=4
