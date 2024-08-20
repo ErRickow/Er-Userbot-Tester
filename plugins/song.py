@@ -23,11 +23,11 @@ async def saavn(client: Client, message: Message):
     elif message.reply_to_message:
         query = message.reply_to_message.text
     else:
-        await message.edit(
-            f"<b>Usage: </b><code>{prefix}svn [song name to search & download|upload]</code>"
+        await message.reply(
+            f"<blockquote>Contoh: <code>{prefix}svn [song name to search & download|upload]</code></blockquote>"
         )
         return
-    ms = await message.edit_text(f"<code>Searching for {query} on saavn</code>")
+    ms = await message.edit_text(f"<blockquote><code>Mencarikan Lagu {query} di saavn</code></blockquote>")
     response = requests.get(f"https://musicapi.x007.workers.dev/search?q={query}&searchEngine=seevn")
 
     result = json.loads(response.text)
