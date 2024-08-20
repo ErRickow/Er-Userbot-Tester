@@ -57,7 +57,7 @@ async def update(_, message: Message):
         os.system("lavhost update")
         return
       
-      await message.edit("<blockquote>Wet...<blockquote>")
+    await message.edit("<blockquote>Wet...<blockquote>")
     try:
         subprocess.run([sys.executable, "-m", "pip", "install", "-U", "pip"])
         subprocess.run(["git", "pull"])
