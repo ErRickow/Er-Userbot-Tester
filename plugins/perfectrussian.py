@@ -1,8 +1,8 @@
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import with_reply
+from utils.misc import plugins_help, prefix
+from utils.anu import with_reply
 
 import random
 
@@ -32,6 +32,6 @@ async def prussian_cmd(_, message: Message):
     await message.edit(" ".join(splitted), parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["perfectrussian"] = {
+plugins_help["perfectrussian"] = {
     "prus": "translate your message into perfect 🇷🇺Russian",
 }
