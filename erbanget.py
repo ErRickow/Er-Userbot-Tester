@@ -36,6 +36,7 @@ if config.STRINGSESSION:
     common_params["session_string"] = config.STRINGSESSION
 
 app = Client("akun_ku", **common_params)
+bot = Client("bot_ku", bot_token=config.BOT_TOKEN, **common_params)
 
 
 async def erbanget():
@@ -43,11 +44,12 @@ async def erbanget():
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[logging.FileHandler("moonlogs.txt"), logging.StreamHandler()],
         level=logging.INFO,
-        )
+    )
     DeleteAccount.__new__ = None
 
     try:
         await app.start()
+        await bot.start()  # Start bot client
     except sqlite3.OperationalError as e:
         if str(e) == "database is locked" and os.name == "posix":
             logging.warning(
@@ -59,7 +61,7 @@ async def erbanget():
     except (errors.NotAcceptable, errors.Unauthorized) as e:
         logging.error(
             f"{e.__class__.__name__}: {e}\nMoving session file to akun_ku.session-old..."
-            )
+        )
         os.rename("./akun_ku.session", "./akun_ku.session-old")
         restart()
 
@@ -70,6 +72,9 @@ async def erbanget():
         try:
             await load_module(
                 path.stem, app, core="custom_plugins" not in path.parent.parts
+            )
+            await load_module(  # Load plugins into the bot as well
+                path.stem, bot, core="custom_plugins" not in path.parent.parts
             )
         except Exception:
             logging.warning("Kaga bisa import %s", path.stem, exc_info=True)
@@ -112,6 +117,7 @@ async def erbanget():
     await idle()
 
     await app.stop()
+    await bot.stop()  # Stop bot client when done
 
 
 if __name__ == "__main__":
