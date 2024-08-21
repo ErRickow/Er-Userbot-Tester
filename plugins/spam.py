@@ -19,7 +19,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 commands = ["spam", "statspam", "slowspam", "fastspam"]
 
@@ -46,7 +46,7 @@ async def spam(client: Client, message: Message):
         await asyncio.sleep(cooldown[message.command[0]])
 
 
-modules_help["spam"] = {
+plugins_help["spam"] = {
     "spam [amount] [text]": "Start spam",
     "statspam [amount] [text]": "Send and delete",
     "fastspam [amount] [text]": "Start fast spam",
