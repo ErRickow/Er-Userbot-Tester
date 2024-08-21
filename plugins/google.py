@@ -17,7 +17,7 @@
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 
 @Client.on_message(filters.command(["google", "g"], prefix) & filters.me)
@@ -43,6 +43,6 @@ async def webshot(_, message: Message):
         )
 
 
-modules_help["google"] = {
+plugins_help["google"] = {
     "google [request]": "To teach the interlocutor to use Google. Request isn't required."
 }
