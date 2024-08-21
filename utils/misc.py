@@ -4,10 +4,11 @@ import git
 
 __all__ = [
     "plugins_help",
+    "tolong_anu",
     "requirements_list",
     "python_version",
     "prefix",
-    "emo"
+    "emo",
     "gitrepo",
     "userbot_version",
 ]
