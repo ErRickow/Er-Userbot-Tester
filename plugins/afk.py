@@ -13,7 +13,7 @@ DELAY_TIME = 3  # seconds
 async def afk(client: Client, message: Message):
     if len(message.text.split()) >= 2:
         set_afk(True, message.text.split(None, 1)[1])
-        await message.edit(
+        await message.reply(
             "❏ {} <b>Telah AFK!</b>\n└ <b>Karena:</b> <code>{}</code>".format(
                 mention_markdown(message.from_user.id, message.from_user.first_name),
                 message.text.split(None, 1)[1],
