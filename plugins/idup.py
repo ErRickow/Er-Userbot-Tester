@@ -119,7 +119,7 @@ async def setalivelogo(client: Client, message: Message):
         link = f"https://telegra.ph/{media_url[0]}"
         os.remove(m_d)
     sql.db.set("ALIVE_LOGO", link)
-    await Man.edit(
+    await Man.reply(
         f"**Berhasil Mengcustom ALIVE LOGO Menjadi {link}**",
         disable_web_page_preview=True,
     )
@@ -149,7 +149,7 @@ async def setalivetext(client: Client, message: Message):
             message, "**Berikan Sebuah Text atau Reply ke text**"
         )
     sql.db.set("ALIVE_TEKS_CUSTOM", text)
-    await Man.edit(f"**Berhasil Mengcustom ALIVE TEXT Menjadi** `{text}`")
+    await Man.reply(f"**Berhasil Mengcustom ALIVE TEXT Menjadi** `{text}`")
     restart()
 
 
@@ -172,5 +172,5 @@ async def setemoji(client: Client, message: Message):
     if not emoji:
         return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
     sql.db.set("ALIVE_EMOJI", emoji)
-    await Man.edit(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
+    await Man.reply(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
     restart()
