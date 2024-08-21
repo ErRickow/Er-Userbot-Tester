@@ -35,7 +35,7 @@ async def emoji(_, message: Message):
 )
 async def emoji(_, message: Message):
     #if len(message.command) > 1:
-        await message.db.remove("emo")
+        await message.db.remove("core-main", "emo")
         await message.reply(f"emoji telah di hapus!")
         restart()
         
