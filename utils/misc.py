@@ -25,6 +25,7 @@ python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 emopong = db.get("core.main", "emopong", " ")
 alive_logo = db.get("core.main", "alive_logo", " ")
 alive_text = db.get("core.main", "alive_text", " ")
+emoji = db.get("core.main", "emoji", " ")
 
 prefix = db.get("core.main", "prefix", ".")
 
