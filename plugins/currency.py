@@ -49,7 +49,7 @@ async def convert(_, message: Message):
         full_page = requests.get(link, headers=headers, timeout=3)
         soup = BeautifulSoup(full_page.content, "html.parser")
         rub = soup.find("span", class_="text-2xl")
-        await message.repl.(f"<blockquote><b>{name} sekarang </b><code> {rub} </code><b> $</b></blockquote>")
+        await message.reply(f"<blockquote><b>{name} sekarang </b><code> {rub} </code><b> $</b></blockquote>")
     except Exception as e:
         await message.reply(format_exc(e))
 
