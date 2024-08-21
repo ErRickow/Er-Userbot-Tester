@@ -39,10 +39,11 @@ class MultiSessionBot:
 
     def add_client(self, name, session_string=None, phone_number=None):
         params = common_params.copy()
+
         if session_string:
-            client = Client(name, session_string, **params)
+            client = Client(session_name=session_string, **params)
         else:
-            client = Client(name, f"{name}.session", **params)
+            client = Client(session_name=name, **params)
         
         self.clients.append(client)
         
@@ -123,7 +124,7 @@ class MultiSessionBot:
 
 async def main():
     logging.basicConfig(
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        format="%(asctime)s - %(name)s - %(levellevelname)s - %(message)s",
         handlers=[logging.FileHandler("moonlogs.txt"), logging.StreamHandler()],
         level=logging.INFO,
     )
@@ -131,7 +132,7 @@ async def main():
     bot = MultiSessionBot()
 
     # Menambahkan beberapa client dengan sesi yang berbeda atau dengan nomor telepon
-    bot.add_client("userbot1", config.STRINGSESSION)
+    bot.add_client("userbot1", session_string=config.STRINGSESSION)
     bot.add_client("userbot2", phone_number="+628123456789")  # Ganti dengan nomor telepon Anda
 
     await bot.start_clients()
