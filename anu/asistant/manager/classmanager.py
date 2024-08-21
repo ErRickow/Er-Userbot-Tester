@@ -16,12 +16,12 @@ class ClassManager(Config, Methods):
     pyrogram_version = str(pyrogram_version)
 
     # assistant /
-    assistant_name = "Nora"
-    assistant_version = "v.0.0.5"
+    assistant_name = "Chi"
+    assistant_version = "v.0.0.0"
 
     # userbot /
-    userbot_name = "Tron"
-    userbot_version = "v.0.2.0"
+    userbot_name = "Er"
+    userbot_version = "v.0.0.1"
 
     # containers /
     CMD_HELP = {}
