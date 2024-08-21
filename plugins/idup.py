@@ -27,8 +27,6 @@ from utils.db import database
 from anu.alat import convert_to_image
 from utils.anu import restart
 
-from .help import add_command_help
-
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
