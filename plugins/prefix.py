@@ -35,6 +35,7 @@ async def setemoji(client: Client, message: Message):
         != 1
         else None
       )
+      eri = await edit_or_reply(message, "<i>Processing...<i>")
     if len(message.command) > 1:
         em = message.command[1]
         db.set("core.main", "emo", em)
