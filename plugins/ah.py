@@ -3,6 +3,7 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from utils.misc import plugins_help, prefix,
+from utils.anu import edit_or_reply, split_list
 
 @Client.on_message(filters.command(["tolong", "t"], prefix) & filters.me)
 async def module_help(client: Client, message: Message):
