@@ -18,7 +18,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from telegraph import exceptions, upload_file
 
-from config import BOT_VER, CHANNEL
+from utils.misc import useruserbot_versionsion, CHANNEL
 from config import CMD_HANDLER as cmd
 from config import GROUP
 from ProjectMan import CMD_HELP, StartTime
@@ -50,11 +50,11 @@ async def alive(client: Client, message: Message):
         f"<b>{alive_text}</b>\n\n"
         f"{emoji} <b>Master :</b> {client.me.mention} \n"
         f"{emoji} <b>Modules :</b> <code>{len(modules)} Modules</code> \n"
-        f"{emoji} <b>Bot Version :</b> <code>{BOT_VER}</code> \n"
+        f"{emoji} <b>Bot Version :</b> <code>{userbot_version}</code> \n"
         f"{emoji} <b>Python Version :</b> <code>{python_version()}</code> \n"
         f"{emoji} <b>Pyrogram Version :</b> <code>{versipyro}</code> \n"
         f"{emoji} <b>Bot Uptime :</b> <code>{uptime}</code> \n\n"
-        f"    **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{GROUP})** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/{CHANNEL})** | **[𝗢𝘄𝗻𝗲𝗿](tg://user?id={client.me.id})**"
+        #f"    **[𝗦𝘂𝗽𝗽𝗼𝗿𝘁](https://t.me/{GROUP})** | **[𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/{CHANNEL})** | **[𝗢𝘄𝗻𝗲𝗿](tg://user?id={client.me.id})**"
     )
     try:
         await asyncio.gather(
@@ -155,26 +155,3 @@ async def setemoji(client: Client, message: Message):
     sql.addgvar("ALIVE_EMOJI", emoji)
     await Man.edit(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
     restart()
-
-
-add_command_help(
-    "alive",
-    [
-        [
-            "alive",
-            "Untuk memeriksa userbot anda berfungsi atau tidak",
-        ],
-        [
-            "setalivelogo <link telegraph atau reply ke foto/video/gif>",
-            "Untuk mengcustom alive logo userbot anda",
-        ],
-        [
-            "setalivetext <text>",
-            "Untuk mengcustom alive text userbot anda",
-        ],
-        [
-            "setemoji <emoji>",
-            "Untuk mengcustom emoji alive userbot anda",
-        ],
-    ],
-)
