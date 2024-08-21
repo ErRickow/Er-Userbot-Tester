@@ -18,8 +18,8 @@ import requests
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.scripts import format_exc, import_library
-from utils.misc import modules_help, prefix
+from utils.anu import format_exc, import_library
+from utils.misc import plugins_help, prefix
 
 bs4 = import_library("bs4", "beautifulsoup4")
 from bs4 import BeautifulSoup
@@ -54,7 +54,7 @@ async def convert(_, message: Message):
         await message.edit(format_exc(e))
 
 
-modules_help["currency"] = {
+plugins_help["currency"] = {
     "currency [currency]*": "Transfer from any state currency to the dollar. Don't use more than 10 times per minute",
     "cc [currency]*": "Transfer from any state currency to the dollar. Don't use more than 10 times per minute"
 }
