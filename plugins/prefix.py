@@ -36,7 +36,7 @@ async def setemoji(client: Client, message: Message):
   eri = await edit_or_reply(message, "<i>Processing...</i>")
   if not emoji:
     return await edit_or_reply(message, "Berikan Sebuah Emoji")
-  puh.set("emo", emoji)
+  puh.db.set("emo", emoji)
   await eri.reply(f"Berhasil Mengcustom EMOJI ALIVE Menjadi {emoji}")
   restart()
 
