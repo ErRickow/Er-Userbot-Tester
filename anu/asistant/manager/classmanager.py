@@ -27,14 +27,14 @@ class ClassManager(Config, Methods):
     CMD_HELP = {}
 
     # owner details /
-    owner_name = "࿇•ẞᗴᗩSԵ•࿇"
-    owner_id = 1790546938
-    owner_username = "@BEASTZX"
+    owner_name = "Er"
+    owner_id = #1790546938
+    owner_username = "@chakszzz"
 
     # other /
     message_ids = {}
     PIC = "https://telegra.ph/file/38eec8a079706b8c19eae.mp4"
-    Repo = "https://github.com/TronUb/Tron.git"
+    Repo = "https://pornhub.com"
     StartTime = time.time()
     utube_object = object
     callback_user = None
@@ -53,7 +53,7 @@ class ClassManager(Config, Methods):
     # telegraph /
     try:
         telegraph = Telegraph()
-        telegraph.create_account(short_name=Config.TL_NAME or "TronUserbot Team")
+        telegraph.create_account(short_name=Config.TL_NAME or "Er Userbot")
     except (ConnectionError, AttributeError):
         telegraph = None
 
