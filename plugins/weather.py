@@ -38,7 +38,7 @@ async def weather(client: Client, message: Message):
     try:
         text_resp = requests.get(f"https://wttr.in/{city}?m?M?0?q?T&lang=en")
         text_resp.raise_for_status()
-        caption = f"```City: {text_resp.text}```"
+        caption = f"<blockquote>City: {text_resp.text}</blockquote>"
 
         pic_resp = requests.get(f"http://wttr.in/{city}_2&lang=id.png")
         pic_resp.raise_for_status()
@@ -50,7 +50,7 @@ async def weather(client: Client, message: Message):
         )
         await message.delete()
     except Exception as e:
-        await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
+        await message.reply(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
 @Client.on_message(filters.command(["set_weather_city", "ckota"], prefix) & filters.me)
