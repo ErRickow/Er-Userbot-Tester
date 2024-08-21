@@ -25,7 +25,7 @@ async def setemoji(client: Client, message: Message):
   try:
     import utils.db as puh
     except AttributeError:
-      await message.reply("**Running on Non-SQL mode!**")
+      await message.reply("**Running on Non-DB mode!**")
       return
     if len(message.command) > 1:
         em = message.command[1]
