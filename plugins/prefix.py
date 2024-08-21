@@ -30,12 +30,11 @@ async def setemoji(client: Client, message: Message):
       await message.reply("**Running on Non-DB mode!**")
       return
     emoji = (message.text.split(None, 1)[1]
-      if len(
-        message.command,
-        )
-        != 1
-        else None
-        )
+    if len(
+      message.command,
+      )
+      != 1
+      else None)
       eri = await edit_or_reply(message, "<i>Processing...</i>")
       if not emoji:
         return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
