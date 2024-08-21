@@ -37,5 +37,5 @@ async def quotly(client: Client, message: Message):
                 return await message.edit("**Gagal Membuat Sticker Quotly**")
                 
 plugins_help["Quotes"] = {
-  "q : buat sticker quotes dari teks reply,
+  "q : buat sticker quotes dari teks reply",
 }
