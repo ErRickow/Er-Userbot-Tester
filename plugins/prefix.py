@@ -36,7 +36,7 @@ async def setemoji(client: Client, message: Message):
         )
         != 1
         else None
-      )
+        )
       eri = await edit_or_reply(message, "<i>Processing...</i>")
       if not emoji:
         return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
