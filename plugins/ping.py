@@ -6,7 +6,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.anu import time_formatter
-from utils.misc import plugins_help, prefix, emo
+from utils.misc import plugins_help, prefix, emopong
 
 StartTime = time.time()
 
@@ -40,7 +40,7 @@ async def anu(client, message):
     start = time.time()
     uptime = get_readable_time((time.time() - StartTime))
     nganu = time.time() - start
-    await message.reply(f"<blockquote>{emo}<b>PONG!!</b> - {nganu * 1000:.3f}ms\n<b>├• Aktif!!</b> - <code>{uptime}</code>\n<b>├• Owner</b> - {client.me.mention}\n<b>╰❍ </b><i>Ξr 𖨆♡𖨆 lop u yek</i></blockquote>")
+    await message.reply(f"<blockquote>{emopong}<b>PONG!!</b> - {nganu * 1000:.3f}ms\n<b>├• Aktif!!</b> - <code>{uptime}</code>\n<b>├• Owner</b> - {client.me.mention}\n<b>╰❍ </b><i>Ξr 𖨆♡𖨆 lop u yek</i></blockquote>")
 
 
 
