@@ -86,7 +86,7 @@ async def alive(client: Client, message: Message):
             ),
         )
     except BaseException:
-        await xx.edit(man, disable_web_page_preview=True)
+        await xx.reply(man, disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
