@@ -22,7 +22,6 @@ if script_path != os.getcwd():
 common_params = {
     "api_id": config.api_id,
     "api_hash": config.api_hash,
-    "bot_token": config.bot_token,
     "hide_password": True,
     "workdir": script_path,
     "app_version": userbot_version,
