@@ -8,8 +8,8 @@ from pyrogram import Client, enums, filters
 from pyrogram.errors import MessageTooLong
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import edit_or_reply, format_exc, progress
+from utils.misc import plugins_help, prefix
+from utils.anu import edit_or_reply, format_exc, progress
 
 
 async def read_file(file_path):
@@ -128,6 +128,6 @@ async def openfile(client: Client, message: Message):
             os.remove(file_path)
 
 
-modules_help["open"] = {
+plugins_help["open"] = {
     "open": "Open content of any text supported filetype and show it's raw data"
 }
