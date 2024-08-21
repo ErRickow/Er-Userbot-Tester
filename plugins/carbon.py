@@ -8,7 +8,7 @@ from utils.anu import ReplyCheck, edit_or_reply
 from utils.misc import plugins_help, prefix, requirements_list
 
 
-@Client.on_message(filters.command("qc", prefix) & filters.me)
+@Client.on_message(filters.command("qiu", prefix) & filters.me)
 async def make_carbon(code):
     url = "https://carbonara.vercel.app/api/cook"
     async with aiosession.post(url, json={"code": code}) as resp:
