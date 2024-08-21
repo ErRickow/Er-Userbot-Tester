@@ -28,7 +28,7 @@ async def setemote(_, message: Message):
         await message.reply(f"<blockquote>emoji [ <code>{kon}</code> ] telah di set!</blockquote>")
         restart()
     else:
-        await message.reply("<blockquote>Prefix gaboleh kosong kontol!</blockquote>")
+        await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
 
 
 plugins_help["prefix"] = {
