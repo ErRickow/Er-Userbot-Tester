@@ -18,6 +18,10 @@ async def setprefix(_, message: Message):
     else:
         await message.reply("<blockquote>Prefix gaboleh kosong kontol!</blockquote>")
 
+@Client.on_message(
+    filters.command(["semo", "setemoji", "Eremo"], prefix) & filters.me
+)
+
 
 plugins_help["prefix"] = {
     "setprefix [prefix]": "Set custom prefix",
