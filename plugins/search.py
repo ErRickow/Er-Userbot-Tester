@@ -15,9 +15,9 @@ now = {}
 @Client.on_message(filters.command(["search"], prefix) & filters.me)
 async def search_cmd(client: Client, message: Message):
     if now.get(message.chat.id):
-        return await message.edit(
-            "<b>You already have a search in progress!\n"
-            "Type: <code>{}scancel</code> to cancel it.</b>".format(prefix),
+        return await message.reply(
+            "<blockquote>You already have a search in progress!\n"
+            "Type: <code>{}scancel</code> to cancel it.</blockquote>".format(prefix),
             parse_mode=enums.ParseMode.HTML,
         )
 
