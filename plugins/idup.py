@@ -117,7 +117,7 @@ async def setalivelogo(client: Client, message: Message):
             return
         link = f"https://telegra.ph/{media_url[0]}"
         os.remove(m_d)
-    sql.db.set("ALIVE_LOGO", link)
+    sql.db.set("core.main", "ALIVE_LOGO", link)
     await Man.reply(
         f"**Berhasil Mengcustom ALIVE LOGO Menjadi {link}**",
         disable_web_page_preview=True,
@@ -147,7 +147,7 @@ async def setalivetext(client: Client, message: Message):
         return await edit_or_reply(
             message, "**Berikan Sebuah Text atau Reply ke text**"
         )
-    sql.db.set("ALIVE_TEKS_CUSTOM", text)
+    sql.db.set("core.main", "ALIVE_TEKS_CUSTOM", text)
     await Man.reply(f"**Berhasil Mengcustom ALIVE TEXT Menjadi** `{text}`")
     restart()
 
