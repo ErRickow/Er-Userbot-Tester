@@ -7,6 +7,7 @@ __all__ = [
     "requirements_list",
     "python_version",
     "prefix",
+    "emo"
     "gitrepo",
     "userbot_version",
 ]
@@ -17,6 +18,7 @@ requirements_list = []
 
 python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 
+emo = db.get("core.main", "emo", " ")
 prefix = db.get("core.main", "prefix", ".")
 
 try:
