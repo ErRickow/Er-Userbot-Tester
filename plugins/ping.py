@@ -40,7 +40,7 @@ async def anu(client, message):
     start = time.time()
     uptime = get_readable_time((time.time() - StartTime))
     nganu = time.time() - start
-    await message.reply(f"<blockquote>♝ <b>POMG!!🏓</b> - {nganu * 1000:.3f}ms\n<b>├• Uptime</b> - <code>{uptime}</code>\n<b>├• Owner</b> - {client.me.mention}\n<i>╰• Ξr 𖨆♡𖨆 lop u yek</i></blockquote>")
+    await message.reply(f"<blockquote>❍ <b>POMG!!🏓</b> - {nganu * 1000:.3f}ms\n<b>├• Uptime</b> - <code>{uptime}</code>\n<b>├• Owner</b> - {client.me.mention}\n<i>╰• Ξr 𖨆♡𖨆 lop u yek</i></blockquote>")
 
 
 
