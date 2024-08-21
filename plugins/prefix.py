@@ -37,6 +37,8 @@ async def emoji(_, message: Message):
     #if len(message.command) > 1:
         await db.remove("emo")
         await message.reply(f"emoji telah di hapus!")
+        restart()
+        
 @Client.on_message(
     filters.command(["getmo", "getemoji", "Ergemo"], prefix) & filters.me
 )
