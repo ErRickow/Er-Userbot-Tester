@@ -36,8 +36,6 @@ async def quotly(client: Client, message: Message):
             else:
                 return await message.edit("**Gagal Membuat Sticker Quotly**")
                 
-plugins_help["python"] = {
-  "ex [python code]": "Execute Python code",
-  "exnoedit [python code]": "Execute Python code and return result with reply",
-  "eval [python code]": "Eval Python code",
+plugins_help["Quotes"] = {
+  "q : buat sticker quotes dari teks reply,
 }
