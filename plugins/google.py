@@ -38,7 +38,7 @@ async def webshot(_, message: Message):
     else:
         request = user_request.replace(" ", "+")
         full_request = f"https://lmgtfy.app/?s=g&iie=1&q={request}"
-        await message.edit(
+        await message.reply(
             f"<a href={full_request}>{user_request}</a>", disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML
         )
 
