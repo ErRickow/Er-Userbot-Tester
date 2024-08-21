@@ -96,12 +96,12 @@ Do not spam further messages else I may have to block you!</i>
 async def anti_pm(_, message: Message):
     if len(message.command) == 1:
         if db.get("core.antipm", "status", False):
-            await message.edit(
+            await message.reply(
                 "<b>Anti-PM status: enabled\n"
                 f"Disable with: </b><code>{prefix}antipm disable</code>"
             )
         else:
-            await message.edit(
+            await message.reply(
                 "<b>Anti-PM status: disabled\n"
                 f"Enable with: </b><code>{prefix}antipm enable</code>"
             )
@@ -110,9 +110,9 @@ async def anti_pm(_, message: Message):
         await message.edit("<b>Anti-PM enabled!</b>")
     elif message.command[1] in ["disable", "off", "0", "no", "false"]:
         db.set("core.antipm", "status", False)
-        await message.edit("<b>Anti-PM disabled!</b>")
+        await message.reply("<b>Anti-PM disabled!</b>")
     else:
-        await message.edit(f"<b>Usage: {prefix}antipm [enable|disable]</b>")
+        await message.reply(f"<b>Usage: {prefix}antipm [enable|disable]</b>")
 
 
 @Client.on_message(filters.command(["antipm_report"], prefix) & filters.me)
