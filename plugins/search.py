@@ -21,7 +21,7 @@ async def search_cmd(client: Client, message: Message):
             parse_mode=enums.ParseMode.HTML,
         )
 
-    await message.edit("<b>Start searching...</b>", parse_mode=enums.ParseMode.HTML)
+    await message.edit("<blockquote>Start searching...</blockquote>", parse_mode=enums.ParseMode.HTML)
     finished = False
     local = False
     try:
@@ -30,7 +30,7 @@ async def search_cmd(client: Client, message: Message):
         timeout = float(message.command[3]) if len(message.command) > 3 else 2
     except:
         return await message.edit(
-            "<b>Usage:</b> <code>{}search [/cmd]* [search_word]* [timeout=2.0]</code>".format(
+            "<blockquote><b>Penggunaan:</b> <code>{}search [/cmd]* [search_word]* [timeout=2.0]</code></blockquote>".format(
                 prefix
             ),
             parse_mode=enums.ParseMode.HTML,
