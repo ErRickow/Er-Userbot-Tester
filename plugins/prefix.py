@@ -41,6 +41,19 @@ async def emoji(_, message: Message):
         restart()
     else:
         await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
+        
+@Client.on_message(
+    filters.command(["getmo", "getemoji", "Ergemo"], prefix) & filters.me
+)
+async def emoji(_, message: Message):
+    if len(message.command) > 1:
+        em = message.command[1]
+        db.get("core.main", "emo", em)
+        await message.reply(f"<blockquote>emojinya [ <code>{em}</code> ] !</blockquote>")
+        restart()
+    else:
+        await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
+
 
 
 
