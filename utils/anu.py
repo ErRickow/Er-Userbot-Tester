@@ -329,6 +329,16 @@ async def interact_with(message: Message) -> Message:
     return response[0]
 
 
+def split_list(input_list, n):
+    """
+    Takes a list and splits it into smaller lists of n elements each.
+    :param input_list:
+    :param n:
+    :return:
+    """
+    n = max(1, n)
+    return [input_list[i : i + n] for i in range(0, len(input_list), n)]
+
 def format_module_help(module_name: str, full=True):
     commands = plugins_help[module_name]
 
