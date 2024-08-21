@@ -62,7 +62,7 @@ async def set_weather_city(_, message: Message):
     await message.reply(f"<blockquote>Kota {message.command[1]} telah di tetapkan!</blockquote>", parse_mode=enums.ParseMode.HTML)
 
 
-plugins_help["weather"] = {
-    "weather [city]*": "Get weather for selected city or chosen in set_weather_city",
-    "set_weather_city [city]*": f"Set city for {prefix}weather command, Moscow by default",
+plugins_help["Cuaca"] = {
+    "Cuaca [Kota]*": "Dapatkan cuaca di kota lu",
+    "set_weather_city [city]*": f"Set Kota nya, contoh: {prefix}cuaca, Semarang sebagai default",
 }
