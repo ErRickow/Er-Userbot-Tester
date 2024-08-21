@@ -24,11 +24,34 @@ from config import GROUP
 from utils.misc import plugins_help, prefix
 from utils.anu import edit_or_reply, ReplyCheck
 from utils.db import database
-from ProjectMan.helpers.tools import convert_to_image
-from ProjectMan.utils import get_readable_time
-from ProjectMan.utils.misc import restart
+from anu.alat import convert_to_image
+from utils.anu import restart
 
 from .help import add_command_help
+
+def get_readable_time(seconds: int) -> str:
+    count = 0
+    ping_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "days"]
+
+    while count < 4:
+        count += 1
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        ping_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    ping_time += ":".join(time_list)
+
+    return ping_time
 
 modules = CMD_HELP
 alive_logo = (
