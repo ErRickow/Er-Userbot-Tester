@@ -66,7 +66,7 @@ async def version(client: Client, message: Message):
     )
 
     await message.reply(
-        f"<b>Er NganUbot: {userbot_version}\n"
+        f"<blockquote><b>Er NganUbot: {userbot_version}\n"
         f"Changelog </b><i><a href=https://t.me/er-userbot-tester/{changelog}>in channel</a></i>.<b>\n"
         f"Changelog written by </b><i>"
         f"<a href=https://t.me/Qbtaumai>Abhi</a></i>\n\n"
@@ -77,7 +77,7 @@ async def version(client: Client, message: Message):
         )
         + f"Commit: <a href={remote_url}/commit/{gitrepo.head.commit.hexsha}>"
         f"{gitrepo.head.commit.hexsha[:7]}</a> by {gitrepo.head.commit.author.name}\n"
-        f"Commit time: {commit_time}</b>",
+        f"Commit time: {commit_time}</b></blockquote>",
     )
 
 
