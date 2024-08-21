@@ -66,7 +66,7 @@ async def version(client: Client, message: Message):
     )
 
     await message.reply(
-        f"<b>Moon Userbot version: {userbot_version}\n"
+        f"<b>Er NganUbot: {userbot_version}\n"
         f"Changelog </b><i><a href=https://t.me/moonuserbot/{changelog}>in channel</a></i>.<b>\n"
         f"Changelog written by </b><i>"
         f"<a href=https://t.me/Qbtaumai>Abhi</a></i>\n\n"
