@@ -36,13 +36,14 @@ async def setemoji(client: Client, message: Message):
         else None
       )
       eri = await edit_or_reply(message, "<i>Processing...</i>")
-    if len(message.command) > 1:
-        em = message.command[1]
-        db.set("core.main", "emo", em)
-        await message.reply(f"<blockquote>emoji [ <code>{em}</code> ] telah di set!</blockquote>")
-        restart()
-    else:
-        await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
+      if not emoji:
+        return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
+    puh.set("emo", emoji)
+    await eri.reply(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
+    restart()
+
+  #  else:
+     #   await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
 
 @Client.on_message(
     filters.command(["delmo", "delemoji", "Erdelemo"], prefix) & filters.me
