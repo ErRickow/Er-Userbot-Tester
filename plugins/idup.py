@@ -170,6 +170,6 @@ async def setemoji(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing...`")
     if not emoji:
         return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
-    sql.db.set("ALIVE_EMOJI", emoji)
+    sql.db.set("core.main", "ALIVE_EMOJI", emoji)
     await Man.reply(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
     restart()
