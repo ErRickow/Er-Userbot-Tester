@@ -3,6 +3,7 @@ from pyrogram.types import Message
 
 from utils.db import db
 from utils.misc import plugins_help, prefix, emo
+from utils.anu import edit_or_reply
 from utils.anu import restart
 
 
