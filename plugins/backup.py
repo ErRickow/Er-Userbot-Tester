@@ -7,7 +7,7 @@ from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
 from utils.misc import modules_help, prefix
-from utils.scripts import format_exc, restart
+from utils.anu import format_exc, restart
 from utils.db import db
 from utils import config
 
@@ -38,7 +38,7 @@ async def backup(client: Client, message: Message):
         if not os.path.exists("backups/"):
             os.mkdir("backups/")
 
-        await message.edit("<b>Backing up database...</b>", parse_mode=enums.ParseMode.HTML)
+        await message.reply("<b>Backing up database...</b>", parse_mode=enums.ParseMode.HTML)
 
         if config.db_type in ["mongo", "mongodb"]:
             dump_mongo(db._database.list_collection_names(), "backups/", db._database)
