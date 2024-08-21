@@ -20,8 +20,8 @@ from typing import AsyncGenerator, List, Optional, Union
 from pyrogram import Client, enums, filters, raw, types, utils
 from pyrogram.types.object import Object
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 
 class Chat(Object):
@@ -374,7 +374,7 @@ async def admcount(client: Client, message: types.Message):
         return
 
 
-modules_help["admlist"] = {
+plugins_help["admlist"] = {
     "admcount": "Get count of adminned and owned chats",
     "admlist": "Get list of adminned and owned chats",
 }
