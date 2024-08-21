@@ -58,7 +58,7 @@ emoji = db.set("ALIVE_EMOJI") or "⚡️"
 alive_text = db.set("ALIVE_TEKS_CUSTOM") or "Hey, I am alive."
 
 
-@Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
+@Client.on_message(filters.command("alive", "a" prefix) & filters.me)
 async def alive(client: Client, message: Message):
     xx = await edit_or_reply(message, "⚡️")
     await asyncio.sleep(2)
