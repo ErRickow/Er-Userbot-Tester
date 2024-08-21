@@ -21,7 +21,12 @@ async def setprefix(_, message: Message):
 @Client.on_message(
     filters.command(["semo", "setemoji", "Eremo"], prefix) & filters.me
 )
-async def emoji(_, message: Message):
+async def setemoji(client: Client, message: Message):
+  try:
+    import utils.db as puh
+    except AttributeError:
+      await message.reply("**Running on Non-SQL mode!**")
+      return
     if len(message.command) > 1:
         em = message.command[1]
         db.set("core.main", "emo", em)
