@@ -5,6 +5,9 @@ from pyrogram.types import Message
 
 from anu.alat import get_arg
 
+@Client.on_message(
+    filters.command(["kon"], prefix) & filters.me
+    )
 async def quotly(client: Client, message: Message):
     args = get_arg(message)
     if not message.reply_to_message and not args:
