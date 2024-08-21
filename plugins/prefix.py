@@ -23,9 +23,9 @@ async def setprefix(_, message: Message):
 )
 async def emoji(_, message: Message):
     if len(message.command) > 1:
-        pref = message.command[1]
-        db.set("core.main", "emo", kon)
-        await message.reply(f"<blockquote>emoji [ <code>{kon}</code> ] telah di set!</blockquote>")
+        em = message.command[1]
+        db.set("core.main", "emo", em)
+        await message.reply(f"<blockquote>emoji [ <code>{em}</code> ] telah di set!</blockquote>")
         restart()
     else:
         await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
