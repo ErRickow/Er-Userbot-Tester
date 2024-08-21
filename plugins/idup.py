@@ -21,7 +21,7 @@ from telegraph import exceptions, upload_file
 from utils.misc import useruserbot_versionsion, CHANNEL
 from config import CMD_HANDLER as cmd
 from config import GROUP
-from ProjectMan import CMD_HELP, StartTime
+from utils.misc import plugins_help, requirements_list, prefix
 from ProjectMan.helpers.basic import edit_or_reply
 from ProjectMan.helpers.PyroHelpers import ReplyCheck
 from ProjectMan.helpers.SQL.globals import gvarstatus
