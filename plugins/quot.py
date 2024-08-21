@@ -4,6 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from anu.alat import get_arg
+from utils.misc import plugins_help, prefix
 
 @Client.on_message(
     filters.command(["q"], prefix) & filters.me
