@@ -28,9 +28,9 @@ async def setemoji(client: Client, message: Message):
       await message.reply("**Running on Non-DB mode!**")
       return
     emoji = (
-              message.text.split(None, 1)[1]
-        if len(
-            message.command,
+      message.text.split(None, 1)[1]
+      if len(
+        message.command,
         )
         != 1
         else None
