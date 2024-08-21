@@ -20,7 +20,7 @@ async def make_carbon(code):
 @Client.on_message(filters.command("carbon", cmd) & filters.me)
 async def carbon_func(client: Client, message: Message):
     text = (
-        message.text.split(None, 1)[1]
+        app.text.split(None, 1)[1]
         if len(
             message.command,
         )
