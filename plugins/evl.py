@@ -55,9 +55,9 @@ async def eval(client, message):
     final_output += f"<code>{evaluation.strip()}</code> \n"
 
     if len(final_output) > MAX_MESSAGE_LENGTH:
-        with io.BytesIO(str.encode(final_output)) as out_file:
-            out_file.name = "eval.text"
-            await reply_to_.reply_document(
+      with io.BytesIO(str.encode(final_output)) as out_file:
+        out_file.name = "eval.text"
+        await reply_to_.reply_document(
                 document=out_file,
                 caption=cmd[: MAX_MESSAGE_LENGTH // 4 - 1],
                 disable_notification=True,
