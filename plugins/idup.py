@@ -50,7 +50,7 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-modules = CMD_HELP
+modules = prefix
 alive_logo = (
     gvarstatus("ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
 )
