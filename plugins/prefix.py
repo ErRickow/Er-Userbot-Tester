@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from telegraph import exceptions, upload_file
 from utils.db import db
 from utils.misc import plugins_help, prefix, emo
 from utils.anu import edit_or_reply
