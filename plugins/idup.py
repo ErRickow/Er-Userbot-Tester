@@ -92,7 +92,7 @@ async def alive(client: Client, message: Message):
 @Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
 async def setalivelogo(client: Client, message: Message):
     try:
-        import ProjectMan.helpers.SQL.globals as sql
+        import utils.db as sql
     except AttributeError:
         await message.edit("**Running on Non-SQL mode!**")
         return
