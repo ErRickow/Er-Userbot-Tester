@@ -1,170 +1,117 @@
-#  Moon-Userbot - telegram userbot
-#  Copyright (C) 2020-present Moon Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+import time
 
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-import asyncio
-from datetime import datetime
-
-import humanize
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.misc import plugins_help, prefix
-from utils.anu import ReplyCheck
 
-# Variables
-AFK = False
-AFK_REASON = ""
-AFK_TIME = ""
-USERS = {}
-GROUPS = {}
+MENTIONED = []
+AFK_RESTIRECT = {}
+DELAY_TIME = 3  # seconds
 
-
-def GetChatID(message: Message):
-    """Get the group id of the incoming message"""
-    return message.chat.id
-
-
-def subtract_time(start, end):
-    """Get humanized time"""
-    subtracted = humanize.naturaltime(start - end)
-    return str(subtracted)
-
-
-# Main
+@Client.on_message(filters.me & filters.command("afk", prefix))
+async def afk(client: Client, message: Message):
+    if len(message.text.split()) >= 2:
+        set_afk(True, message.text.split(None, 1)[1])
+        await message.edit(
+            "❏ {} <b>Telah AFK!</b>\n└ <b>Karena:</b> <code>{}</code>".format(
+                mention_markdown(message.from_user.id, message.from_user.first_name),
+                message.text.split(None, 1)[1],
+            )
+        )
+    else:
+        set_afk(True, "")
+        await message.edit(
+            "✘ {} <b>Telah AFK</b> ✘".format(
+                mention_markdown(message.from_user.id, message.from_user.first_name)
+            )
+        )
+    await message.stop_propagation()
 
 
 @Client.on_message(
-    ((filters.group & filters.mentioned) | filters.private)
-    & ~filters.me
-    & ~filters.service,
-    group=3,
+    (filters.mentioned | filters.private) & filters.incoming & ~filters.bot, group=11
 )
-async def collect_afk_messages(bot: Client, message: Message):
-    if AFK:
-        last_seen = subtract_time(datetime.now(), AFK_TIME)
-        is_group = message.chat.type in ["supergroup", "group"]
-        CHAT_TYPE = GROUPS if is_group else USERS
+async def afk_mentioned(client: Client, message: Message):
+    global MENTIONED
+    get = get_afk()
+    if get and get["afk"]:
+        if "-" in str(message.chat.id):
+            cid = str(message.chat.id)[4:]
+        else:
+            cid = str(message.chat.id)
 
-        if GetChatID(message) not in CHAT_TYPE:
-            text = (
-                f"<blockquote>Wiu Wiu, Gw lagi afk sayang.\n"
-                f"Gw Lagi Off Kontol.\n"
-                f"Terakhir Online: {last_seen}\n"
-                f"Alasan: <code>{AFK_REASON.upper()}</code>\n"
-                f"See you after I'm done doing whatever I'm doing.</blockquote>"
-            )
-            await bot.send_message(
-                chat_id=GetChatID(message),
-                text=text,
-                reply_to_message_id=ReplyCheck(message),
-            )
-            CHAT_TYPE[GetChatID(message)] = 1
-            return
-        if GetChatID(message) in CHAT_TYPE:
-            if CHAT_TYPE[GetChatID(message)] == 50:
-                text = (
-                    f"<b>This is an automated message\n"
-                    f"Last seen: {last_seen}\n"
-                    f"This is the 10th time I've told you I'm AFK right now...\n"
-                    f"I'll get to you when I get to you.\n"
-                    f"No more auto messages for you</b>"
-                )
-                await bot.send_message(
-                    chat_id=GetChatID(message),
-                    text=text,
-                    reply_to_message_id=ReplyCheck(message),
-                )
-            elif CHAT_TYPE[GetChatID(message)] > 50:
+        if cid in list(AFK_RESTIRECT):
+            if int(AFK_RESTIRECT[cid]) >= int(time.time()):
                 return
-            elif CHAT_TYPE[GetChatID(message)] % 5 == 0:
-                text = (
-                    f"<b>Hey I'm still not back yet.\n"
-                    f"Last seen: {last_seen}\n"
-                    f"Still busy: <code>{AFK_REASON.upper()}</code>\n"
-                    f"Try pinging a bit later.</b>"
+        AFK_RESTIRECT[cid] = int(time.time()) + DELAY_TIME
+        if get["reason"]:
+            await message.reply(
+                "❏ {} <b>Sedang AFK!</b>\n└ <b>Karena:</b> <code>{}</code>".format(
+                    client.me.mention, get["reason"]
                 )
-                await bot.send_message(
-                    chat_id=GetChatID(message),
-                    text=text,
-                    reply_to_message_id=ReplyCheck(message),
-                )
+            )
+        else:
+            await message.reply(
+                f"<b>Maaf</b> {client.me.first_name} <b>Sedang AFK!</b>"
+            )
 
-        CHAT_TYPE[GetChatID(message)] += 1
+        _, message_type = get_message_type(message)
+        if message_type == Types.TEXT:
+            if message.text:
+                text = message.text
+            else:
+                text = message.caption
+        else:
+            text = message_type.name
 
-
-@Client.on_message(filters.command("afk", prefix) & filters.me, group=3)
-async def afk_set(_, message: Message):
-    global AFK_REASON, AFK, AFK_TIME
-
-    cmd = message.command
-    afk_text = ""
-
-    if len(cmd) > 1:
-        afk_text = " ".join(cmd[1:])
-
-    if isinstance(afk_text, str):
-        AFK_REASON = afk_text
-
-    AFK = True
-    AFK_TIME = datetime.now()
-
-    await message.delete()
-
-
-@Client.on_message(filters.command("afk", "!") & filters.me, group=3)
-async def afk_unset(_, message: Message):
-    global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
-
-    if AFK:
-        last_seen = subtract_time(datetime.now(), AFK_TIME).replace("ago", "").strip()
-        await message.edit(
-            f"<code>While you were away (for {last_seen}), you received {sum(USERS.values()) + sum(GROUPS.values())} "
-            f"messages from {len(USERS) + len(GROUPS)} chats</code>",
+        MENTIONED.append(
+            {
+                "user": message.from_user.first_name,
+                "user_id": message.from_user.id,
+                "chat": message.chat.title,
+                "chat_id": cid,
+                "text": text,
+                "message_id": message.id,
+            }
         )
-        AFK = False
-        AFK_TIME = ""
-        AFK_REASON = ""
-        USERS = {}
-        GROUPS = {}
-        await asyncio.sleep(5)
-
-    await message.delete()
-
-
-@Client.on_message(filters.me, group=3)
-async def auto_afk_unset(_, message: Message):
-    global AFK, AFK_TIME, AFK_REASON, USERS, GROUPS
-
-    if AFK:
-        last_seen = subtract_time(datetime.now(), AFK_TIME).replace("ago", "").strip()
-        reply = await message.reply(
-            f"<code>While you were away (for {last_seen}), you received {sum(USERS.values()) + sum(GROUPS.values())} "
-            f"messages from {len(USERS) + len(GROUPS)} chats</code>"
-        )
-        AFK = False
-        AFK_TIME = ""
-        AFK_REASON = ""
-        USERS = {}
-        GROUPS = {}
-        await asyncio.sleep(5)
-        await reply.delete()
+        try:
+            await client.send_message(
+                BOTLOG_CHATID,
+                "<b>#MENTION\n • Dari :</b> {}\n • <b>Grup :</b> <code>{}</code>\n • <b>Pesan :</b> <code>{}</code>".format(
+                    message.from_user.mention,
+                    message.chat.title,
+                    text[:3500],
+                ),
+            )
+        except BaseException:
+            pass
 
 
-plugins_help["afk"] = {
-    "afk [reason]": "Go to AFK mode with reason as anything after .afk\nUsage: <code>.afk <reason></code>",
-    "unafk": "Get out of AFK",
-}
+@Client.on_message(filters.me & filters.group, group=12)
+async def no_longer_afk(client: Client, message: Message):
+    global MENTIONED
+    get = get_afk()
+    if get and get["afk"]:
+        set_afk(False, "")
+        try:
+            await client.send_message(BOTLOG_CHATID, "Anda sudah tidak lagi AFK!")
+        except BaseException:
+            pass
+        text = "<b>Total {} Mention Saat Sedang AFK<b>\n".format(len(MENTIONED))
+        for x in MENTIONED:
+            msg_text = x["text"]
+            if len(msg_text) >= 11:
+                msg_text = "{}...".format(x["text"])
+            text += "- [{}](https://t.me/c/{}/{}) ({}): {}\n".format(
+                escape_markdown(x["user"]),
+                x["chat_id"],
+                x["message_id"],
+                x["chat"],
+                msg_text,
+            )
+        try:
+            await client.send_message(BOTLOG_CHATID, text)
+        except BaseException:
+            pass
+        MENTIONED = []
