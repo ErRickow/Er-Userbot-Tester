@@ -4,10 +4,10 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 
 # noinspection PyUnresolvedReferences
-from utils.scripts import format_exc
+from utils.anu import format_exc
 
 now = {}
 
@@ -71,7 +71,7 @@ async def scancel_cmd(_: Client, message: Message):
     await message.edit("<b>Search cancelled!</b>", parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["search"] = {
+plugins_help["search"] = {
     "search [/cmd]* [search_word]* [timeout=2.0]": "Search for a specific word in bot (while)",
     "scancel": "Cansel current search",
 }
