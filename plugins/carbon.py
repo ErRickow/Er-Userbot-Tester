@@ -8,7 +8,6 @@ from utils.anu import ReplyCheck, edit_or_reply
 from utils.misc import plugins_help, prefix, requirements_list, app
 
 
-@Client.on_message(filters.command("qiu", prefix) & filters.me)
 async def make_carbon(code):
     url = "https://carbonara.vercel.app/api/cook"
     async with aiosession.post(url, json={"code": code}) as resp:
@@ -17,7 +16,7 @@ async def make_carbon(code):
     return image
 
 
-@Client.on_message(filters.command("carbon", cmd) & filters.me)
+@Client.on_message(filters.command("qiu", prefix) & filters.me)
 async def carbon_func(client: Client, message: Message):
     text = (
         app.text.split(None, 1)[1]
