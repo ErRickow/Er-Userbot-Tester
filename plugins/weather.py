@@ -29,11 +29,11 @@ from utils.anu import format_exc
 @Client.on_message(filters.command(["cuaca", "w"], prefix) & filters.me)
 async def weather(client: Client, message: Message):
     if len(message.command) == 1:
-        city = db.get("custom.weather", "city", "Moscow")
+        city = db.get("custom.weather", "city", "Semarang")
     else:
         city = message.command[1]
 
-    await message.reply(f"<blockquote>Sedang memproses kota {city}...</blockquote>", parse_mode=enums.ParseMode.HTML)
+    await message.edit(f"<blockquote>Sedang memproses kota {city}...</blockquote>", parse_mode=enums.ParseMode.HTML)
 
     try:
         text_resp = requests.get(f"https://wttr.in/{city}?m?M?0?q?T&lang=en")
