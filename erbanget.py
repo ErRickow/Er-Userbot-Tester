@@ -40,11 +40,10 @@ class MultiSessionBot:
     def add_client(self, name, session_string=None, phone_number=None):
         params = common_params.copy()
         if session_string:
-            params["session_string"] = session_string
+            client = Client(name, session_string, **params)
         else:
-            params["session_name"] = f"{name}.session"
+            client = Client(name, f"{name}.session", **params)
         
-        client = Client(name, **params)
         self.clients.append(client)
         
         if phone_number:
