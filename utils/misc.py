@@ -22,7 +22,7 @@ app = {}
 
 python_version = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 
-emo = db.get("core.main", "emopong", " ")
+emopong = db.get("core.main", "emopong", " ")
 prefix = db.get("core.main", "prefix", ".")
 
 try:
