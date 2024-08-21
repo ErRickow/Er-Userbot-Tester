@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.anu import ReplyCheck, edit_or_reply
-from utils.misc import plugins_help, prefix, requirements_list
+from utils.misc import plugins_help, prefix, requirements_list, app
 
 
 @Client.on_message(filters.command("qiu", prefix) & filters.me)
