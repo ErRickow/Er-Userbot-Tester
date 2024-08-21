@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from telegraph import exceptions, upload_file
 from utils.db import db
-from utils.misc import plugins_help, prefix, emo
+from utils.misc import plugins_help, prefix, emopong
 from utils.anu import edit_or_reply
 from utils.anu import restart
 
@@ -21,7 +21,7 @@ async def setprefix(_, message: Message):
         await message.reply("<blockquote>Prefix gaboleh kosong kontol!</blockquote>")
 
 @Client.on_message(
-    filters.command(["semo", "setemoji", "Eremo"], prefix) & filters.me
+    filters.command(["setpong", "setemojipong", "Ermotpong"], prefix) & filters.me
 )
 async def setemoji(client: Client, message: Message):
   try:
@@ -36,8 +36,8 @@ async def setemoji(client: Client, message: Message):
   eri = await edit_or_reply(message, "<i>Processing...</i>")
   if not emoji:
     return await edit_or_reply(message, "Berikan Sebuah Emoji")
-  puh.db.set("core.main", "emo", emoji)
-  await eri.reply(f"Berhasil Mengcustom EMOJI ALIVE Menjadi {emoji}")
+  puh.db.set("core.main", "emopong", emoji)
+  await eri.reply(f"Berhasil Mengcustom EMOJI Pong Menjadi {emoji}")
   restart()
 
   #  else:
