@@ -22,7 +22,7 @@ from utils.misc import useruserbot_versionsion
 from config import GROUP
 from utils.misc import plugins_help, prefix
 from utils.anu import edit_or_reply, ReplyCheck
-from utils.db import database
+from utils.db import db
 from anu.alat import convert_to_image
 from utils.anu import restart
 
@@ -52,10 +52,10 @@ def get_readable_time(seconds: int) -> str:
 
 modules = prefix
 alive_logo = (
-    gvarstatus("ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
+    db.set("ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
 )
-emoji = gvarstatus("ALIVE_EMOJI") or "⚡️"
-alive_text = gvarstatus("ALIVE_TEKS_CUSTOM") or "Hey, I am alive."
+emoji = db.set("ALIVE_EMOJI") or "⚡️"
+alive_text = db.set("ALIVE_TEKS_CUSTOM") or "Hey, I am alive."
 
 
 @Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
