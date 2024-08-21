@@ -26,7 +26,7 @@ async def setprefix(_, message: Message):
 async def setemoji(client: Client, message: Message):
   try:
       import utils.db as puh
-  #except AttributeError:
+  except AttributeError:
       await message.reply("Running on Non-DB mode!")
       return
 
