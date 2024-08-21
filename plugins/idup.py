@@ -51,10 +51,10 @@ def get_readable_time(seconds: int) -> str:
 
 modules = prefix
 alive_logo = (
-    db.set("core.main", "ALIVE_LOGO") or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
+    db.set("core.main", "ALIVE_LOGO", alive_logo) or "https://telegra.ph/file/9dc4e335feaaf6a214818.jpg"
 )
-emoji = db.set("core.main", "ALIVE_EMOJI") or "⚡️"
-alive_text = db.set("core.main", "ALIVE_TEKS_CUSTOM") or "Hey, I am alive."
+emoji = db.set("core.main", "ALIVE_EMOJI", emoji) or "⚡️"
+alive_text = db.set("core.main", "ALIVE_TEKS_CUSTOM", alive_text) or "Hey, I am alive."
 
 
 @Client.on_message(filters.command("ah", "idup", prefix) & filters.me)
