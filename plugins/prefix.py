@@ -31,8 +31,7 @@ async def setemoji(client: Client, message: Message):
       return
     emoji = (message.text.split(None, 1)[1]
     if len(
-      message.command,
-      )
+      message.command,)
       != 1
       else None)
       eri = await edit_or_reply(message, "<i>Processing...</i>")
