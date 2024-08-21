@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils.db import db
-from utils.misc import plugins_help, prefix
+from utils.misc import plugins_help, prefix, emo
 from utils.anu import restart
 
 
