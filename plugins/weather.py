@@ -59,7 +59,7 @@ async def set_weather_city(_, message: Message):
         return await message.edit("<b>Masukkan Nama kota lo</b>", parse_mode=enums.ParseMode.HTML)
 
     db.set("custom.weather", "city", message.command[1])
-    await message.edit(f"<b>City {message.command[1]} set!</b>", parse_mode=enums.ParseMode.HTML)
+    await message.reply(f"<blockquote>Kota {message.command[1]} telah di tetapkan!</blockquote>", parse_mode=enums.ParseMode.HTML)
 
 
 plugins_help["weather"] = {
