@@ -6,7 +6,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 from utils.anu import format_exc, restart
 from utils.db import db
 from utils import config
@@ -112,9 +112,9 @@ async def backupmods(client: Client, message: Message):
 
         await message.edit("<b>Backing up modules...</b>", parse_mode=enums.ParseMode.HTML)
 
-        from utils.misc import modules_help
+        from utils.misc import plugins_help
 
-        for mod in modules_help:
+        for mod in plugins_help:
             if os.path.isfile(f"modules/custom_modules/{mod}.py"):
                 f = open(f"backups/{mod}.py", "wb")
                 f.write(open(f"modules/custom_modules/{mod}.py", "rb").read())
@@ -134,7 +134,7 @@ async def backupmod(client: Client, message: Message):
     try:
         if not os.path.exists("backups/"):
             os.mkdir("backups/")
-        from utils.misc import modules_help
+        from utils.misc import plugins_help
 
         try:
             mod = message.text.split(maxsplit=1)[1].split(".")[0]
@@ -167,7 +167,7 @@ async def restoremod(client: Client, message: Message):
     try:
         if not os.path.exists("backups/"):
             os.mkdir("backups/")
-        from utils.misc import modules_help
+        from utils.misc import plugins_help
 
         try:
             mod = message.text.split(maxsplit=1)[1].split(".")[0]
@@ -216,7 +216,7 @@ async def restoremods(client: Client, message: Message):
         await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["backup"] = {
+plugins_help["backup"] = {
     "backup": f"<b>Backup database</b>",
     "restore [reply]": f"<b>Restore database</b>",
     "backupmod [name]": f"<b>Backup mod</b>",
