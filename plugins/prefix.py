@@ -24,8 +24,8 @@ async def setprefix(_, message: Message):
 async def setemote(_, message: Message):
     if len(message.command) > 1:
         pref = message.command[1]
-        db.set("core.main", "emo", pref)
-        await message.reply(f"<blockquote>Prefix [ <code>{pref}</code> ] telah di set!</blockquote>")
+        db.set("core.main", "emo", kon)
+        await message.reply(f"<blockquote>emoji [ <code>{kon}</code> ] telah di set!</blockquote>")
         restart()
     else:
         await message.reply("<blockquote>Prefix gaboleh kosong kontol!</blockquote>")
