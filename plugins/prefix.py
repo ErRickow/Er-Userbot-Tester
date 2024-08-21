@@ -27,19 +27,18 @@ async def setemoji(client: Client, message: Message):
   try:
       import utils.db as puh
   #except AttributeError:
-      await message.reply("**Running on Non-DB mode!**")
+      await message.reply("Running on Non-DB mode!")
       return
-    
-    emoji = ( message.text.split(None, 1)[1]
-    if len(message.command,)
-      != 1
-      else None)
-      eri = await edit_or_reply(message, "<i>Processing...</i>")
-      if not emoji:
-        return await edit_or_reply(message, "**Berikan Sebuah Emoji**")
-    puh.set("emo", emoji)
-    await eri.reply(f"**Berhasil Mengcustom EMOJI ALIVE Menjadi** {emoji}")
-    restart()
+
+  emoji = (message.text.split(None, 1)[1]
+          if len(message.command) != 1
+          else None)
+  eri = await edit_or_reply(message, "<i>Processing...</i>")
+  if not emoji:
+    return await edit_or_reply(message, "Berikan Sebuah Emoji")
+  puh.set("emo", emoji)
+  await eri.reply(f"Berhasil Mengcustom EMOJI ALIVE Menjadi {emoji}")
+  restart()
 
   #  else:
      #   await message.reply("<blockquote>Emoji gaboleh kosong kontol!</blockquote>")
