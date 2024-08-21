@@ -2,8 +2,8 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 from aiohttp import ClientSession
 from io import BytesIO
 
@@ -45,23 +45,23 @@ async def random():
         return Post(await response.json(encoding="utf-8"), session)
 
 
-@Client.on_message(filters.command(["arnd", "arandom"], prefix) & filters.me)
+@Client.on_message(filters.command(["animek", "ara"], prefix) & filters.me)
 async def anime_handler(client: Client, message: Message):
     try:
-        await message.edit("<b>Searching art</b>", parse_mode=enums.ParseMode.HTML)
+        #await message.edit("<b>Searching art</b>", parse_mode=enums.ParseMode.HTML)
         ra = await random()
         img = await ra.image
         await message.reply_photo(
             photo=img,
-            caption=f'<b>{ra.tag_string_general if ra.tag_string_general else "Untitled"}</b>',
+            caption=f'<blockquote><b>{ra.tag_string_general if ra.tag_string_general else "Untitled"}</b></blockquote>',
             parse_mode=enums.ParseMode.HTML
         )
         return await message.delete()
     except Exception as e:
-        await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
+        await message.reply(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["anime"] = {
+plugins_help["anime"] = {
     "arnd": "Random anime art (May get caught 18+)",
     "arandom": "Random anime art (May get caught 18+)",
 }
