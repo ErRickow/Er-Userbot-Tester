@@ -58,7 +58,7 @@ emoji = db.set("ALIVE_EMOJI") or "⚡️"
 alive_text = db.set("ALIVE_TEKS_CUSTOM") or "Hey, I am alive."
 
 
-@Client.on_message(filters.command("ah", "idup" prefix) & filters.me)
+@Client.on_message(filters.command("ah", "idup", prefix) & filters.me)
 async def alive(client: Client, message: Message):
     xx = await edit_or_reply(message, "⚡️")
     await asyncio.sleep(2)
@@ -89,7 +89,7 @@ async def alive(client: Client, message: Message):
         await xx.reply(man, disable_web_page_preview=True)
 
 
-@Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
+@Client.on_message(filters.command("setalivemo", prefix) & filters.me)
 async def setalivelogo(client: Client, message: Message):
     try:
         import utils.db as sql
@@ -126,7 +126,7 @@ async def setalivelogo(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(filters.command("setalivetext", cmd) & filters.me)
+@Client.on_message(filters.command("ertextlive", prefix) & filters.me)
 async def setalivetext(client: Client, message: Message):
     try:
         import utils.db as sql
@@ -153,7 +153,7 @@ async def setalivetext(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(filters.command("setemoji", cmd) & filters.me)
+@Client.on_message(filters.command("setemojilive", prefix) & filters.me)
 async def setemoji(client: Client, message: Message):
     try:
         import utils.db as sql
