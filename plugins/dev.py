@@ -23,6 +23,8 @@ async def user_exec(client: Client, message: Message):
 
     code = message.text.split(maxsplit=1)[1]
     stdout = StringIO()
+    cm = 0
+    return cm
 
     await message.reply("<blockquote>Wet...</blockquote>")
 
