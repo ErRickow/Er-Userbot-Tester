@@ -85,9 +85,8 @@ async def tai(_, message: Message):
     await message.reply(
             f"Malicious Activities suspected by {(await message.get_sender())}"
             )
-            
-            ignore_eval.append(message.sender_id)
-            return await xx.edit(
+    ignore_eval.append(message.sender_id)
+    return await xx.edit(
             "`Malicious Activities suspected⚠️!\nReported to owner. Aborted this request!`"
         )
     old_stderr = sys.stderr
