@@ -40,7 +40,7 @@ def _parse_eval(value=None):
 edit_or_reply = edit_or_reply
 
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
-async def tai(_, message: Message):
+async def tai(client: Client, message: Message):
     try:
         cmd = message.text.split(maxsplit=1)[1]
     except IndexError:
