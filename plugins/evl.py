@@ -54,8 +54,6 @@ async def eval(client, message):
         mode = "gsource"
     elif spli[0] in ["-ga", "--args"]:
         mode = "g-args"
-    if mode:
-        cmd = await get()
     if not cmd:
         return
     if not mode == "silent" and not xx:
