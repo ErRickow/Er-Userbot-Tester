@@ -116,7 +116,7 @@ async def _(event):
                 exc = f"**{name}**\n\n" + "\n ".join([str(arg) for arg in args])
         except Exception:
             exc = traceback.format_exc()
-    evaluation = exc or stderr or stdout or _parse_eval(value) or pencarian aplikasi masukkan namanya
+    evaluation = exc or stderr or stdout or _parse_eval(value)
     if mode == "silent":
         if exc:
             msg = f"• <b>EVAL ERROR\n\n• CHAT:</b> <code>{get_display_name(event.chat)}</code> [<code>{event.chat_id}</code>]"
