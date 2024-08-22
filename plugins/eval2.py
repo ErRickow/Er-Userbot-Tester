@@ -40,7 +40,7 @@ edit_or_reply = edit_or_reply
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
 async def tai(_, message: Message):
     try:
-        cmd = m.text.split(maxsplit=1)[1]
+        cmd = message.text.split(maxsplit=1)[1]
     except IndexError:
         return await message.edit_or_reply("ha?", time=5)
     xx = None
