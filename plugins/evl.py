@@ -58,6 +58,7 @@ async def eval(client, message):
     if not cmd:
         return
     if not mode == "silent" and not xx:
+      
 
     reply_to_ = message
     if message.reply_to_message:
