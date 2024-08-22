@@ -157,8 +157,8 @@ async def tai(client: Client, message: Message):
                 caption=f"```{cmd}```" if len(cmd) < 998 else None,
                 reply_to=m
             )
-        return await xx.delete()
-    await xx.reply(final_output)
+        return await message.delete()
+    await message.reply(final_output)
 
 
 def _stringify(text=None, *args, **kwargs):
