@@ -64,11 +64,18 @@ async def eval(client, message):
     stderr = redirected_error.getvalue()
     sys.stdout = old_stdout
     sys.stderr = old_stderr
-
-    stdout = redirected_output.getvalue()
-    stderr = redirected_error.getvalue()
-    sys.stdout = old_stdout
-    sys.stderr = old_stderr
+    if value:
+        try:
+            if mode == "gsource":
+                exc = inspect.getsource(value)
+            elif mode == "g-args":
+                args = inspect.signature(value).parameters.values()
+                name = ""
+                if hasattr(value, "__name__"):
+                    name = value.__name__
+                exc = f"**{name}**\n\n" + "\n ".join([str(arg) for arg in args])
+        except Exception:
+            exc = traceback.format_exc()
 
     evaluation = ""
     if exc:
