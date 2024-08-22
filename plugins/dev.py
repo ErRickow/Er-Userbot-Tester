@@ -99,7 +99,7 @@ async def user_eval(client: Client, message: Message):
           result
           )
               
-              if len(final) > 4096:
+        if len(final) > 4096:
                 final = result
                 with BytesIO(str.encode(final)) as out_file:
                   out_file.name = "eval.txt"
