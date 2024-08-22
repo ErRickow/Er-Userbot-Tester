@@ -15,7 +15,7 @@ from utils.misc import plugins_help, prefix, ignore_eval
 from utils.anu import *
 
 class u:
-    _=""
+    _ = ""
 
 def _parse_eval(value=None):
     if not value:
