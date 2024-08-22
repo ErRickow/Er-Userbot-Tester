@@ -42,7 +42,7 @@ async def tai(_, message: Message):
     try:
         cmd = m.text.split(maxsplit=1)[1]
     except IndexError:
-        return await m.edit_or_reply("ha?", time=5)
+        return await message.edit_or_reply("ha?", time=5)
     xx = None
     mode = ""
     spli = cmd.split()
@@ -82,7 +82,7 @@ async def tai(_, message: Message):
         not (m.out or m.sender_id == eruser_bot.uid)
     ):
         #warning = await m.forward_to(udB.get_key("LOG_CHANNEL"))
-        await m.reply(
+        await message.reply(
             f"Malicious Activities suspected by {(await m.get_sender())}"
             )
         ignore_eval.append(m.sender_id)
@@ -129,7 +129,7 @@ async def tai(_, message: Message):
                 return await m.client.send_message(
                     log_chat, f"`{cmd}`", file=out_file
                 )
-            await m.client.send_message(log_chat, msg, parse_mode="html")
+            await message.client.send_message(log_chat, msg, parse_mode="html")
         return
     tmt = tima * 1000
     timef = time_formatter(tmt)
