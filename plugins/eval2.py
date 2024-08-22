@@ -38,7 +38,7 @@ def _parse_eval(value=None):
 edit_or_reply = edit_or_reply
 
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
-async def tai(_, m: Message):
+async def tai(_, message: Message):
     try:
         cmd = m.text.split(maxsplit=1)[1]
     except IndexError:
@@ -70,7 +70,7 @@ async def tai(_, m: Message):
     if not cmd:
         return
     if not mode == "silent" and not xx:
-        xx = await m.edit_or_reply('sabar anjing!')
+        xx = await message.edit_or_reply('sabar anjing!')
     if black:
         try:
             cmd = black.format_str(cmd, mode=black.Mode())
