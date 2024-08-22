@@ -69,7 +69,7 @@ async def user_eval(client: Client, message: Message):
             "<b>Expression:</b>\n"
             f"<code>{code}</code>\n\n"
             "<b>Result</b>:\n"
-            f"<code>await {result}</code>"
+            f"<code>{result}</code>"
         )
         await message.delete()
     except Exception as e:
