@@ -95,9 +95,10 @@ async def user_eval(client: Client, message: Message):
         "<code>{}</code>\n\n"
         "<b>Result</b>:\n"
         "<code>{}</code>".format(
-              code,
-              result
-              )
+          code,
+          result
+          )
+              
               if len(final) > 4096:
                 final = result
                 with BytesIO(str.encode(final)) as out_file:
