@@ -47,13 +47,13 @@ async def tai(event):
     mode = ""
     spli = cmd.split()
 
-    async def get():
-        try:
-            cm = cmd.split(maxsplit=1)[1]
-        except IndexError:
-            await event.eor("->> Wrong Format <<-")
-            cm = None
-        return cm
+   # async def get():
+    #    try:
+   #         cm = cmd.split(maxsplit=1)[1]
+    #    except IndexError:
+     #       await event.eor("->> Wrong Format <<-")
+       #     cm = None
+       # return cm
 
     if spli[0] in ["-s", "--silent"]:
         await event.delete()
