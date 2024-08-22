@@ -7,7 +7,7 @@ from pyrogram.types import Message
 
 # noinspection PyUnresolvedReferences
 from utils.misc import plugins_help, prefix
-from utils.anu import format_exc
+from utils.anu import format_exc, edit_or_reply
 # noinspection PyUnresolvedReferences
 
 
@@ -17,7 +17,7 @@ from utils.anu import format_exc
 )
 async def user_exec(client: Client, message: Message):
     if len(message.command) == 1:
-        await message.reply("<blockquote>KODENYA MANA SAYANG</blockquote>")
+        await message.edit_or_reply("<blockquote>KODENYA MANA SAYANG</blockquote>")
         return
 
     code = message.text.split(maxsplit=1)[1]
