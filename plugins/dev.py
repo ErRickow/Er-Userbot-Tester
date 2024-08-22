@@ -110,7 +110,7 @@ async def user_eval(client: Client, message: Message):
                     allow_cache=False,
                     caption=f"```{code}```" if len(code) < 998 else None,
                     reply_to=send_message,)
-        return await message.delete()
+        #return await message.delete()
         await message.reply(final)
     except Exception as e:
         await message.reply(format_exc(e))
