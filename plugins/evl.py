@@ -13,6 +13,29 @@ from io import StringIO
 from utils.misc import plugins_help, prefix
 from utils.anu import format_exc
 
+def _parse_eval(value=None):
+    if not value:
+        return value
+    if hasattr(value, "stringify"):
+        try:
+            return value.stringify()
+        except TypeError:
+            passm
+    elif isinstance(value, dict):
+        try:
+            return json_parser(value, indent=1)
+        except BaseException:
+            pass
+    elif isinstance(value, list):
+        newlist = "["
+        for index, child in enumerate(value):
+            newlist += "\n  " + str(_parse_eval(child))
+            if index < len(value) - 1:
+                newlist += ","
+        newlist += "\n]"
+        return newlist
+    return str(value)
+
 @Client.on_message(
     filters.command(["kon"], prefix) & filters.me
 )  # Ganti OWNER_ID dengan ID Anda
