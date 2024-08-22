@@ -42,6 +42,22 @@ def _parse_eval(value=None):
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
     cmd = message.text.split(" ", maxsplit=1)[1]
+    
+    if spli[0] in ["-s", "--silent"]:
+        await m.delete()
+        mode = "silent"
+    elif spli[0] in ["-n", "-noedit"]:
+        mode = "no-edit"
+        xx = await m.reply(get_string("com_1"))
+    elif spli[0] in ["-gs", "--source"]:
+        mode = "gsource"
+    elif spli[0] in ["-ga", "--args"]:
+        mode = "g-args"
+    if mode:
+        cmd = await get()
+    if not cmd:
+        return
+    if not mode == "silent" and not xx:
 
     reply_to_ = message
     if message.reply_to_message:
