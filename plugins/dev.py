@@ -108,7 +108,7 @@ async def user_eval(client: Client, message: Message):
                     out_file,
                     force_document=True,
                     allow_cache=False,
-                    caption=f"```{cmd}```" if len(cmd) < 998 else None,
+                    caption=f"```{code}```" if len(code) < 998 else None,
                     reply_to=send_message,)
         return await message.delete()
         await message.reply(final)
