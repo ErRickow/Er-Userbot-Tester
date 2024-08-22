@@ -42,6 +42,7 @@ def _parse_eval(value=None):
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
     cmd = message.text.split(" ", maxsplit=1)[1]
+    spli = cmd.split()
     
     if spli[0] in ["-s", "--silent"]:
         await m.delete()
