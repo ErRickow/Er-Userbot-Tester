@@ -91,7 +91,7 @@ async def user_eval(client: Client, message: Message):
         sys.stdout = old_stdout
         sys.stderr = old_stderr
         result = exc or stderr or stdout or _parse_eval(aexec) #or "Success"
-        final = "<blockquote><b>Expression:</b></blockquote>\n"
+           final = "<blockquote><b>Expression:</b></blockquote>\n"
         "<code>{}</code>\n\n"
         "<b>Result</b>:\n"
         "<code>{}</code>".format(
