@@ -58,6 +58,14 @@ async def user_eval(client: Client, message: Message):
 
     try:
         await aexec(code, client, message)
+        except Exception:
+            exc = traceback.format_exc()
+
+        stdout = redirected_output.getvalue()
+        stderr = redirected_error.getvalue()
+        sys.stdout = old_stdout
+        sys.stderr = old_stderr
+        evaluation = exc or stderr or stdout or "Success"
         await message.reply(
             "<b>Expression:</b>\n"
             f"<code>{code}</code>\n\n"
