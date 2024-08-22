@@ -82,8 +82,8 @@ async def _(event):
     ):
         #warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
         await event.reply(
-            f"Malicious Activities suspected by {await event.get_sender())}"
-        )
+            f"Malicious Activities suspected by {(await event.get_sender())}"
+            )
         ignore_eval.append(event.sender_id)
         return await xx.edit(
             "`Malicious Activities suspected⚠️!\nReported to owner. Aborted this request!`"
