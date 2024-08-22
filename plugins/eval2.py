@@ -164,4 +164,27 @@ def _stringify(text=None, *args, **kwargs):
         text = _parse_eval(text)
     return print(text, *args, **kwargs)
 
+async def aexec(code, event):
+    exec(
+        (
+            "async def __aexec(e, client): "
+            + "\n print = p = _stringify"
+            + "\n message = event = e"
+            + "\n u.r = reply = await event.get_reply_message()"
+            + "\n chat = event.chat_id"
+            + "\n u.lr = locals()"
+        )
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
+
+    return await locals()["__aexec"](event, event.client)
+
+
+DUMMY_CPP = """#include <iostream>
+using namespace std;
+
+int main(){
+!code
+}
+"""
 
