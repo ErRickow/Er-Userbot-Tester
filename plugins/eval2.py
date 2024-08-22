@@ -1,3 +1,14 @@
+import inspect
+import sys
+import traceback
+from io import BytesIO, StringIO
+from os import remove
+from pprint import pprint
+
+from pyrogram.utils import get_display_name
+
+from utils import ignore_eval
+
 from  anu.fungsi import *
 
 def _parse_eval(value=None):
@@ -73,7 +84,7 @@ async def _(event):
         await event.reply(
             f"Malicious Activities suspected by {await event.get_sender())}"
         )
-        _ignore_eval.append(event.sender_id)
+        ignore_eval.append(event.sender_id)
         return await xx.edit(
             "`Malicious Activities suspected⚠️!\nReported to owner. Aborted this request!`"
         )
