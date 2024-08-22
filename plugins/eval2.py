@@ -36,7 +36,7 @@ def _parse_eval(value=None):
     
 #eor = edit_or_reply
 
-@ultroid_cmd(pattern="eval", fullsudo=True, only_devs=True)
+@Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
