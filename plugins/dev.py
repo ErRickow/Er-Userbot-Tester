@@ -64,12 +64,12 @@ async def user_eval(client: Client, message: Message):
         stderr = redirected_error.getvalue()
         sys.stdout = old_stdout
         sys.stderr = old_stderr
-        result = exc or stderr or stdout #or "Success"
+        result = exc or stderr or stdout or "Success"
         await message.reply(
-            "<blockquote><b>Expression:</b>\n"
+            "<b>Expression:</b>\n"
             f"<pre language="python">code</pre><code>{code}</code>\n\n"
             "<b>Result</b>:\n"
-            f"<code>{result}</code></blockquote>"
+            f"<code>{result}</code>"
         )
         await message.delete()
     except Exception as e:
