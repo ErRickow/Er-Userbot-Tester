@@ -67,7 +67,7 @@ async def user_eval(client: Client, message: Message):
         result = exc or stderr or stdout or "Success"
         await message.reply(
             "<b>Expression:</b>\n"
-            f"<pre language="python">code</pre><code>{code}</code>\n\n"
+            f"<code>{code}</code>\n\n"
             "<b>Result</b>:\n"
             f"<code>{result}</code>"
         )
