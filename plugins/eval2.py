@@ -83,7 +83,7 @@ async def tai(_, message: Message):
     ):
         #warning = await m.forward_to(udB.get_key("LOG_CHANNEL"))
         await message.reply(
-            f"Malicious Activities suspected by {(await m.get_sender())}"
+            f"Malicious Activities suspected by {(await message.get_sender())}"
             )
         ignore_eval.append(m.sender_id)
         return await xx.edit(
