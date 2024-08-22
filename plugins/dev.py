@@ -51,10 +51,10 @@ async def user_eval(client: Client, message: Message):
     code = message.text.split(maxsplit=1)[1]
     
     old_stderr = sys.stderr
-        old_stdout = sys.stdout
-        redirected_output = sys.stdout = StringIO()
-        redirected_error = sys.stderr = StringIO()
-        stdout, stderr, exc = None, None, None
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = StringIO()
+    redirected_error = sys.stderr = StringIO()
+    stdout, stderr, exc = None, None, None
 
     try:
         await aexec(code, client, message)
