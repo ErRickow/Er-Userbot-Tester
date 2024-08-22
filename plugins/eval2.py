@@ -58,7 +58,7 @@ async def _(event):
     if not cmd:
         return
     if not mode == "silent" and not xx:
-        xx = await event.eor(get_string("com_1"))
+        xx = await event.eor('sabar anjing!')
     if black:
         try:
             cmd = black.format_str(cmd, mode=black.Mode())
@@ -105,7 +105,7 @@ async def _(event):
                 exc = f"**{name}**\n\n" + "\n ".join([str(arg) for arg in args])
         except Exception:
             exc = traceback.format_exc()
-    evaluation = exc or stderr or stdout or _parse_eval(value) or get_string("instu_4")
+    evaluation = exc or stderr or stdout or _parse_eval(value) or pencarian aplikasi masukkan namanya
     if mode == "silent":
         if exc:
             msg = f"• <b>EVAL ERROR\n\n• CHAT:</b> <code>{get_display_name(event.chat)}</code> [<code>{event.chat_id}</code>]"
@@ -135,10 +135,10 @@ async def _(event):
                 event.chat_id,
                 out_file,
                 force_document=True,
-                thumb=ULTConfig.thumb,
+                #thumb=ULTConfig.thumb,
                 allow_cache=False,
                 caption=f"```{cmd}```" if len(cmd) < 998 else None,
-                reply_to=reply_to_id,
+                reply_to=event
             )
         return await xx.delete()
     await xx.reply(final_output)
