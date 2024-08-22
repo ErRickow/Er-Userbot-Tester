@@ -38,7 +38,7 @@ def _parse_eval(value=None):
 #eor = edit_or_reply
 
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
-async def _(event):
+async def tai(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
     except IndexError:
