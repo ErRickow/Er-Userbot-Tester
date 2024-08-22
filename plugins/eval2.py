@@ -78,9 +78,9 @@ async def tai(_, message: Message):
             # Consider it as Code Error, and move on to be shown ahead.
         #    pass
     reply_to_id = message
-    if any(item in cmd for item in KEEP_SAFE().All) and (
-        not (m.out or m.sender_id == eruser_bot.uid)
-    ):
+    #if any(item in cmd for item in KEEP_SAFE().All) and (
+       # not (m.out or m.sender_id == eruser_bot.uid)
+ #   ):
         #warning = await m.forward_to(udB.get_key("LOG_CHANNEL"))
         await message.reply(
             f"Malicious Activities suspected by {(await message.get_sender())}"
