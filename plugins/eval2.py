@@ -96,7 +96,7 @@ async def tai(_, message: Message):
     stdout, stderr, exc, timeg = None, None, None, None
     tima = time.time()
     try:
-        value = await aexec(cmd, m)
+        value = await aexec(cmd, message)
     except Exception:
         value = None
         exc = traceback.format_exc()
