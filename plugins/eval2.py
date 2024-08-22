@@ -47,7 +47,7 @@ async def _(event):
     mode = ""
     spli = cmd.split()
 
-    async def get_():
+    async def get():
         try:
             cm = cmd.split(maxsplit=1)[1]
         except IndexError:
@@ -66,7 +66,7 @@ async def _(event):
     elif spli[0] in ["-ga", "--args"]:
         mode = "g-args"
     if mode:
-        cmd = await get_()
+        cmd = await get()
     if not cmd:
         return
     if not mode == "silent" and not xx:
