@@ -177,7 +177,7 @@ async def aexec(code, client, message):
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
 
-    return await locals()["__aexec"](e, message, client)
+    return await locals()["__aexec"](message, event.client)
 
 
 DUMMY_CPP = """#include <iostream>
