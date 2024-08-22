@@ -172,7 +172,7 @@ async def aexec(code, client, message):
             + "\n message = e"
             #+ "\n u.r = reply = await client.edit_or_reply()"
             #+ "\n chat = message.chat.id"
-            + "\n u.lr = locals()"
+            + "\n lr = locals()"
         )
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
