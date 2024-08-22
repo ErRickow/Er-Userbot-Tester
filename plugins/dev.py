@@ -102,6 +102,8 @@ async def user_eval(client: Client, message: Message):
         if len(final) > 4096:
         final = result
         with BytesIO(str.encode(final)) as out_file:
+          out_file.name = "eval.txt"
+          await client.send_file(
         #await message.delete()
     except Exception as e:
         await message.reply(format_exc(e))
