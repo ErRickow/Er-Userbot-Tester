@@ -17,6 +17,7 @@ __all__ = [
 plugins_help = {}
 tolong_anu = {}
 requirements_list = []
+ignore_eval = []
 
 app = {}
 
