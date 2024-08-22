@@ -76,6 +76,7 @@ async def eval(client, message):
                 exc = f"**{name}**\n\n" + "\n ".join([str(arg) for arg in args])
         except Exception:
             exc = traceback.format_exc()
+            evaluation = exc or stderr or stdout or _parse_eval(value)
 
     evaluation = ""
     if exc:
@@ -92,7 +93,7 @@ async def eval(client, message):
     final_output += "<b>OUTPUT</b>:\n"
     final_output += f"<code>{evaluation.strip()}</code> \n"
 
-    if len(final_output) > MAX_MESSAGE_LENGTH:
+    if len(final_output) > 4096:
       with io.BytesIO(str.encode(final_output)) as out_file:
         out_file.name = "eval.text"
         await reply_to_.reply_document(
