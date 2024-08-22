@@ -8,7 +8,7 @@ from pprint import pprint
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import ignore_eval
+from utils.misc import plugins_help, prefix, ignore_eval
 
 from  anu.fungsi import *
 
