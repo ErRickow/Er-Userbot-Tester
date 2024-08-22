@@ -58,8 +58,8 @@ async def user_eval(client: Client, message: Message):
 
     try:
         await aexec(code, client, message)
-        except Exception:
-            exc = traceback.format_exc()
+        except Exception as e:
+            await message.reply.format_exc(e)
 
         stdout = redirected_output.getvalue()
         stderr = redirected_error.getvalue()
