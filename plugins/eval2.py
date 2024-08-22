@@ -10,7 +10,7 @@ from pyrogram.types import Message
 
 from utils.misc import plugins_help, prefix, ignore_eval
 
-from  anu.fungsi import *
+from  anu.fungsi import edit_or_reply
 
 def _parse_eval(value=None):
     if not value:
@@ -35,7 +35,7 @@ def _parse_eval(value=None):
         return newlist
     return str(value)
     
-#eor = edit_or_reply
+eor = edit_or_reply
 
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
 async def tai(_, m: Message):
