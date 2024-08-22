@@ -10,7 +10,8 @@ __all__ = [
     "prefix",
     "emopong",
     "gitrepo",
-    "userbot_version",
+    "userbot_version"
+    "ignore_eval",
 ]
 
 
