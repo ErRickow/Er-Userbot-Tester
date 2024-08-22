@@ -71,10 +71,10 @@ async def tai(_, message: Message):
         return
     if not mode == "silent" and not xx:
         xx = await message.reply('sabar anjing!')
-    if black:
-        try:
-            cmd = black.format_str(cmd, mode=black.Mode())
-        except BaseException:
+    #if black:
+     #   try:
+    #        cmd = black.format_str(cmd, mode=black.Mode())
+      #  except BaseException:
             # Consider it as Code Error, and move on to be shown ahead.
             pass
     reply_to_id = m
