@@ -11,7 +11,7 @@ from pyrogram.types import Message
 from io import StringIO
 
 from utils.misc import plugins_help, prefix, ignore_eval
-from utils.anu import format_exc
+from utils.anu import *
 
 
 def _parse_eval(value=None):
