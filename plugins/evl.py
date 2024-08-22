@@ -10,7 +10,7 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 from io import StringIO
 
-from utils.misc import plugins_help, prefix
+from utils.misc import plugins_help, prefix, ignore_eval
 from utils.anu import format_exc
 
 def _parse_eval(value=None):
