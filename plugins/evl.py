@@ -4,6 +4,7 @@ import io
 import re
 import sys
 import subprocess
+import time
 
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
@@ -28,11 +29,18 @@ async def eval(client, message):
     redirected_output = sys.stdout = io.StringIO()
     redirected_error = sys.stderr = io.StringIO()
     stdout, stderr, exc = None, None, None
+    tima = time.time()
 
     try:
         await aexec(cmd, client, message)
     except Exception:
+        value = None
         exc = traceback.format_exc()
+    tima = time.time() - tima
+    stdout = redirected_output.getvalue()
+    stderr = redirected_error.getvalue()
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
 
     stdout = redirected_output.getvalue()
     stderr = redirected_error.getvalue()
@@ -45,7 +53,7 @@ async def eval(client, message):
     elif stderr:
         evaluation = stderr
     elif stdout:
-        evaluation = stdout
+        evaluation = exc or stderr or stdout or _parse_eval(value)
     else:
         evaluation = "Success"
 
