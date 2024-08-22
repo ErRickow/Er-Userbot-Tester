@@ -98,7 +98,7 @@ async def tai(client: Client, message: Message):
     stdout, stderr, exc, timeg = None, None, None, None
     tima = time.time()
     try:
-        value = await aexec(cmd, e, client, message)
+        value = await aexec(cmd, client, message)
     except Exception:
         value = None
         exc = traceback.format_exc()
@@ -177,7 +177,7 @@ async def aexec(code, client, message):
         + "".join(f"\n {l}" for l in code.split("\n"))
     )
 
-    return await locals()["__aexec"](message, client)
+    return await locals()["__aexec"](e, message, client)
 
 
 DUMMY_CPP = """#include <iostream>
