@@ -1,6 +1,7 @@
 import sys
 from contextlib import redirect_stdout
 from io import StringIO
+import traceback
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
