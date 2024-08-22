@@ -103,7 +103,8 @@ async def user_eval(client: Client, message: Message):
         final = result
         with BytesIO(str.encode(final)) as out_file:
           out_file.name = "eval.txt"
-          await client.send_file(
+          await client.send.file(
+            message.chat.id,
         #await message.delete()
     except Exception as e:
         await message.reply(format_exc(e))
