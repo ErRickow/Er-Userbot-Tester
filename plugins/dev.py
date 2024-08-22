@@ -41,6 +41,28 @@ async def user_exec(client: Client, message: Message):
     except Exception as e:
         await message.reply(format_exc(e))
 
+def _parse_eval(value=None):
+    if not value:
+        return value
+    if hasattr(value, "stringify"):
+        try:
+            return value.stringify()
+        except TypeError:
+            pass
+    elif isinstance(value, dict):
+        try:
+            return json_parser(value, indent=1)
+        except BaseException:
+            pass
+    elif isinstance(value, list):
+        newlist = "["
+        for index, child in enumerate(value):
+            newlist += "\n  " + str(_parse_eval(child))
+            if index < len(value) - 1:
+                newlist += ","
+        newlist += "\n]"
+        return newlist
+    return str(value)
 
 # noinspection PyUnusedLocal
 @Client.on_message(filters.command(["ev", "eval"], prefix) & filters.me)
