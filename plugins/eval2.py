@@ -76,7 +76,7 @@ async def tai(_, message: Message):
     #        cmd = black.format_str(cmd, mode=black.Mode())
       #  except BaseException:
             # Consider it as Code Error, and move on to be shown ahead.
-            pass
+        #    pass
     reply_to_id = m
     if any(item in cmd for item in KEEP_SAFE().All) and (
         not (m.out or m.sender_id == eruser_bot.uid)
