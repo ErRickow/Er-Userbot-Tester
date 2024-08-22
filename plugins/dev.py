@@ -61,6 +61,13 @@ async def user_eval(client: Client, message: Message):
     except Exception as e:
         await message.reply(format_exc(e))
 
+async def aexec(code, client, message):
+    exec(
+        "async def __aexec(client, message): "
+        + "".join(f"\n {l_}" for l_ in code.split("\n"))
+    )
+    return await locals()["__aexec"](client, message)
+
 
 plugins_help["python"] = {
   "ex [python code]": "Execute Python code",
