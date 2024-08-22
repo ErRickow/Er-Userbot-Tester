@@ -167,7 +167,7 @@ def _stringify(text=None, *args, **kwargs):
 async def aexec(code, client, message):
     exec(
         (
-            "async def __aexec(client, message): "
+            "async def __aexec(e, client, message): "
             + "\n print = p = _stringify"
             + "\n message = event = e"
             + "\n u.r = reply = await event.get_reply_message()"
