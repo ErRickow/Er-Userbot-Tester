@@ -170,7 +170,7 @@ async def aexec(code, client, message):
             "async def __aexec(e, client, message): "
             + "\n print = p = _stringify"
             + "\n message = e"
-            + "\n u.r = reply = await message.get_reply_message()"
+            + "\n u.r = reply = await message.reply()"
             + "\n chat = message.chat_id"
             + "\n u.lr = locals()"
         )
