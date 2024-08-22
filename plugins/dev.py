@@ -64,7 +64,7 @@ async def user_eval(client: Client, message: Message):
         stderr = redirected_error.getvalue()
         sys.stdout = old_stdout
         sys.stderr = old_stderr
-        result = exc or stderr or stdout #or "Success"
+        evaluation = exc or stderr or stdout or _parse_eval(value) #or "Success"
         await message.reply(
             "<b>Expression:</b>\n"
             f"<code>{code}</code>\n\n"
