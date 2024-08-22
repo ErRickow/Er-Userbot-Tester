@@ -64,12 +64,12 @@ async def eval(client, message):
     if message.reply_to_message:
         reply_to_ = message.reply_to_message
 
-    old_stderr = sys.stderr
-    old_stdout = sys.stdout
-    redirected_output = sys.stdout = io.StringIO()
-    redirected_error = sys.stderr = io.StringIO()
-    stdout, stderr, exc = None, None, None
-    tima = time.time()
+       old_stderr = sys.stderr
+       old_stdout = sys.stdout
+       redirected_output = sys.stdout = io.StringIO()
+       redirected_error = sys.stderr = io.StringIO()
+       stdout, stderr, exc = None, None, None
+       tima = time.time()
 
     try:
         await aexec(cmd, client, message)
