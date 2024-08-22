@@ -57,6 +57,7 @@ async def eval(client, message):
         mode = "g-args"
     if not cmd:
         return
+    if not mode == "silent" and not status_message:
       
 
       reply_to_ = message
