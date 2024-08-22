@@ -12,7 +12,7 @@ from pyrogram.types import Message
 
 from utils.misc import plugins_help, prefix, ignore_eval
 
-from utils.anu import edit_or_reply
+from utils.anu import *
 
 def _parse_eval(value=None):
     if not value:
