@@ -69,14 +69,12 @@ async def eval(client, message):
         redirected_output = sys.stdout = io.StringIO()
         redirected_error = sys.stderr = io.StringIO()
         stdout, stderr, exc = None, None, None
-        tima = time.time()
 
     try:
         await aexec(cmd, client, message)
     except Exception:
         value = None
         exc = traceback.format_exc()
-    tima = time.time() - tima
     stdout = redirected_output.getvalue()
     stderr = redirected_error.getvalue()
     sys.stdout = old_stdout
