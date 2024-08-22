@@ -35,14 +35,14 @@ def _parse_eval(value=None):
         return newlist
     return str(value)
     
-eor = edit_or_reply
+edit_or_reply = edit_or_reply
 
 @Client.on_message(filters.command(["v", "pyth"], prefix) & filters.me)
 async def tai(_, m: Message):
     try:
         cmd = m.text.split(maxsplit=1)[1]
     except IndexError:
-        return await m.eor("ha?", time=5)
+        return await m.edit_or_reply("ha?", time=5)
     xx = None
     mode = ""
     spli = cmd.split()
@@ -51,7 +51,7 @@ async def tai(_, m: Message):
     #    try:
    #         cm = cmd.split(maxsplit=1)[1]
     #    except IndexError:
-     #       await m.eor("->> Wrong Format <<-")
+     #       await m.edit_or_reply("->> Wrong Format <<-")
        #     cm = None
        # return cm
 
@@ -70,7 +70,7 @@ async def tai(_, m: Message):
     if not cmd:
         return
     if not mode == "silent" and not xx:
-        xx = await m.eor('sabar anjing!')
+        xx = await m.edit_or_reply('sabar anjing!')
     if black:
         try:
             cmd = black.format_str(cmd, mode=black.Mode())
