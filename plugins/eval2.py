@@ -5,7 +5,8 @@ from io import BytesIO, StringIO
 from os import remove
 from pprint import pprint
 
-from pyrogram.utils import get_display_name
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
 from utils import ignore_eval
 
@@ -119,7 +120,7 @@ async def _(event):
     evaluation = exc or stderr or stdout or _parse_eval(value)
     if mode == "silent":
         if exc:
-            msg = f"• <b>EVAL ERROR\n\n• CHAT:</b> <code>{get_display_name(event.chat)}</code> [<code>{event.chat_id}</code>]"
+            msg = f"• <b>EVAL ERROR\n\n• CHAT:</b> <code>(event.chat)</code> [<code>{event.chat_id}</code>]"
             msg += f"\n\n∆ <b>CODE:</b>\n<code>{cmd}</code>\n\n∆ <b>ERROR:</b>\n<code>{exc}</code>"
             log_chat = event.reply
             if len(msg) > 4000:
