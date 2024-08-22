@@ -13,6 +13,7 @@ from io import StringIO
 from utils.misc import plugins_help, prefix, ignore_eval
 from utils.anu import format_exc
 
+
 def _parse_eval(value=None):
     if not value:
         return value
