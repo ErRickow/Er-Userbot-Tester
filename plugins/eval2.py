@@ -10,7 +10,7 @@ from pyrogram.types import Message
 
 from utils.misc import plugins_help, prefix, ignore_eval
 
-from  anu.fungsi import edit_or_reply
+from utils.anu import edit_or_reply
 
 def _parse_eval(value=None):
     if not value:
@@ -19,7 +19,7 @@ def _parse_eval(value=None):
         try:
             return value.stringify()
         except TypeError:
-            pass
+            passm
     elif isinstance(value, dict):
         try:
             return json_parser(value, indent=1)
