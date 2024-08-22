@@ -1,3 +1,5 @@
+from  anu.fungsi import *
+
 def _parse_eval(value=None):
     if not value:
         return value
@@ -21,7 +23,7 @@ def _parse_eval(value=None):
         return newlist
     return str(value)
     
-eor = edit_or_reply
+#eor = edit_or_reply
 
 @ultroid_cmd(pattern="eval", fullsudo=True, only_devs=True)
 async def _(event):
@@ -63,13 +65,13 @@ async def _(event):
         except BaseException:
             # Consider it as Code Error, and move on to be shown ahead.
             pass
-    reply_to_id = event.reply_to_msg_id or event
+    reply_to_id = event
     if any(item in cmd for item in KEEP_SAFE().All) and (
-        not (event.out or event.sender_id == ultroid_bot.uid)
+        not (event.out or event.sender_id == eruser_bot.uid)
     ):
-        warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
-        await warning.reply(
-            f"Malicious Activities suspected by {inline_mention(await event.get_sender())}"
+        #warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
+        await event.reply(
+            f"Malicious Activities suspected by {await event.get_sender())}"
         )
         _ignore_eval.append(event.sender_id)
         return await xx.edit(
@@ -108,7 +110,7 @@ async def _(event):
         if exc:
             msg = f"• <b>EVAL ERROR\n\n• CHAT:</b> <code>{get_display_name(event.chat)}</code> [<code>{event.chat_id}</code>]"
             msg += f"\n\n∆ <b>CODE:</b>\n<code>{cmd}</code>\n\n∆ <b>ERROR:</b>\n<code>{exc}</code>"
-            log_chat = udB.get_key("LOG_CHANNEL")
+            log_chat = event.reply
             if len(msg) > 4000:
                 with BytesIO(msg.encode()) as out_file:
                     out_file.name = "Eval-Error.txt"
@@ -139,7 +141,7 @@ async def _(event):
                 reply_to=reply_to_id,
             )
         return await xx.delete()
-    await xx.edit(final_output)
+    await xx.reply(final_output)
 
 
 def _stringify(text=None, *args, **kwargs):
