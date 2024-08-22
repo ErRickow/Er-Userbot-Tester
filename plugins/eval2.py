@@ -82,7 +82,7 @@ async def tai(_, message: Message):
        # not (m.out or m.sender_id == eruser_bot.uid)
  #   ):
         #warning = await m.forward_to(udB.get_key("LOG_CHANNEL"))
-        await message.reply(
+    await message.reply(
             f"Malicious Activities suspected by {(await message.get_sender())}"
             )
         ignore_eval.append(message.sender_id)
