@@ -35,7 +35,7 @@ async def user_exec(client: Client, message: Message):
             "<blockquote>Codenya:</blockquote>\n"
             f"<code>{code}</code>\n\n"
             "<blockquote>Hasilnya</blockquote>:\n"
-            f"<code>{stdout.getvalue()}</code>"
+            f"<blockquote><code>{stdout.getvalue()}</code></blockquote>"
         )
         if message.command[0] == "exnoedit":
             await message.reply(text)
