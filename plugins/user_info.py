@@ -18,8 +18,8 @@ from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc, interact_with, interact_with_to_delete
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc, interact_with, interact_with_to_delete
 
 
 @Client.on_message(filters.command("inf", prefix) & filters.me)
@@ -50,12 +50,12 @@ async def get_user_inf(client: Client, message: Message):
 |-Deleted: <code>{user.deleted}</code>
 |-BIO: <code>{about}</code>
 </b>"""
-    await message.edit(user_info)
+    await message.reply(user_info)
 
 
 @Client.on_message(filters.command("inffull", prefix) & filters.me)
 async def get_full_user_inf(client: Client, message: Message):
-    await message.edit("<b>Receiving the information...</b>")
+   # await message.edit("<b>Receiving the information...</b>")
 
     try:
         if len(message.command) >= 2:
@@ -104,12 +104,12 @@ async def get_full_user_inf(client: Client, message: Message):
 |-Phone calls available: <code>{full_user.phone_calls_available}</code>
 |-Phone calls private: <code>{full_user.phone_calls_private}</code>
 |-Blocked: <code>{full_user.blocked}</code></b>"""
-        await message.edit(user_info)
+        await message.reply(user_info)
     except Exception as e:
-        await message.edit(format_exc(e))
+        await message.reply(format_exc(e))
 
 
-modules_help["user_info"] = {
+plugins_help["user_info"] = {
     "inf [reply|id|username]": "Get brief information about user",
     "inffull [reply|id|username": "Get full information about user",
 }
