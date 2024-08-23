@@ -14,12 +14,12 @@ async def block_True(client: Client, message: Message):
             else message.reply_to_message.from_user.id
         )
         await client.block_user(user_id)
-        await message.edit(
+        await message.reply(
             f"<b>🤡 The <a href='tg://user?id={user_id}'>user</a> is now blacklisted!</b>",
             parse_mode=enums.ParseMode.HTML
         )
     except Exception as e:
-        await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
+        await message.reply(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
 @Client.on_message(filters.command(["unblock"], prefix) & filters.me)
@@ -31,12 +31,12 @@ async def unblock(client: Client, message: Message):
             else message.reply_to_message.from_user.id
         )
         await client.unblock_user(user_id)
-        await message.edit(
+        await message.reply(
             f"<b>☺️ <a href='tg://user?id={user_id}'>User</a> removed from the blacklist!</b>",
             parse_mode=enums.ParseMode.HTML
         )
     except Exception as e:
-        await message.edit(format_exc(e), parse_mode=enums.ParseMode.HTML)
+        await message.reply(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
 modules_help["blacklist"] = {
