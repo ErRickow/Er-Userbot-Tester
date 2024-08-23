@@ -1,8 +1,8 @@
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 
 @Client.on_message(filters.command(["block"], prefix) & filters.me)
@@ -39,7 +39,7 @@ async def unblock(client: Client, message: Message):
         await message.reply(format_exc(e), parse_mode=enums.ParseMode.HTML)
 
 
-modules_help["blacklist"] = {
+plugins_help["blacklist"] = {
     "block [id|reply]*": "block user",
     "unblock [id|reply]*": "unblock user",
 }
