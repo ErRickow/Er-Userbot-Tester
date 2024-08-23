@@ -3,8 +3,8 @@ from datetime import datetime
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import import_library
+from utils.misc import plugins_help, prefix
+from utils.anu import import_library
 
 from utils.db import db
 
@@ -108,7 +108,7 @@ async def mentioned_alert(client: Client, message: Message):
             )
 
 
-modules_help["log_tag"] = {
+plugins_help["log_tag"] = {
     "log_tag_chat": "Set Tag Logger Chat. \nNOTE:Using this cmd in any group will set that group as tag logger",
     "log_tag_chat_rm": "Remove Tag Logger Chat. \nUse in group where tag logger is set",
     "log_tag_on": "Enable Tag Logger.",
