@@ -11,7 +11,7 @@ from utils.db import db
 pytz = import_library("pytz")
 
 
-@Client.on_message(filters.command("log_tag_on", prefix) & filters.me)
+@Client.on_message(filters.command("logtagon", prefix) & filters.me)
 async def log_chat(_, message: Message):
     db.set("custom.tag_logger", "tag_log", True)
     ms = await message.reply_text("Tag Log Turned ON Successfully")
@@ -20,7 +20,7 @@ async def log_chat(_, message: Message):
     return
 
 
-@Client.on_message(filters.command("log_tag_off", prefix) & filters.me)
+@Client.on_message(filters.command("logtagoff", prefix) & filters.me)
 async def log_chatoff(_, message: Message):
     db.remove("custom.tag_logger", "tag_log")
     ms = await message.reply_text("Tag Log Turned Off Successfully")
@@ -29,7 +29,7 @@ async def log_chatoff(_, message: Message):
     return
 
 
-@Client.on_message(filters.command("log_tag_chat", prefix) & filters.me)
+@Client.on_message(filters.command("logtagchat", prefix) & filters.me)
 async def log_chat(_, message: Message):
     LOG_CHAT = message.chat.id
     db.set("custom.tag_logger", "tag_log_chat", LOG_CHAT)
@@ -39,7 +39,7 @@ async def log_chat(_, message: Message):
     return
 
 
-@Client.on_message(filters.command("log_tag_chat_rm", prefix) & filters.me)
+@Client.on_message(filters.command("logtagchatrm", prefix) & filters.me)
 async def log_chatoff(_, message: Message):
     LOG_CHAT = message.chat.id
     db.remove("custom.tag_logger", "tag_log_chat")
