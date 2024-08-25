@@ -10,3 +10,17 @@ from pyrogram.types import *
 from utils.handler import *
 from utils.anu import progress
 from utils.misc import plugins_help, prefix
+
+async def schellwithflux(args):
+    API_URL = "https://randydev-ryuzaki-api.hf.space/api/v1/akeno/fluxai"
+    payload = {
+        "user_id": 1191668125,  # Please don't edit here
+        "args": args
+    }
+    response = requests.post(API_URL, json=payload)
+    if response.status_code != 200:
+        LOGS.error(f"Error status {response.status_code}")
+        return None
+    return response.content
+
+@Client.on_message(filters.command(["fluxai"], prefix) & filters.me)
