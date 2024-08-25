@@ -142,6 +142,137 @@ async def extract_user_and_reason(message, sender_chat=False):
 async def extract_user(message):
     return (await extract_user_and_reason(message))[0]
 
+async def dpaste(code: str):
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
+        data = {"content": code, "lexer": "python", "expires": "never"}
+        async with session.post("https://dpaste.org/api/", data=data) as resp:
+            if resp.status != 200:
+                return "Pasting failed!"
+            else:
+                return (await resp.text()).replace('"', "")
+
+async def paste_neko(code: str):
+    try:
+        async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
+            async with session.post(
+                "https://nekobin.com/api/documents",
+                json={"content": code},
+            ) as paste:
+                paste.raise_for_status()
+                result = await paste.json()
+    except Exception:
+        return await dpaste(code=code)
+    else:
+        return f"nekobin.com/{result['result']['key']}.py"
+
+def get_args_raw(message: Union[Message, str], use_reply: bool = None) -> str:
+    """Returns text after command.
+
+    Args:
+        message (Union[Message, str]): Message or text.
+
+        use_reply (bool, optional): Try to get args from reply message if no args in message. Defaults to None.
+
+    Returns:
+        str: Text after command or empty string.
+    """
+    if isinstance(message, Message):
+        text = message.text or message.caption
+        args = text.split(maxsplit=1)[1] if len(text.split()) > 1 else ""
+
+        if use_reply and not args:
+            args = message.reply_to_message.text or message.reply_to_message.caption
+
+    elif not isinstance(message, str):
+        return ""
+
+    return args or ""
+
+
+def get_args(
+    message: Union[Message, str], use_reply: bool = None
+) -> Tuple[List[str], Dict[str, str]]:
+    """Returns list of common args and a dictionary with named args.
+
+    Args:
+        message (Union[Message, str]): Message or text.
+
+        use_reply (bool, optional): Try to get args from reply message if no args in message. Defaults to None.
+
+    Returns:
+        List[str]: List of args.
+    """
+    raw_args = get_args_raw(message, use_reply)
+
+    try:
+        args = list(filter(lambda x: len(x) > 0, shlex.split(raw_args)))
+    except ValueError:
+        return [raw_args], {}
+
+    common_args = []
+    named_args = {}
+
+    i = 0
+    while i < len(args):
+        arg = args[i]
+        if arg.startswith("-"):
+            if i + 1 < len(args) and (
+                not args[i + 1].startswith("-") or len(args[i + 1].split()) > 1
+            ):
+                named_args[arg] = args[i + 1]
+                i += 2
+            else:
+                i += 1
+        else:
+            i += 1
+        common_args.append(arg)
+    return common_args, named_args
+
+
+class ScheduleJob:
+    def __init__(
+        self,
+        func: callable,
+        trigger: Optional[Union[CronTrigger, IntervalTrigger]] = IntervalTrigger(seconds=3600),
+        *args,
+        **kwargs,
+    ):
+        self.func = func
+        self.args = args or []
+        self.kwargs = kwargs or {}
+        self.id = func.__name__
+        self.trigger = trigger
+
+
+def get_ram_usage() -> float:
+    """Returns current process tree memory usage in MB"""
+    try:
+        import psutil
+
+        current_process = psutil.Process(os.getpid())
+        mem = current_process.memory_info()[0] / 2.0**20
+        for child in current_process.children(recursive=True):
+            mem += child.memory_info()[0] / 2.0**20
+
+        return round(mem, 1)
+    except Exception:
+        return 0
+
+
+def get_cpu_usage() -> float:
+    """Returns current process tree CPU usage in %"""
+    try:
+        import psutil
+
+        current_process = psutil.Process(os.getpid())
+        cpu = current_process.cpu_percent()
+        for child in current_process.children(recursive=True):
+            cpu += child.cpu_percent()
+
+        return round(cpu, 1)
+    except Exception:
+        return 0
+
 
 def get_full_name(obj: Union[User, Chat]) -> str:
     if isinstance(obj, Chat):
