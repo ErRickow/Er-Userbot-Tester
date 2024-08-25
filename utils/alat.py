@@ -26,7 +26,7 @@ from pyrogram.types import Message
 
 from utils.formatter import humanbytes, readable_time
 
-DEVS = [1191668125]
+DEVS = [1448273246]
 
 def global_no_spam_title(message: Message):
     chat = message.chat
