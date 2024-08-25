@@ -9,7 +9,6 @@ import time
 from io import BytesIO
 from typing import Tuple
 
-import cv2
 import requests
 from bs4 import BeautifulSoup as bs
 from git import Repo
