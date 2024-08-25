@@ -11,3 +11,4 @@ from pyrogram.types import Message
 from utils import db
 from utils.formatter import add_to_dict, get_from_dict, readable_time
 from utils.handler import *
+from utils.misc import plugins_help, prefix
