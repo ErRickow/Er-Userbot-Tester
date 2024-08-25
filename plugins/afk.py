@@ -110,7 +110,7 @@ async def afk(client: Client, message: Message):
         )
     add_to_dict(AFK_CACHE, [message.from_user.id, message.chat.id])
 
-@Client(filters.incoming & ~filters.bot & ~filters.service)
+@Client(filters.incoming & ~filters.service)
 async def afk_watch(client: Client, message: Message):
     afk_data = await db.get_afk(client.me.id)
     if not afk_data:
