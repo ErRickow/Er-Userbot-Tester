@@ -31,8 +31,8 @@ async def imgfluxai_(client: Client, message: Message):
     try:
         image_bytes = await schellwithflux(question)
         if image_bytes is None:
-            return await message.reply_text("Failed to generate an image.")
-        pro = await message.reply_text("Generating image, please wait...")
+            return await message.reply_text("gagal dah.")
+        pro = await message.reply_text("Generating image, sabar sayang...")
         with open("flux_gen.jpg", "wb") as f:
             f.write(image_bytes)
         ok = await pro.edit_text("Uploading image...")
