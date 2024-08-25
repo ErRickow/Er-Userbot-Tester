@@ -11,3 +11,11 @@ from pyrogram.types import Message
 
 from utils.handler import *
 from utils.misc import plugins_help, prefix
+
+@Client(
+    ~filters.scheduled
+    & filters.command(["limit", "limited"], prefix)
+    & filters.me
+    & ~filters.forwarded
+)
+
