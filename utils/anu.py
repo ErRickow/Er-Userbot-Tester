@@ -153,15 +153,6 @@ def get_full_name(obj: Union[User, Chat]) -> str:
     else:
         raise TypeError("obj must be User or Chat")
 
-def format_exc(e: Exception, suffix="") -> str:
-    if isinstance(e, errors.RPCError):
-        return (
-            f"<b>Telegram API error!</b>\n"
-            f"<code>[{e.CODE} {e.ID or e.NAME}] — {e.MESSAGE.format(value=e.value)}</code>\n\n"
-            f"<b>{suffix}</b>"
-        )
-    return f"<code>{e.__class__.__name__}: {e}</code>\n\n<b>{suffix}</b>"
-
 def with_reply(func):
     async def wrapped(client: Client, message: Message):
         if not message.reply_to_message:
