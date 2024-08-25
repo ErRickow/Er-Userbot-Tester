@@ -10,7 +10,7 @@ import time
 import traceback
 from io import BytesIO
 from types import ModuleType
-from typing import Dict, Tuple
+from typing import Dict, List, Optional, Tuple, Union
 
 from PIL import Image
 import psutil
