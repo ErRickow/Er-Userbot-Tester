@@ -143,6 +143,56 @@ async def extract_user(message):
     return (await extract_user_and_reason(message))[0]
 
 
+def get_full_name(obj: Union[User, Chat]) -> str:
+    if isinstance(obj, Chat):
+        if obj.type == ChatType.PRIVATE:
+            return f"{obj.first_name} {obj.last_name}" if obj.last_name else obj.first_name
+        return obj.title
+    elif isinstance(obj, User):
+        return f"{obj.first_name} {obj.last_name}" if obj.last_name else obj.first_name
+    else:
+        raise TypeError("obj must be User or Chat")
+
+def format_exc(e: Exception, suffix="") -> str:
+    if isinstance(e, errors.RPCError):
+        return (
+            f"<b>Telegram API error!</b>\n"
+            f"<code>[{e.CODE} {e.ID or e.NAME}] — {e.MESSAGE.format(value=e.value)}</code>\n\n"
+            f"<b>{suffix}</b>"
+        )
+    return f"<code>{e.__class__.__name__}: {e}</code>\n\n<b>{suffix}</b>"
+
+def with_reply(func):
+    async def wrapped(client: Client, message: Message):
+        if not message.reply_to_message:
+            await message.edit("<b>Reply to message is required</b>")
+        else:
+            return await func(client, message)
+
+    return wrapped
+
+def with_args(text: str):
+    def decorator(func):
+        async def wrapped(client: Client, message: Message):
+            if message.text and len(message.text.split()) == 1:
+                await message.edit(text)
+            else:
+                return await func(client, message)
+
+        return wrapped
+
+    return decorator
+
+def with_premium(func):
+    async def wrapped(client: Client, message: Message):
+        if not (await client.get_me()).is_premium:
+            await message.reply("<b>Lo Bukan Pake Akun Premimum</b>")
+        else:
+            return await func(client, message)
+
+    return wrapped
+
+
 def get_text(message: Message) -> None | str:
     """Extract Text From Commands"""
     text_to_return = message.text
