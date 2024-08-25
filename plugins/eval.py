@@ -29,3 +29,4 @@ from utils.handler import *
 from utils.tools import *
 from utils.misc import plugins_help, prefix
 
+@Client.on_message(filters.command("ev", prefix) & filters.me)
