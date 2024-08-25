@@ -24,8 +24,8 @@ async def spamban(client: Client, message: Message):
             start_param="start",
         )
     )
-    wait_msg = await message.reply_text("`Processing . . .`")
+    wait_msg = await message.reply_text("<i>Processing . . .</i>")
     await asyncio.sleep(1)
     spambot_msg = response.updates[1].message.id + 1
     status = await client.get_messages(chat_id="SpamBot", message_ids=spambot_msg)
-    await wait_msg.edit_text(f"~ {status.text}")
+    await wait_msg.edit_text(f"<blockquote>~ {status.text}</blockquote>")
