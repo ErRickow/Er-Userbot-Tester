@@ -1,3 +1,5 @@
+# © rendydev A.k.A @xtdev
+
 import asyncio
 import os
 
