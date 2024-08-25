@@ -30,7 +30,7 @@ from pyrogram.utils import (
 
 from utils.db import db
 from utils.misc import prefix
-from utils.scripts import format_exc, text
+from utils.anu import format_exc, text
 
 
 async def check_username_or_id(data: Union[str, int]) -> str:
