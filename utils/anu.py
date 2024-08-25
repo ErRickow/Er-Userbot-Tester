@@ -16,6 +16,7 @@ from PIL import Image
 import psutil
 from pyrogram import Client, errors, enums
 from pyrogram.errors import FloodWait, MessageNotModified
+from apscheduler.triggers.interval import IntervalTrigger
 from pyrogram.types import Message
 
 from utils.db import db
