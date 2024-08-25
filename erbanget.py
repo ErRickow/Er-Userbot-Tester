@@ -41,7 +41,7 @@ app = Client("akun_ku", **common_params)
 async def erbanget():
     logging.basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[logging.FileHandler("moonlogs.txt"), logging.StreamHandler()],
+        handlers=[logging.FileHandler("matamupicek.txt"), logging.StreamHandler()],
         level=logging.INFO,
         )
     DeleteAccount.__new__ = None
