@@ -3,8 +3,8 @@ pytz
 tgcrypto
 datetime
 wheel
-gunicorn
-flask
+Flask==2.2.2
+gunicorn==20.1.0
 humanize
 pygments
 ffmpeg-python
