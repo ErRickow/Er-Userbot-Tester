@@ -8,3 +8,7 @@ from pyrogram.types import Message
 
 from utils.handler import *
 from utils.misc import plugins_help, prefix
+
+@Client.on_message(
+    filters.command(["shinratensei", "zombies", "tsukoyomi"], prefix) & filters.me
+)
