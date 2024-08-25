@@ -33,3 +33,9 @@ async def akundeak(client: Client, message: Message):
         await m.edit_text(f"Banned {banned_users} Deleted Accounts")
     else:
         await m.edit_text("There are no deleted accounts in this chat")
+
+plugins_help["tsukoyomi"] = {
+    "tsukoyomi [prefix]": "Menghapus akun deak",
+    "shinratensei [prefix]": "Delete account ,deleted huh",
+    "zombies [prefix]": "Deleted, Delete Akun"
+}
