@@ -26,7 +26,7 @@ from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import *
 
 from utils.handler import *
-from utils.tools import *
+from utils.alat import *
 from utils.misc import plugins_help, prefix
 
 @Client.on_message(filters.command("ev", prefix) & filters.me)
