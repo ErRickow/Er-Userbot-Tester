@@ -17,7 +17,6 @@ from utils.config import *
 
 
 @ErRick(
-    ~filters.scheduled
     & filters.command(["yta"], CMD_HANDLER)
     & filters.me
     & ~filters.forwarded
