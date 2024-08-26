@@ -1,7 +1,12 @@
 # code by @xtdevs
 # without cookies
 
+import os
+import time
+
 import requests
+from pyrogram.types import Message
+from yt_dlp import YoutubeDL
 
 
 @ErRick(
