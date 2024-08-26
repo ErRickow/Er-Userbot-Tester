@@ -16,6 +16,49 @@ from utils.misc import plugins_help, prefix, ErRick, input_user
 from utils.anu import progress
 from utils.config import *
 
+@Client.on_message(filters.command(["ytv"], prefix) & filters.me)
+async def ytvideo(client: Client, message: Message):
+    if len(message.command) < 2:
+        return await message.reply_text(
+            "Give a valid youtube link to download video."
+        )
+    query = await input_user(message)
+    pro = await message.reply_text("Checking ...")
+    status, url = YoutubeDriver.check_url(query)
+    if not status:
+        return await pro.edit_text(url)
+    await pro.edit_text("🎼 __Downloading video ...__")
+    try:
+        with YoutubeDL(YoutubeDriver.video_options()) as ytdl:
+            yt_data = ytdl.extract_info(url, True)
+            yt_file = yt_data["id"]
+
+        upload_text = f"**⬆️ 𝖴𝗉𝗅𝗈𝖺𝖽𝗂𝗇𝗀 𝖲𝗈𝗇𝗀 ...** \n\n**𝖳𝗂𝗍𝗅𝖾:** `{yt_data['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{yt_data['channel']}`"
+        await pro.edit_text(upload_text)
+        response = requests.get(f"https://i.ytimg.com/vi/{yt_data['id']}/hqdefault.jpg")
+        with open(f"{yt_file}.jpg", "wb") as f:
+            f.write(response.content)
+        await message.reply_video(
+            f"{yt_file}.mp4",
+            caption=f"**🎧 𝖳𝗂𝗍𝗅𝖾:** {yt_data['title']} \n\n**👀 𝖵𝗂𝖾𝗐𝗌:** `{yt_data['view_count']}` \n**⌛ 𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:** `{secs_to_mins(int(yt_data['duration']))}`",
+            duration=int(yt_data["duration"]),
+            thumb=f"{yt_file}.jpg",
+            progress=progress,
+            progress_args=(
+                pro,
+                time.time(),
+                upload_text,
+            ),
+        )
+        await pro.delete()
+    except Exception as e:
+        return await pro.edit_text(f"**🍀 Video not Downloaded:** `{e}`")
+    try:
+        os.remove(f"{yt_file}.jpg")
+        os.remove(f"{yt_file}.mp4")
+    except:
+        pass
+
 @Client.on_message(filters.command(["yta"], prefix) & filters.me)
 async def youtube_audio(_, message: Message):
     if len(message.command) < 2:
