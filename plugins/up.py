@@ -26,7 +26,7 @@ async def ngapdate(client, message):
     )
   out = subprocess.check_output(["git", "pull"]).decode("UTF-8")
   teks = f"<b>❒ Status resources :</b>\n"
-  memeg = f"<b>Perubahan logs </b>"
+  memeg = f"<b>Perubahan logs by {client.me.mention}</b>"
   if "Already up to date." in str(out):
         return await pros.edit(f"<blockquote>{teks}┖ {out}</blockquote>")
   if len(out) > 4096:
@@ -49,6 +49,6 @@ async def ngapdate(client, message):
   if format_line:
     format_line[-1] = f"┖ {format_line[-1][2:]}"
     format_output = "\n".join(format_line)
-  await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}</blockquote>")
+  await pros.edit(f"<blockquote>{memeg}\n\n{teks}{format_output}\n\nHelpers = @CibeeKu</blockquote>")
   os.execl(sys.executable, sys.executable, "erbanget.py")
   
