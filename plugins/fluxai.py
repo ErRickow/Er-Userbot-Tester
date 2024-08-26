@@ -57,7 +57,7 @@ async def schellwithflux(args):
       return response.content
 
 @ErRick(
-    filters.command(["fluxai"], CMD_HANDLER)
+    filters.command(["fluxai"], prefix)
     & filters.me
     & ~filters.forwarded
 )
