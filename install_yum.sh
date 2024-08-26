@@ -175,7 +175,7 @@ case $install_type in
       su -c "pm2 startup" $SUDO_USER
       env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u $SUDO_USER --hp /home/$SUDO_USER
     fi
-    su -c "pm2 start main.py --name Moon --interpreter python3" $SUDO_USER
+    su -c "pm2 start erbanget.py --name Moon --interpreter python3" $SUDO_USER
     su -c "pm2 save" $SUDO_USER
 
     echo
