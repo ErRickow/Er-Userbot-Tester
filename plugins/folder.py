@@ -37,7 +37,7 @@ FilesEMOJI = {
 
 @ErRick(
     ~filters.scheduled
-    & filters.command(["ls"], CMD_HANDLER)
+    & filters.command(["ls"], prefix)
     & filters.me
     & ~filters.forwarded
 )
