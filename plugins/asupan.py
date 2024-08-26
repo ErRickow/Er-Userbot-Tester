@@ -23,7 +23,7 @@ async def asupan_channel(client: Client, message: Message):
           else None)
     get_username = await db.set("core.main", "asupan_username", anu)
     if not get_username:
-        return await pro.edit_text("required `.setvar ASUPAN_USERNAME`")
+        return await pro.edit_text("required `.setvar asupan_username`")
     if not get_username.startswith("@"):
         return await pro.edit_text("Invalid username")
     custom_emoji = "<emoji id=5328317370647715629>✅</emoji>"
