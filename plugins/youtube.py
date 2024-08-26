@@ -17,38 +17,19 @@ from utils.anu import progress
 from utils.config import *
 
 
-@Client.on_message(filters.command(["scr", "yta"], prefix) & filters.me)
-async def youtube_download(link: str, only_audio=False):
-    url = "https://randydev-ryuzaki-api.hf.space/akeno/youtube"
-    payload = {
-        "link": link,
-        "only_audio": only_audio
-    }
-    response = requests.post(url, json=payload)
-    if response.status_code != 200:
-        return None
-    response_data = response.json()
-    request_check = response_data["randydev"]["video_data"] or response_data["randydev"]["audio_data"]
-    title = response_data["randydev"]["title"]
-    views = response_data["randydev"]["views"]
-    # ....
-    return request_check, title, views 
-
-# TODO
-video, title, views = youtube_download(link)
-if not video:
-    #return
-# .....
-  video_bytes.name = "video.mp4"
-  message.reply_video(
-    video_bytes,
-    caption="example json",
-    duration="example json",
-    thumb="example json",
-    progress=progress, # need progress
-    progress_args=(
-        "processing",
-        "example json",
-        "uploading video",
-    ),
-)
+@Client.on_message(filters.command(["ytlink"], prefix) & filters.me)
+async def ytlink(_, message: Message):
+    if len(message.command) < 2:
+        return await message.reply_text("Give something to search on youtube.")
+    query = await input_user(message)
+    pro = await message.reply_text("Searching ...")
+    try:
+        results = YoutubeDriver(query, 7).to_dict()
+    except Exception as e:
+        return await pro.edit_text(f"**🍀 Error:** `{e}`")
+    if not results:
+        return await pro.edit_text("No results found.")
+    text = f"**🔎 𝖳𝗈𝗍𝖺𝗅 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖥𝗈𝗎𝗇𝖽:** `{len(results)}`\n\n"
+    for result in results:
+        text += f"**𝖳𝗂𝗍𝗅𝖾:** `{result['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{result['channel']}`\n**𝖵𝗂𝖾𝗐𝗌:** `{result['views']}`\n**𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:** `{result['duration']}`\n**𝖫𝗂𝗇𝗄:** `https://youtube.com{result['url_suffix']}`\n\n"
+    await pro.edit_text(text, disable_web_page_preview=True)
