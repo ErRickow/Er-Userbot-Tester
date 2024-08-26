@@ -20,7 +20,7 @@ async def schellwithflux(args):
     response = requests.post(API_URL, json=payload)
     if response.status_code != 200:
         message.reply(f"Error status {response.status_code}")
-        return None
+        #return None
     return response.content
 
 @Client.on_message(filters.command(["fluxai"], prefix) & filters.me)
