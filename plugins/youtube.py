@@ -10,7 +10,7 @@ from yt_dlp import YoutubeDL
 
 from utils.misc import plugins_help, prefix, ErRick
 from utils.anu import progress
-from config import *
+from utils.config import *
 
 
 @ErRick(
