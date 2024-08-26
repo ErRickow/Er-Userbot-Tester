@@ -13,13 +13,13 @@ async def send_page(message, module_list, page, total_pages):
     start_index = (page - 1) * 10
     end_index = start_index + 10
     page_modules = module_list[start_index:end_index]
-    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a></blockquote>\n"
+    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a>\n"
     text += f"Untuk bantuan menggunakan Userbotnya, ketik <code>{prefix}help [nyari apa]</code>\n\n"
     text += f"Page {page}/{total_pages}\n\n"
     for module_name in page_modules:
         commands = plugins_help[module_name]
         text += f"• {module_name.title()}: {', '.join([f'<code>{prefix + cmd_name.split()[0]}</code>' for cmd_name in commands.keys()])}\n"
-    text += f"\n<blockquote>The number of modules in the userbot: {len(plugins_help)}</blockquote>"
+    text += f"\nThe number of modules in the userbot: {len(plugins_help)}</blockquote>"
     await message.reply(text, disable_web_page_preview=True)
 
 
@@ -63,14 +63,14 @@ async def handle_navigation(_, message: Message):
                 await send_page(message, list(plugins_help.keys()), current_page, total_pages)
                 return await message.reply_to_message.delete()
             else:
-                await message.edit("No more pages available.")
+                await message.reply("No more pages available.")
         elif message.command[0].lower() == "pp":
             if current_page > 1:
                 current_page -= 1
                 await send_page(message, list(plugins_help.keys()), current_page, total_pages)
                 return await message.reply_to_message.delete()
             else:
-                return await message.edit("This is the first page.")
+                return await message.reply("This is the first page.")
         elif message.command[0].lower() == "pq":
             await message.reply_to_message.delete()
             return await message.reply("Help closed.")
