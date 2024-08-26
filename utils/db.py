@@ -31,6 +31,108 @@ class Database:
         """Close the database"""
         raise NotImplementedError
 
+    def get_datetime(self) -> str:
+        return datetime.datetime.now().strftime("%d/%m/%Y - %H:%M")
+
+    async def set_env(self, name: str, value: str) -> None:
+        await self.env.update_one(
+            {"name": name}, {"$set": {"value": value}}, upsert=True
+        )
+
+    async def get_env(self, name: str) -> str | None:
+        if await self.is_env(name):
+            data = await self.env.find_one({"name": name})
+            return data["value"]
+        return None
+
+    async def rm_env(self, name: str) -> None:
+        await self.env.delete_one({"name": name})
+
+    async def is_env(self, name: str) -> bool:
+        if await self.env.find_one({"name": name}):
+            return True
+        return False
+
+    async def get_all_env(self) -> list:
+        return [i async for i in self.env.find({})]
+
+    async def is_stan(self, client: int, user_id: int) -> bool:
+        if await self.stan_users.find_one({"client": client, "user_id": user_id}):
+            return True
+        return False
+
+    async def add_stan(self, client: int, user_id: int) -> bool:
+        if await self.is_stan(client, user_id):
+            return False
+        await self.stan_users.insert_one(
+            {"client": client, "user_id": user_id, "date": self.get_datetime()}
+        )
+        return True
+
+    async def rm_stan(self, client: int, user_id: int) -> bool:
+        if not await self.is_stan(client, user_id):
+            return False
+        await self.stan_users.delete_one({"client": client, "user_id": user_id})
+        return True
+
+    async def get_stans(self, client: int) -> list:
+        return [i async for i in self.stan_users.find({"client": client})]
+
+    async def get_all_stans(self) -> list:
+        return [i async for i in self.stan_users.find({})]
+
+    async def is_session(self, user_id: int) -> bool:
+        if await self.session.find_one({"user_id": user_id}):
+            return True
+        return False
+
+    async def update_session(self, user_id: int, session: str) -> None:
+        await self.session.update_one(
+            {"user_id": user_id},
+            {"$set": {"session": session, "date": self.get_datetime()}},
+            upsert=True,
+        )
+
+    async def rm_session(self, user_id: int) -> None:
+        await self.session.delete_one({"user_id": user_id})
+
+    async def get_session(self, user_id: int):
+        if not await self.is_session(user_id):
+            return False
+        data = await self.session.find_one({"user_id": user_id})
+        return data
+
+    async def get_all_sessions(self) -> list:
+        return [i async for i in self.session.find({})]
+
+    async def is_gbanned(self, user_id: int) -> bool:
+        if await self.gban.find_one({"user_id": user_id}):
+            return True
+        return False
+
+    async def add_gban(self, user_id: int, reason: str) -> bool:
+        if await self.is_gbanned(user_id):
+            return False
+        await self.gban.insert_one(
+            {"user_id": user_id, "reason": reason, "date": self.get_datetime()}
+        )
+        return True
+
+    async def rm_gban(self, user_id: int):
+        if not await self.is_gbanned(user_id):
+            return None
+        reason = (await self.gban.find_one({"user_id": user_id}))["reason"]
+        await self.gban.delete_one({"user_id": user_id})
+        return reason
+
+    async def get_gban(self) -> list:
+        return [i async for i in self.gban.find({})]
+
+    async def get_gban_user(self, user_id: int) -> dict | None:
+        if not await self.is_gbanned(user_id):
+            return None
+        return await self.gban.find_one({"user_id": user_id})
+
 
 class MongoDatabase(Database):
     def __init__(self, url, name):
