@@ -16,7 +16,7 @@ async def aniquotes_handler(client: Client, message: Message):
     elif len(message.command) > 1:
         query = message.text.split(maxsplit=1)[1][:512]
     else:
-        return await message.edit('<b>[💮 Aniquotes] <i>Please enter text to create sticker.</i></b>', parse_mode=enums.ParseMode.HTML)
+        return await message.reply('<b>[💮 Aniquotes] <i>Please enter text to create sticker.</i></b>', parse_mode=enums.ParseMode.HTML)
 
     try:
         await message.delete()
