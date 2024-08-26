@@ -2,6 +2,15 @@ from sys import version_info
 from .db import db
 import git
 
+import pathlib
+from time import perf_counter
+
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from pyrogram import Client, filters
+from pyrogram.enums import ChatType
+from pyrogram.handlers import MessageHandler
+from pyrogram.types import Message
+
 __all__ = [
     "plugins_help",
     "tolong_anu",
