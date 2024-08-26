@@ -33,14 +33,14 @@ async def ytvideo(client: Client, message: Message):
             yt_data = ytdl.extract_info(url, True)
             yt_file = yt_data["id"]
 
-        upload_text = f"<b>⬆️ 𝖴𝗉𝗅𝗈𝖺𝖽𝗂𝗇𝗀 𝖲𝗈𝗇𝗀 ...</b>\n\n<b>𝖳𝗂𝗍𝗅𝖾:</b> `{yt_data['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{yt_data['channel']}`"
+        upload_text = f"<b>⬆️ 𝖴𝗉𝗅𝗈𝖺𝖽𝗂𝗇𝗀 𝖲𝗈𝗇𝗀 ...</b>\n\n<b>𝖳𝗂𝗍𝗅𝖾:</b> `{yt_data['title'][:50]}`\n<b>𝖢𝗁𝖺𝗇𝗇𝖾𝗅:</b> <i>{yt_data['channel']}</b>"
         await pro.edit_text(upload_text)
         response = requests.get(f"https://i.ytimg.com/vi/{yt_data['id']}/hqdefault.jpg")
         with open(f"{yt_file}.jpg", "wb") as f:
             f.write(response.content)
         await message.reply_video(
             f"{yt_file}.mp4",
-            caption=f"**🎧 𝖳𝗂𝗍𝗅𝖾:** {yt_data['title']} \n\n**👀 𝖵𝗂𝖾𝗐𝗌:** `{yt_data['view_count']}` \n**⌛ 𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:** `{secs_to_mins(int(yt_data['duration']))}`",
+            caption=f"<b>🎧 𝖳𝗂𝗍𝗅𝖾:</b> {yt_data['title']} \n\n<b>👀 𝖵𝗂𝖾𝗐𝗌:</b> <i>{yt_data['view_count']}</i> \n<b>⌛ 𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:</b> <i>{secs_to_mins(int(yt_data['duration']))}</b>",
             duration=int(yt_data["duration"]),
             thumb=f"{yt_file}.jpg",
             progress=progress,
@@ -52,7 +52,7 @@ async def ytvideo(client: Client, message: Message):
         )
         await pro.delete()
     except Exception as e:
-        return await pro.edit_text(f"**🍀 Video not Downloaded:** `{e}`")
+        return await pro.edit_text(f"<b>🍀 Video not Downloaded:</b> <i>{e}</b>")
     try:
         os.remove(f"{yt_file}.jpg")
         os.remove(f"{yt_file}.mp4")
