@@ -34,5 +34,4 @@ async def spamban(client: Client, message: Message):
 
 plugins_help["admintool"] = {
   "limit [prefix]": "get ur limit information"
-  "lmt [prefix]": "get ur limit information"
 }
