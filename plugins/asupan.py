@@ -11,7 +11,7 @@ from config import *
 
 @ErRick(
     ~filters.scheduled
-    & filters.command(["asupan"], CMD_HANDLER)
+    & filters.command(["asupan"], prefix)
     & filters.me
     & ~filters.forwarded
 )
