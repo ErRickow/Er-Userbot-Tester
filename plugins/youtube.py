@@ -13,6 +13,7 @@ from utils.db import db
 from utils.driver import YoutubeDriver
 from utils.formatter import secs_to_mins
 from utils.misc import plugins_help, prefix, ErRick
+from utils.handler import *
 from utils.anu import progress
 from utils.config import *
 
