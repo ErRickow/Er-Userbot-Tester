@@ -70,7 +70,7 @@ async def mentioned_alert(client: Client, message: Message):
             else:
                 message_text = message.caption
             user_ = f"@{message.from_user.username}" or message.from_user.mention
-            TZ = pytz.timezone("Asia/Kolkata")
+            TZ = pytz.timezone("Asia/Jakarta")
             datetime_tz = datetime.now(TZ)
             time_ = datetime_tz.strftime("`%Y/%m/%d - %H:%M:%S`")
             final_tagged_msg = f"**🔔 You Have Been** [Tagged]({tagged_msg_link}) **in** {chat_name} **By** {user_} **At** {time_} with message:**\n\n{message_text}**"
