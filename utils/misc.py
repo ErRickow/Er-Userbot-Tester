@@ -32,6 +32,18 @@ emoji = db.get("core.main", "emoji", " ")
 
 prefix = db.get("core.main", "prefix", ".")
 
+async def input_user(message: Message) -> str:
+    """Get the input from the user"""
+    if len(message.command) < 2:
+        output = ""
+    else:
+        try:
+            output = message.text.split(" ", 1)[1].strip() or ""
+        except IndexError:
+            output = ""
+    return output
+
+
 try:
     gitrepo = git.Repo(".")
 except git.exc.InvalidGitRepositoryError:
