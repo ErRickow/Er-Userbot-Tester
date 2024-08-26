@@ -532,15 +532,15 @@ def format_small_module_help(module_name: str, full=True):
     commands = plugins_help[module_name]
 
     help_text = (
-        f"<b>Help for |{module_name}|\n\nCommands list:\n"
+        f"<b>Help for</b> |{module_name}|\n\nCommands list:\n"
         if full
-        else "<b>Commands list:\n"
+        else "<b>Commands list:</b>\n"
         )
     for command, _desc in commands.items():
         cmd = command.split(maxsplit=1)
         args = " <code>" + cmd[1] + "</code>" if len(cmd) > 1 else ""
         help_text += f"<code>{prefix}{cmd[0]}</code>{args}\n"
-    help_text += f"\nGet full usage: <code>{prefix}help {module_name}</code></b>"
+    help_text += f"\n<b>Get full usage: <code>{prefix}help {module_name}</code></b>"
 
     return help_text
 
