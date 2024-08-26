@@ -3,8 +3,8 @@ from random import choice, randint
 from pyrogram import Client, filters, enums
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 
 
 @Client.on_message(filters.command(['aniq', 'aq'], prefix) & filters.me)
@@ -29,6 +29,6 @@ async def aniquotes_handler(client: Client, message: Message):
         return await message.reply(f'<b>[💮 Aniquotes]</b>\n<code>{format_exc(e)}</code>', parse_mode=enums.ParseMode.HTML)
 
 
-modules_help['aniquotes'] = {
+plugins_help['aniquotes'] = {
     'aq [text]': 'Create animated sticker with text',
 }
