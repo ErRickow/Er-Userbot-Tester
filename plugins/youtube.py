@@ -113,7 +113,7 @@ async def ytlink(_, message: Message):
     try:
         results = YoutubeDriver(query, 7).to_dict()
     except Exception as e:
-        return await pro.edit_text(f"**🍀 Error:** `{e}`")
+        return await pro.edit_text(f"<b>🍀 Error:</b> <code>{e}</code>")
     if not results:
         return await pro.edit_text("No results found.")
     text = f"**🔎 𝖳𝗈𝗍𝖺𝗅 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖥𝗈𝗎𝗇𝖽:** `{len(results)}`\n\n"
