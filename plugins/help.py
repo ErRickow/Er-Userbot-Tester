@@ -13,7 +13,7 @@ async def send_page(message, module_list, page, total_pages):
     start_index = (page - 1) * 10
     end_index = start_index + 10
     page_modules = module_list[start_index:end_index]
-    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a>\n"
+    text = f"<blockquote>Bantuan untuk <a href=https://t.me/Pamerdong>Ubot Anu</a></blockquote>\n"
     text += f"Untuk bantuan menggunakan Userbotnya, ketik <code>{prefix}help [nyari apa]</code>\n\n"
     text += f"Page {page}/{total_pages}\n\n"
     for module_name in page_modules:
