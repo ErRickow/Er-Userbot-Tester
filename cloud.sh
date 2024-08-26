@@ -2,10 +2,8 @@
 
 cat <<'EOF'
  _      ____  ____  _     
-/ \__/|/  _ \/  _ \/ \  /|
-| |\/||| / \|| / \|| |\ ||
-| |  ||| \_/|| \_/|| | \||
-\_/  \|\____/\____/\_/  \|
+Er USERBOT READY TO GO
+_-_-_-_-_-_-_-_-_-_-_-
                           
 Copyright (C) 2020-2023 by MoonTg-project@Github, < https://github.com/The-MoonTg-project >.
 This file is part of < https://github.com/The-MoonTg-project/Moon-Userbot > project,
