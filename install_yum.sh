@@ -218,7 +218,7 @@ EOL
     echo "============================"
     echo "Great! Moon-Userbot installed successfully!"
     echo "Installation type: Custom"
-    echo "Start with: \"python3 main.py\""
+    echo "Start with: \"python3 erbanget.py\""
     echo "============================"
     ;;
 esac
