@@ -7,6 +7,11 @@ from pyrogram import *
 from pyrogram import Client, filters
 from pyrogram.types import *
 
+from aiohttp import ClientSession
+from io import BytesIO
+
+session = ClientSession()
+
 from utils.handler import *
 from utils.anu import progress
 from utils.misc import plugins_help, prefix
