@@ -1,6 +1,6 @@
 #!/bin/bash
 if command -v termux-setup-storage; then
-  echo For termux, please use https://raw.githubusercontent.com/The-MoonTg-project/Moon-Userbot/main/termux-install.sh
+  echo For termux, please use https://raw.githubusercontent.com/ErRickow/Er-Userbot-Tester/main/termux-install.sh
   exit 1
 fi
 
