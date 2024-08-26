@@ -34,7 +34,7 @@ async def youtube_download(link: str, only_audio=False):
 # TODO
 video, title, views = youtube_download(link)
 if not video:
-    return
+    #return
 # .....
 video_bytes.name = "video.mp4"
 await message.reply_video(
