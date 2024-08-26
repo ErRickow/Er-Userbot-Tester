@@ -5,7 +5,7 @@ import git
 import pathlib
 from time import perf_counter
 
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+#from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pyrogram import Client, filters
 from pyrogram.enums import ChatType
 from pyrogram.handlers import MessageHandler
