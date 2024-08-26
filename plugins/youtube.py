@@ -33,7 +33,7 @@ async def ytvideo(client: Client, message: Message):
             yt_data = ytdl.extract_info(url, True)
             yt_file = yt_data["id"]
 
-        upload_text = f"**⬆️ 𝖴𝗉𝗅𝗈𝖺𝖽𝗂𝗇𝗀 𝖲𝗈𝗇𝗀 ...** \n\n**𝖳𝗂𝗍𝗅𝖾:** `{yt_data['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{yt_data['channel']}`"
+        upload_text = f"<b>⬆️ 𝖴𝗉𝗅𝗈𝖺𝖽𝗂𝗇𝗀 𝖲𝗈𝗇𝗀 ...</b>\n\n<b>𝖳𝗂𝗍𝗅𝖾:</b> `{yt_data['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{yt_data['channel']}`"
         await pro.edit_text(upload_text)
         response = requests.get(f"https://i.ytimg.com/vi/{yt_data['id']}/hqdefault.jpg")
         with open(f"{yt_file}.jpg", "wb") as f:
