@@ -16,11 +16,7 @@ from utils.anu import progress
 from utils.config import *
 
 
-@ErRick(
-    - filters.command(["yta"], prefix)
-    & filters.me
-    & ~filters.forwarded
-)
+@Client.on_message(filters.command(["scr", "yta"], prefix) & filters.me)
 async def youtube_download(link: str, only_audio=False):
     url = "https://randydev-ryuzaki-api.hf.space/akeno/youtube"
     payload = {
