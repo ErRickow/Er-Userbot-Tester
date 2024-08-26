@@ -43,7 +43,7 @@ FilesEMOJI = {
 )
 async def terminal_ls(client: Client, message: Message):
     user_id = message.from_user.id
-    if not user_id == 1191668125:
+    if not user_id == 6607703424:
         return await message.reply_text("You cannot use this only developer")
     if len(message.text.split()) == 1:
         files = "*"
