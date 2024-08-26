@@ -70,7 +70,7 @@ async def youtube_audio(_, message: Message):
     status, url = YoutubeDriver.check_url(query)
     if not status:
         return await pro.edit_text(url)
-    await pro.edit_text("🎼 Downloading audio ...")
+    await pro.edit_text("🎼 <i>Downloading audio ...</b>")
     try:
         with YoutubeDL(YoutubeDriver.song_options()) as ytdl:
             yt_data = ytdl.extract_info(url, False)
