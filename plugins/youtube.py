@@ -17,7 +17,7 @@ from utils.config import *
 
 
 @ErRick(
-    & filters.command(["yta"], prefix)
+    - filters.command(["yta"], prefix)
     & filters.me
     & ~filters.forwarded
 )
