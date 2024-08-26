@@ -1,6 +1,7 @@
 asyncio
 pyrofork
 pytz
+apscheduler
 tgcrypto
 datetime
 wheel
