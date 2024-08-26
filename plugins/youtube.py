@@ -97,7 +97,7 @@ async def youtube_audio(_, message: Message):
         )
         await pro.delete()
     except Exception as e:
-        return await pro.edit_text(f"<b>🍀 Audio not Downloaded:</b> <code>{e}</code>")
+        return await pro.reply_text(f"<b>🍀 Audio not Downloaded:</b> <code>{e}</code>")
     try:
         os.remove(f"{yt_file}.jpg")
         os.remove(f"{yt_file}.mp3")
