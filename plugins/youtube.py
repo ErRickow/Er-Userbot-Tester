@@ -8,6 +8,8 @@ import requests
 from pyrogram.types import Message
 from yt_dlp import YoutubeDL
 
+from utils.misc import plugins_help, prefix, ErRick
+
 
 @ErRick(
     ~filters.scheduled
