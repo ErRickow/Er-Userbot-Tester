@@ -6,7 +6,7 @@ from pyrogram import *
 from pyrogram.types import *
 
 from utils import db
-from utils.misc import plugins_help, prefix, ErRick
+from utils.misc import plugins_help, prefix, ErRick, asupan_username
 from utils.config import *
 
 @ErRick(
@@ -18,7 +18,10 @@ from utils.config import *
 async def asupan_channel(client: Client, message: Message):
     pro = await message.reply_text("`Processing....`")
     user_id = message.from_user.id
-    get_username = await db.get(ENV_TEMPLATE.asupan_username)
+    anu = (message.text.split(None, 1)[1]
+          if len(message.command) != 1
+          else None)
+    get_username = await db.set("core.main", "asupan_username", anu)
     if not get_username:
         return await pro.edit_text("required `.setvar ASUPAN_USERNAME`")
     if not get_username.startswith("@"):
