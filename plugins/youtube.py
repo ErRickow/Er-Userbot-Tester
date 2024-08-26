@@ -7,6 +7,7 @@ import time
 import requests
 from pyrogram.types import Message
 from yt_dlp import YoutubeDL
+from pyrogram import Client, filters
 
 from utils.db import db
 from utils.driver import YoutubeDriver
