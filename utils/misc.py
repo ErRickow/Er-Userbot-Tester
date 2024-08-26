@@ -19,6 +19,7 @@ plugins_help = {}
 tolong_anu = {}
 requirements_list = []
 ignore_eval = []
+ErRick = Client.on_message
 
 app = {}
 
