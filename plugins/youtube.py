@@ -32,7 +32,7 @@ async def youtube_download(link: str, only_audio=False):
     return request_check, title, views 
 
 # TODO
-video, title, views = await youtube_download(link)
+video, title, views = youtube_download(link)
 if not video:
     return
 # .....
