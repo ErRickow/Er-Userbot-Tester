@@ -19,7 +19,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from utils.db import db
 from utils.formatter import format_text
-from config import *
+from utils.config import *
 
 
 class ChromeDriver:
