@@ -21,7 +21,7 @@ async def schellwithflux(args):
     if response.status_code != 200:
         #message.reply(f"Error status {response.status_code}")
         #return None
-    return response.content
+      return response.content
 
 @Client.on_message(filters.command(["fluxai"], prefix) & filters.me)
 async def imgfluxai_(client: Client, message: Message):
