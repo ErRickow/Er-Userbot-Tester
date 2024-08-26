@@ -11,6 +11,29 @@ from utils.handler import *
 from utils.anu import progress
 from utils.misc import plugins_help, prefix
 
+    @property
+    async def image(self):
+        return (
+            self.file_url
+            if self.file_url
+            else self.large_file_url
+            if self.large_file_url
+            else self.source
+            if self.source and "pximg" not in self.source
+            else await self.pximg
+            if self.source
+            else None
+        )
+
+    @property
+    async def pximg(self):
+        async with self.session.get(self.source) as response:
+            return BytesIO(await response.read())
+
+    def __getattr__(self, item):
+        return self._json.get(item)
+
+
 async def schellwithflux(args):
     API_URL = "https://randydev-ryuzaki-api.hf.space/api/v1/akeno/fluxai"
     payload = {
