@@ -18,7 +18,7 @@ from utils.config import *
 async def asupan_channel(client: Client, message: Message):
     pro = await message.reply_text("`Processing....`")
     user_id = message.from_user.id
-    get_username = await db.get_env(ENV_TEMPLATE.asupan_username)
+    get_username = await db.get(ENV_TEMPLATE.asupan_username)
     if not get_username:
         return await pro.edit_text("required `.setvar ASUPAN_USERNAME`")
     if not get_username.startswith("@"):
