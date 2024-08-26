@@ -37,7 +37,7 @@ if not video:
     #return
 # .....
   video_bytes.name = "video.mp4"
-  await message.reply_video(
+  message.reply_video(
     video_bytes,
     caption="example json",
     duration="example json",
