@@ -56,7 +56,11 @@ async def schellwithflux(args):
         #return None
       return response.content
 
-@Client.on_message(filters.command(["fluxai"], prefix) & filters.me)
+@ErRick(
+    filters.command(["fluxai"], CMD_HANDLER)
+    & filters.me
+    & ~filters.forwarded
+)
 async def imgfluxai_(client: Client, message: Message):
     question = message.text.split(" ", 1)[1] if len(message.command) > 1 else None
     if not question:
