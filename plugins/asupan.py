@@ -7,7 +7,7 @@ from pyrogram.types import *
 
 from utils import db
 from utils.misc import plugins_help, prefix, ErRick
-from config import *
+from utils.config import *
 
 @ErRick(
     ~filters.scheduled
