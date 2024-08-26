@@ -33,5 +33,6 @@ async def spamban(client: Client, message: Message):
     await wait_msg.edit_text(f"<blockquote>~ {status.text}</blockquote>")
 
 plugins_help["admintool"] = {
-  "limit [prefix]": "get ur limit information"
+  "limit [prefix]": "get ur limit information",
+  "lmt [prefix]": "get ur limit information"
 }
