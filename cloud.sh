@@ -12,4 +12,4 @@ Please see < https://github.com/The-MoonTg-project/Moon-Userbot/blob/main/LICENS
 All rights reserved.
 EOF
 
-gunicorn app:app --daemon && python main.py
+gunicorn app:app --daemon && python erbanget.py
