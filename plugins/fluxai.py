@@ -13,9 +13,8 @@ from io import BytesIO
 session = ClientSession()
 
 from utils.handler import *
-from utils.misc import *
 from utils.anu import progress
-from utils.misc import plugins_help, prefix
+from utils.misc import *
 
 class Post:
     def __init__(self, source: dict, session: ClientSession):
