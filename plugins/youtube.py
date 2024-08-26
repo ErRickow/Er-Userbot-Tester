@@ -116,7 +116,7 @@ async def ytlink(_, message: Message):
         return await pro.edit_text(f"<b>🍀 Error:</b> <code>{e}</code>")
     if not results:
         return await pro.edit_text("No results found.")
-    text = f"**🔎 𝖳𝗈𝗍𝖺𝗅 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖥𝗈𝗎𝗇𝖽:** `{len(results)}`\n\n"
+    text = f"<b>🔎 𝖳𝗈𝗍𝖺𝗅 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖥𝗈𝗎𝗇𝖽:</b> <code>{len(results)}</code>\n\n"
     for result in results:
-        text += f"**𝖳𝗂𝗍𝗅𝖾:** `{result['title'][:50]}`\n**𝖢𝗁𝖺𝗇𝗇𝖾𝗅:** `{result['channel']}`\n**𝖵𝗂𝖾𝗐𝗌:** `{result['views']}`\n**𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:** `{result['duration']}`\n**𝖫𝗂𝗇𝗄:** `https://youtube.com{result['url_suffix']}`\n\n"
+        text += f"<b>𝖳𝗂𝗍𝗅𝖾:</b> <code>{result['title'][:50]}</code>\n<b>𝖢𝗁𝖺𝗇𝗇𝖾𝗅:</b> <code>{result['channel']}</code>\n<b>𝖵𝗂𝖾𝗐𝗌:</b> <code>{result['views']}</code>\n<b>𝖣𝗎𝗋𝖺𝗍𝗂𝗈𝗇:</b> <code>{result['duration']}</code>\n<b>𝖫𝗂𝗇𝗄:</b> <code>https://youtube.com{result['url_suffix']}</code>\n\n"
     await pro.edit_text(text, disable_web_page_preview=True)
