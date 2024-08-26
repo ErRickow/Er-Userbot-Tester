@@ -20,7 +20,7 @@ async def aniquotes_handler(client: Client, message: Message):
 
     try:
         await message.delete()
-        result = await client.get_inline_bot_results('@quotafbot', query)
+        result = await client.get_inline_bot_results('@QuotAfBot', query)
         return await message.reply_inline_bot_result(query_id=result.query_id,
                                                      result_id=result.results[randint(1, 2)].id,
                                                      reply_to_message_id=message.reply_to_message.id if
