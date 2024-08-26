@@ -21,7 +21,7 @@ async def asupan_channel(client: Client, message: Message):
     anu = (message.text.split(None, 1)[1]
           if len(message.command) != 1
           else None)
-    get_username = await db.get("core.asupan", "asupan_username", [])
+    get_username = db.get("core.asupan", "asupan_username", [])
     if not get_username:
         return await pro.edit_text("required `.setvar asupan_username`")
     if not get_username.startswith("@"):
