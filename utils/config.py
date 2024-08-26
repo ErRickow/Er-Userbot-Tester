@@ -76,3 +76,6 @@ class ENV_TEMPLATE:
     usage_template = "USAGE_TEMPLATE"
     user_info_template = "USER_INFO_TEMPLATE"
 
+all_env: list[str] = [
+    value for key, value in ENV_TEMPLATE.__dict__.items() if not key.startswith("__")
+]
