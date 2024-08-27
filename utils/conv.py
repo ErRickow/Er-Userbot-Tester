@@ -121,7 +121,7 @@ class Conversation:
     async def send_message(
         self,
         text: str,
-        parse_mode: Optional[str] = object,
+        parse_mode: markdown[str] = object,
         entities: List[types.MessageEntity] = None,
         disable_web_page_preview: bool = None,
         disable_notification: bool = None,
