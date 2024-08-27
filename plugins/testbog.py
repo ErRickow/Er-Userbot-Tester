@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from utils.misc import plugins_help, prefix
 from utils.config import *
 from utils.db import db
-from utils.scripts import format_exc, import_library, restart
+from utils.anu import format_exc, import_library, restart
 
 #cohere = import_library("cohere")
 
