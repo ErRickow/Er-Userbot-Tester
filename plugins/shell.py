@@ -27,7 +27,7 @@ from utils.misc import plugins_help, prefix
 @Client.on_message(filters.command(["shell", "sh"], prefix) & filters.me)
 async def shell(_, message: Message):
     if len(message.command) < 2:
-        return await message.edit("<b>Specify the command in message text</b>")
+        return await message.reply("<b>Specify the command in message text</b>")
     cmd_text = message.text.split(maxsplit=1)[1]
     cmd_args = cmd_text.split()
     cmd_obj = Popen(
