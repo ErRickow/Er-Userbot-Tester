@@ -1,10 +1,10 @@
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
+from utils.misc import plugins_help, prefix
 from utils.config import cohere_key
 from utils.db import db
-from utils.scripts import format_exc, import_library, restart
+from utils.anu import format_exc, import_library, restart
 
 cohere = import_library("cohere")
 
@@ -97,7 +97,7 @@ async def listai(_, message: Message):
     )
 
 
-modules_help["chatbot"] = {
+plugins_help["chatbot"] = {
     "addai [user_id]*": "Add A user to AI ChatBot List",
     "remai [user_id]*": "Remove A user from AI ChatBot List",
     "listai": "List A user from AI ChatBot List",
