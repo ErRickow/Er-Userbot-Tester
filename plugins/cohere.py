@@ -1,4 +1,4 @@
-from utils.scripts import import_library
+from utils.anu import import_library
 from utils.config import cohere_key
 
 cohere = import_library("cohere")
@@ -7,8 +7,8 @@ import cohere
 
 co = cohere.Client(cohere_key)
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc
 from utils.db import db
 
 from pyrogram import Client, filters, enums
@@ -56,6 +56,6 @@ async def cohere(c: Client, message: Message):
     except Exception as e:
         await message.edit_text(f"An error occurred: {format_exc(e)}")
 
-modules_help["cohere"] = {
+plugins_help["cohere"] = {
     "cohere": "Chat with cohere ai"
 }
