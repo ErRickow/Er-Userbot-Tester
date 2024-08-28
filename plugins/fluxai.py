@@ -35,7 +35,8 @@ async def schellwithflux(args):
     & ~filters.forwarded
 )
 async def imgfluxai_(client: Client, message: Message):
-    question = message.text.split(" ", 1)[1] if len(message.command) > 1
+     if len(message.command) > 1
+     question = message.text.split(" ", 1)[1]
     if not question:
         return await message.reply_text("mo apa kontol.")
     try:
