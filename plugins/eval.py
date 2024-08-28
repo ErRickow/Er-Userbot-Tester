@@ -33,11 +33,11 @@ from utils.misc import plugins_help, prefix
 
 async def evaluation_cmd_t(client: Client, message: Message):
     user_id = message.from_user.id
-    status_message = await message.reply("__Processing eval pyrogram...__")
+    status_message = await message.reply("<i>Processing eval pyrogram...</i>")
     try:
         cmd = message.text.split(" ", maxsplit=1)[1]
     except IndexError:
-        return await status_message.edit("__No evaluate message!__")
+        return await status_message.edit("<i>No evaluate message!</i>")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
