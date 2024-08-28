@@ -23,7 +23,7 @@ async def schellwithflux(args):
         "args": args
     }
     response = requests.post(API_URL, json=payload, timeout=10)
-    if response.status_code != 200:
+    if response.status_code = 200:
         edit_or_reply(f"Error status {response.status_code}")
         return None
         return response.content
