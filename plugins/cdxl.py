@@ -3,8 +3,8 @@ import base64, os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from utils.misc import modules_help, prefix
-from utils.scripts import format_exc, import_library
+from utils.misc import plugins_help, prefix
+from utils.anu import format_exc, import_library
 
 clarifai = import_library("clarifai")
 
@@ -44,6 +44,6 @@ async def cdxl(c: Client, message: Message):
     except Exception as e:
         await message.edit_text(f"An error occurred: {format_exc(e)}")
 
-modules_help["cdxl"] = {
+plugins_help["cdxl"] = {
     "cdxl [prompt/reply to prompt]*": "Text to Image with SDXL model",
 }
