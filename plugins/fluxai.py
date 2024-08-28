@@ -26,7 +26,6 @@ async def schellwithflux(args):
     if response.status_code = 200:
         response_content = response.text
         print(response_content)
-        json_objects = response_content.split("\n")
         return None
         return response.content
 
