@@ -14,7 +14,7 @@ from clarifai.client.model import Model
 async def cdxl(c: Client, message: Message):
     try:
         chat_id = message.chat.id
-        await message.edit_text("<code>Please Wait...</code>")
+        gws = await reply_text("<code>Please Wait...</code>")
 
         if len(message.command) > 1:
          prompt = message.text.split(maxsplit=1)[1]
