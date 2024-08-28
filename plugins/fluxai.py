@@ -13,7 +13,7 @@ from io import BytesIO
 session = ClientSession()
 
 from utils.handler import *
-from utils.anu import progress
+from utils.anu import progress, edit_or_reply
 from utils.misc import plugins_help, prefix, ErRick
 
 async def schellwithflux(args):
