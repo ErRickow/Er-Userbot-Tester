@@ -21,7 +21,7 @@ async def cdxl(c: Client, message: Message):
         elif message.reply_to_message:
          prompt = message.reply_to_message.text
         else:
-         await message.edit_text(
+         await gws.edit_text(
             f"<b>Usage: </b><code>{prefix}vdxl [prompt/reply to prompt]</code>"
         )
          return
