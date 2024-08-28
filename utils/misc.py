@@ -22,6 +22,7 @@ __all__ = [
     "userbot_version"
     "ignore_eval",
     "asupan_username",
+    "ErRick",
 ]
 
 
