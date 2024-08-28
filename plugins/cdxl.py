@@ -10,7 +10,7 @@ clarifai = import_library("clarifai")
 
 from clarifai.client.model import Model
 
-@Client.on_message(filters.command("cdxl", prefix) & filters.me)
+@Client.on_message(filters.command(["cdxl", "flx"], prefix) & filters.me)
 async def cdxl(c: Client, message: Message):
     try:
         chat_id = message.chat.id
