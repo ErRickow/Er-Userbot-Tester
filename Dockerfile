@@ -1,6 +1,8 @@
-FROM python:3.11
+FROM rendyprojects/python:latest
+
 WORKDIR /app
-COPY . /app
+WORKDIR /.cache
+
 RUN apt -qq update && \
     apt -qq install -y --no-install-recommends \
     ffmpeg \
@@ -72,4 +74,4 @@ RUN mv ffmpeg-git*/ffmpeg ffmpeg-git*/ffprobe /usr/local/bin/
 
 EXPOSE 8080
 
-CMD ["python", "erbanget.py"]
+CMD ["bash", "-c", "python3 erbanget"]
