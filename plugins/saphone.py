@@ -79,18 +79,18 @@ async def sgemini(_, message: Message):
     if len(message.command) > 1:
         prompt = message.text.split(maxsplit=1)[1]
     else:
-        await message.edit_text("prompt not provided!")
+        await message.reply_text("prompt not provided!")
         return
-    await message.edit_text("Processing...")
+       i = await message.reply_text("Processing...")
     response = requests.get(url=f"{url}/bard?query={prompt}", headers=headers)
     if response.status_code != 200:
-        await message.edit_text("Something went wrong!")
+        await i.edit_text("Something went wrong!")
         return
 
     result = response.json()
 
     ans = result["message"]
-    await message.edit_text(
+    await i.edit_text(
         f"Prompt: {prompt}\n Ans: {ans}", parse_mode=enums.ParseMode.MARKDOWN
     )
 
