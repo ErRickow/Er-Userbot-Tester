@@ -81,16 +81,16 @@ async def sgemini(_, message: Message):
     else:
         await message.reply_text("prompt not provided!")
         return
-       i = await message.reply_text("Processing...")
+    await message.edit_text("Processing...")
     response = requests.get(url=f"{url}/bard?query={prompt}", headers=headers)
     if response.status_code != 200:
-        await i.edit_text("Something went wrong!")
+        await message.edit_text("Something went wrong!")
         return
 
     result = response.json()
 
     ans = result["message"]
-    await i.edit_text(
+    await message.reply_text(
         f"Prompt: {prompt}\n Ans: {ans}", parse_mode=enums.ParseMode.MARKDOWN
     )
 
