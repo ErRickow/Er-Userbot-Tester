@@ -74,4 +74,4 @@ RUN mv ffmpeg-git*/ffmpeg ffmpeg-git*/ffprobe /usr/local/bin/
 
 EXPOSE 8080
 
-CMD ["bash", "-c", "python3 erbanget"]
+CMD ["bash", "-c", "python3 erbanget.py"]
