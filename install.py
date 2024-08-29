@@ -11,7 +11,7 @@ common_params = {
     "test_mode": config.test_server,
 }
 
-if __name__ == "__erbanget__":
+if __name__ == "__main__":
     if config.STRINGSESSION:
         common_params["session_string"] = config.STRINGSESSION
 
