@@ -42,6 +42,17 @@ async def anu(client, message):
     nganu = time.time() - start
     await message.reply(f"<blockquote>{emopong}<b>PONG!!</b> - {nganu * 1000:.3f}ms\n<b>├• Aktif!!</b> - <code>{uptime}</code>\n<b>├• Owner</b> - {client.me.mention}\n<b>╰• </b><i>Ξr 𖨆♡𖨆 lop u yek</i></blockquote>")
 
+@Client.on_message(filters.command(["kping", "kp"], prefix) & filters.me)
+async def custom_ping_handler(client: Client, message: Message):
+    uptime = get_readable_time((time.time() - StartTime))
+    start = dt.now()
+    lol = await message.reply_text("**Pong!!**")
+    await asyncio.sleep(1.5)
+    end = dt.now()
+    duration = (end - start).microseconds / 1000
+    await lol.edit_text(
+        f" **Pong !!** " f"`%sms` \n" f" **Uptime** - " f"`{uptime}` " % (duration)
+    )
 
 
 plugins_help["ping"] = {
