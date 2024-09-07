@@ -73,6 +73,6 @@ async def chatgpt_old_(client: Client, message: Message):
         else:
             await message.reply_text(output)
     except Exception as e:
-        LOGS.error(str(e))
-        return await message.reply_text(str(e))
-
+        # Kirim pesan kesalahan ke pengguna
+        await message.reply_text(f"Terjadi kesalahan: {str(e)}") 
+        # Anda bisa menambahkan log ke file atau tempat lain jika diperlukan 
