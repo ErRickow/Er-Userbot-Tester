@@ -47,7 +47,7 @@ async def anu(client, message):
 async def custom_ping_handler(client: Client, message: Message):
     uptime = get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    lol = await message.reply_text("**Pong!!**")
+    lol = await message.reply_text("<b>Pong!!<b>")
     await asyncio.sleep(1.5)
     end = datetime.now()
     duration = (end - start).microseconds / 1000
