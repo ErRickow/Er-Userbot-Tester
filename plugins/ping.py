@@ -52,7 +52,7 @@ async def custom_ping_handler(client: Client, message: Message):
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await lol.edit_text(
-        f" **Pong !!** " f"`%sms` \n" f" **Uptime** - " f"`{uptime}` " % (duration)
+        f" <b>Pong !!</b> " f"<code><i>%sms</i></code> \n" f" <b>Uptime</b> - " f"<code>{uptime}</code> " % (duration)
     )
 
 
