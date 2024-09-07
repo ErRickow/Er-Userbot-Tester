@@ -48,3 +48,31 @@ async def mistralai_(client: Client, message: Message):
     except Exception as e:
         LOGS.error(str(e))
         return await message.reply_text(str(e))
+
+@Client.on_message(filters.command("ask", prefix) & filters.me)
+async def chatgpt_old_(client: Client, message: Message):
+    if len(message.command) > 1:
+        prompt = message.text.split(maxsplit=1)[1]
+    elif message.reply_to_message:
+        prompt = message.reply_to_message.text
+    else:
+        return await message.reply_text("Give ask from CHATGPT-3")
+    try:
+        messager = await chatgptold(prompt)
+        if messager is None:
+            return await message.reply_text("No response")
+        output = messager["randydev"].get("message")
+        if len(output) > 4096:
+            with open("chat.txt", "w+", encoding="utf8") as out_file:
+                out_file.write(output)
+            await message.reply_document(
+                document="chat.txt",
+                disable_notification=True
+            )
+            os.remove("chat.txt")
+        else:
+            await message.reply_text(output)
+    except Exception as e:
+        LOGS.error(str(e))
+        return await message.reply_text(str(e))
+
