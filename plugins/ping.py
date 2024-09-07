@@ -45,7 +45,7 @@ async def anu(client, message):
 @Client.on_message(filters.command(["kping", "kp"], prefix) & filters.me)
 async def custom_ping_handler(client: Client, message: Message):
     uptime = get_readable_time((time.time() - StartTime))
-    start = dt.now()
+    start = datetime.now()
     lol = await message.reply_text("**Pong!!**")
     await asyncio.sleep(1.5)
     end = datetime.now()
