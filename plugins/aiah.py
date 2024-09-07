@@ -46,8 +46,8 @@ async def mistralai_(client: Client, message: Message):
         else:
             await message.reply_text(output)
     except Exception as e:
-        LOGS.error(str(e))
-        return await message.reply_text(str(e))
+        # Kirim pesan kesalahan ke pengguna
+        await message.reply_text(f"Terjadi kesalahan: {str(e)}") 
 
 @Client.on_message(filters.command("ask", prefix) & filters.me)
 async def chatgpt_old_(client: Client, message: Message):
