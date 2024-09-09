@@ -14,7 +14,7 @@ from utils.misc import plugins_help, prefix, ErRick
 async def schellwithflux(args):
     API_URL = "https://akeno.randydev.my.id//akeno/fluxai?api_key=y0y0y03rq"
     payload = {
-#        "user_id": 1191668125,  # Please don't edit here
+        "is_flux_dev": True #        "user_id": 1191668125,  # Please don't edit here
         "args": args
     }
     response = requests.post(API_URL, json=payload, timeout=10)
