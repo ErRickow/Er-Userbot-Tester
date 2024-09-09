@@ -7,11 +7,6 @@ from pyrogram import *
 from pyrogram import Client, filters
 from pyrogram.types import *
 
-from aiohttp import ClientSession
-from io import BytesIO
-
-session = ClientSession()
-
 from utils.handler import *
 from utils.anu import progress, edit_or_reply
 from utils.misc import plugins_help, prefix, ErRick
@@ -37,12 +32,12 @@ async def schellwithflux(args):
 async def imgfluxai_(client: Client, message: Message):
     question = message.text.split(" ", 1)[1] if len(message.command) > 1 else None
     if not question:
-        return await message.reply_text("mo apa kontol.")
+        return await message.reply_text("Please provide a question for Flux.")
     try:
         image_bytes = await schellwithflux(question)
         if image_bytes is None:
-            return await message.reply_text("gagal dah.")
-        pro = await message.reply_text("Generating image, sabar sayang...")
+            return await message.reply_text("Failed to generate an image.")
+        pro = await message.reply_text("Generating image, please wait...")
         with open("flux_gen.jpg", "wb") as f:
             f.write(image_bytes)
         ok = await pro.edit_text("Uploading image...")
@@ -51,5 +46,5 @@ async def imgfluxai_(client: Client, message: Message):
         if os.path.exists("flux_gen.jpg"):
             os.remove("flux_gen.jpg")
     except Exception as e:
-        await message.edit(format_exc(e))
-
+        LOGS.error(str(e))
+        await message.edit_text(str(e))
