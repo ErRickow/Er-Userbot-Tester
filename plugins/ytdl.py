@@ -32,7 +32,7 @@ ydm_opts = {
 
 def download_video(url):
     with YoutubeDL(ydv_opts) as ydl:
-        info = ydl.extract_info(url, download=False)
+        info = ydl.extract_info(url, download=True)
         i_d = info.get('id')
         title = info.get('title')
         ext = info.get('ext')
